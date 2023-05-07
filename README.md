@@ -28,7 +28,7 @@ Click on the "Fork" button in the top-right corner of the repository page to cre
 
 ## 2. Clone the repository
 
-Use the `git clone https://github.com/TranThangBin/VLU-221-Semester-Windows-Form-Project.git` command to clone the forked repository to your local machine.
+Use the `git clone https://github.com/TranThangBin/VLU-222-Semester-Windows-Form-Project.git` command to clone the forked repository to your local machine.
 
 ## 3. Create a new branch
 
@@ -48,7 +48,7 @@ On the GitHub website, navigate to your forked repository and click on the "New 
 
 ## 7. Keep your local repository up to date
 
-To keep your local repository up to date with the latest changes from the original repository, you can add the original repository as a remote using the `git remote add upstream https://github.com/TranThangBin/VLU-221-Semester-Windows-Form-Project.git` command, and then use the `git pull upstream main` command to fetch and merge changes from the remote repository into your local repository.
+To keep your local repository up to date with the latest changes from the original repository, you can add the original repository as a remote using the `git remote add upstream https://github.com/TranThangBin/VLU-222-Semester-Windows-Form-Project.git` command, and then use the `git pull upstream main` command to fetch and merge changes from the remote repository into your local repository.
 
 ---
 
