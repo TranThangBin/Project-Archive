@@ -40,7 +40,7 @@ Make changes to the code or documentation in your local repository.
 
 ## 5. Commit and push changes
 
-Use the `git commit -m "message"` and `git push origin main` commands to commit and push your changes to your forked repository on GitHub.
+Use the `git add .` then `git commit -m "message"` and `git push origin main` commands to commit and push your changes to your forked repository on GitHub.
 
 ## 6. Open a pull request
 
