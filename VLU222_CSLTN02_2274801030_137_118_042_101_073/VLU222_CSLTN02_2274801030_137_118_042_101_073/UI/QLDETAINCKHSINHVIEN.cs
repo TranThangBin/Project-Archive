@@ -14,7 +14,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073
     public partial class QLDETAINCKHSINHVIEN : Form
     {
         // connectString của Trần Quang Thắng
-        private const string connectionString = "Data Source=DESKTOP-VOPAJLN;Initial Catalog=QLNCKH_SV;Integrated Security=True";
+        private const string connectionString = "Data Source=PeachSwe3t\\HAOCHAU;Initial Catalog=QLNCKH_SV;Integrated Security=True";
 
         /* ai có làm gì với database thì tự lấy connectionString của mình nha rồi 
            nhớ ghi chú lại với đừng có xóa connectionString cũ nha comment ra thôi */
