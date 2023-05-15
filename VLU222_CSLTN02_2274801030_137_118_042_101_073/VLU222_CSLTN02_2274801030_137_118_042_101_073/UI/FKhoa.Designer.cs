@@ -1,6 +1,6 @@
-﻿namespace VLU222_CSLTN02_2274801030_137_118_042_101_073
+﻿namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 {
-    partial class QLDETAINCKHSINHVIEN
+    partial class FKhoa
     {
         /// <summary>
         /// Required designer variable.
@@ -30,18 +30,16 @@
         {
             this.SuspendLayout();
             // 
-            // QLDETAINCKHSINHVIEN
+            // FKhoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(780, 527);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
-            this.Name = "QLDETAINCKHSINHVIEN";
+            this.Name = "FKhoa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Quản lý đề tài nghiên cứu khoa học của sinh viên";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QLDETAINCKHSINHVIEN_FormClosing);
-            this.Load += new System.EventHandler(this.QLDETAINCKHSINHVIEN_Load);
+            this.Text = "Danh sách các khoa";
             this.ResumeLayout(false);
 
         }
@@ -49,4 +47,3 @@
         #endregion
     }
 }
-

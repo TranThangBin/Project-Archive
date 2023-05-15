@@ -46,6 +46,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UI\FDeTai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FDeTai.Designer.cs">
+      <DependentUpon>FDeTai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FGiangVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FGiangVien.Designer.cs">
+      <DependentUpon>FGiangVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FKhoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FKhoa.Designer.cs">
+      <DependentUpon>FKhoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FSinhVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FSinhVien.Designer.cs">
+      <DependentUpon>FSinhVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FThamGiaDeTai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FThamGiaDeTai.Designer.cs">
+      <DependentUpon>FThamGiaDeTai.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\QLDETAINCKHSINHVIEN.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +93,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\FDeTai.resx">
+      <DependentUpon>FDeTai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FGiangVien.resx">
+      <DependentUpon>FGiangVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FKhoa.resx">
+      <DependentUpon>FKhoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FSinhVien.resx">
+      <DependentUpon>FSinhVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FThamGiaDeTai.resx">
+      <DependentUpon>FThamGiaDeTai.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\QLDETAINCKHSINHVIEN.resx">
       <DependentUpon>QLDETAINCKHSINHVIEN.cs</DependentUpon>
     </EmbeddedResource>
