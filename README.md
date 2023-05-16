@@ -52,4 +52,4 @@ To keep your local repository up to date with the latest changes from the origin
 
 ---
 
-<span style="color: red">**Warning:**</span> Remember to pull changes from the `upstream` remote often to keep your local repository up to date with the latest changes from the original repository. This will help you avoid merge conflicts and ensure that you're always working with the most recent version of the code.
+**Warning:** Remember to pull changes from the `upstream` remote often to keep your local repository up to date with the latest changes from the original repository. This will help you avoid merge conflicts and ensure that you're always working with the most recent version of the code.

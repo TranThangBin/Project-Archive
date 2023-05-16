@@ -46,6 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\DeTai.cs" />
+    <Compile Include="Classes\GiangVien.cs" />
+    <Compile Include="Classes\Khoa.cs" />
+    <Compile Include="Classes\SinhVien.cs" />
+    <Compile Include="Classes\ThamGiaDeTai.cs" />
     <Compile Include="UI\FDeTai.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,8 +129,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Classes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
