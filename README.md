@@ -28,7 +28,7 @@ Click on the "Fork" button in the top-right corner of the repository page to cre
 
 ## 2. Clone the repository
 
-Use the `git clone https://github.com/TranThangBin/VLU-222-Semester-Windows-Form-Project.git` command to clone the forked repository to your local machine.
+Use the `git clone <Your fork link when you you click on the code button>` command to clone the forked repository to your local machine.
 
 ## 3. Create a new branch
 
