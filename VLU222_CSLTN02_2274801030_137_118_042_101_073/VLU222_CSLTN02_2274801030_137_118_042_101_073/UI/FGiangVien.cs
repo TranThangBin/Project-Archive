@@ -16,5 +16,10 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
