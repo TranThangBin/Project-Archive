@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes;
 
 namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 {
@@ -15,6 +16,21 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         public FThamGiaDT()
         {
             InitializeComponent();
+        }
+
+        private void btn_troveTGDT_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Xác nhận!", "Bạn muốn quay về trang chủ?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            {
+                Hide();
+                Forms.MainMenu.Show();
+            }
+        }
+
+        private void FThamGiaDT_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Database.Disconnect();
+            Application.Exit();
         }
     }
 }

@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes;
+using VLU222_CSLTN02_2274801030_137_118_042_101_073.UI;
 
 namespace VLU222_CSLTN02_2274801030_137_118_042_101_073
 {
@@ -15,30 +17,67 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073
     {
         // connectionString của Trần Quang Thắng
         private const string connectionString = "Data Source=DESKTOP-VOPAJLN;Initial Catalog=QLNCKH_SV;Integrated Security=True";
-
         // connectionString của Châu Gia Hào
         //private const string connectionString = "Data Source=PeachSwe3t\\HAOCHAU;Initial Catalog=QLNCKH_SV;Integrated Security=True";
-
-        /* ai có làm gì với database thì tự lấy connectionString của mình nha rồi 
-           nhớ ghi chú lại với đừng có xóa connectionString cũ nha comment ra thôi */
-
+        // connectionString của ....
         //private const string connectionString = "Your connectionString";
 
-        SqlConnection connect = null;
         public QLDETAINCKHSINHVIEN()
         {
             InitializeComponent();
+            Forms.MainMenu = this;
+            Forms.ThamGiaDT = new FThamGiaDT();
+            Forms.DeTai = new FDeTai();
+            Forms.GiangVien = new FGiangVien();
+            Forms.SinhVien = new FSinhVien();
+            Forms.Khoa = new FKhoa();
         }
 
         private void QLDETAINCKHSINHVIEN_Load(object sender, EventArgs e)
         {
-            if (connect == null) connect = new SqlConnection(connectionString);
-            if (connect.State == ConnectionState.Closed) connect.Open();
+            Database.Connect(connectionString);
         }
 
         private void QLDETAINCKHSINHVIEN_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (connect.State == ConnectionState.Open) connect.Close();
+            Database.Disconnect();
+            Application.Exit();
+        }
+
+        private void btn_TGDT_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Forms.ThamGiaDT.Show();
+        }
+
+        private void btn_DSDT_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Forms.DeTai.Show();
+        }
+
+        private void btn_GVHD_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Forms.GiangVien.Show();
+        }
+
+        private void btn_SVCN_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Forms.SinhVien.Show();
+        }
+
+        private void btn_DSCK_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Forms.Khoa.Show();
+        }
+
+        private void btn_thoat_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Xác nhận!", "Bạn muốn thoát Form?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+                Close();
         }
     }
 }

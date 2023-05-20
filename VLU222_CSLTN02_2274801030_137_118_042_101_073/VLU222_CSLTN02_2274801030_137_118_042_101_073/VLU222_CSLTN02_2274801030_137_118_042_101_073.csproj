@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Database.cs" />
     <Compile Include="Classes\DeTai.cs" />
+    <Compile Include="Classes\Forms.cs" />
     <Compile Include="Classes\GiangVien.cs" />
     <Compile Include="Classes\Khoa.cs" />
     <Compile Include="Classes\SinhVien.cs" />
