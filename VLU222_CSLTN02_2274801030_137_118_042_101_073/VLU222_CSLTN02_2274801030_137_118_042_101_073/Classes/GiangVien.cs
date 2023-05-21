@@ -25,9 +25,10 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             gioiTinh = "";
             trinhDo = "";
             maKhoa = "";
+            khoas = new Khoa();
         }
 
-        public GiangVien(string maGV, string hoLot, string tenGV, string gioiTinh, string trinhDo, string maKhoa)
+        public GiangVien(string maGV, string hoLot, string tenGV, string gioiTinh, string trinhDo, string maKhoa, Khoa khoas)
         {
             this.maGV = maGV;
             this.hoLot = hoLot;
@@ -35,6 +36,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             this.gioiTinh = gioiTinh;
             this.trinhDo = trinhDo;
             this.maKhoa = maKhoa;
+            this.khoas = khoas;
         }
 
         public string MaGV { get => maGV; set => maGV = value; }

@@ -73,7 +73,7 @@
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox6.Size = new System.Drawing.Size(385, 345);
-            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Danh sách ";
             // 
@@ -87,6 +87,7 @@
             this.lsB_danhSach.Name = "lsB_danhSach";
             this.lsB_danhSach.Size = new System.Drawing.Size(355, 304);
             this.lsB_danhSach.TabIndex = 0;
+            this.lsB_danhSach.SelectedIndexChanged += new System.EventHandler(this.lsB_danhSach_SelectedIndexChanged);
             // 
             // btn_troveTGDT
             // 
@@ -96,7 +97,7 @@
             this.btn_troveTGDT.Margin = new System.Windows.Forms.Padding(6);
             this.btn_troveTGDT.Name = "btn_troveTGDT";
             this.btn_troveTGDT.Size = new System.Drawing.Size(80, 26);
-            this.btn_troveTGDT.TabIndex = 0;
+            this.btn_troveTGDT.TabIndex = 3;
             this.btn_troveTGDT.Text = "Trở về";
             this.btn_troveTGDT.UseVisualStyleBackColor = true;
             this.btn_troveTGDT.Click += new System.EventHandler(this.btn_troveTGDT_Click);
@@ -109,9 +110,10 @@
             this.btn_xoaTGDT.Margin = new System.Windows.Forms.Padding(6);
             this.btn_xoaTGDT.Name = "btn_xoaTGDT";
             this.btn_xoaTGDT.Size = new System.Drawing.Size(73, 26);
-            this.btn_xoaTGDT.TabIndex = 0;
+            this.btn_xoaTGDT.TabIndex = 2;
             this.btn_xoaTGDT.Text = "Xóa";
             this.btn_xoaTGDT.UseVisualStyleBackColor = true;
+            this.btn_xoaTGDT.Click += new System.EventHandler(this.btn_xoaTGDT_Click);
             // 
             // btn_suaTGDT
             // 
@@ -121,9 +123,10 @@
             this.btn_suaTGDT.Margin = new System.Windows.Forms.Padding(6);
             this.btn_suaTGDT.Name = "btn_suaTGDT";
             this.btn_suaTGDT.Size = new System.Drawing.Size(76, 26);
-            this.btn_suaTGDT.TabIndex = 0;
+            this.btn_suaTGDT.TabIndex = 1;
             this.btn_suaTGDT.Text = "Sửa";
             this.btn_suaTGDT.UseVisualStyleBackColor = true;
+            this.btn_suaTGDT.Click += new System.EventHandler(this.btn_suaTGDT_Click);
             // 
             // btn_themTGDT
             // 
@@ -136,6 +139,7 @@
             this.btn_themTGDT.TabIndex = 0;
             this.btn_themTGDT.Text = "Thêm";
             this.btn_themTGDT.UseVisualStyleBackColor = true;
+            this.btn_themTGDT.Click += new System.EventHandler(this.btn_themTGDT_Click);
             // 
             // txt_ketQuaTGDT
             // 
@@ -144,7 +148,7 @@
             this.txt_ketQuaTGDT.Margin = new System.Windows.Forms.Padding(2);
             this.txt_ketQuaTGDT.Name = "txt_ketQuaTGDT";
             this.txt_ketQuaTGDT.Size = new System.Drawing.Size(237, 26);
-            this.txt_ketQuaTGDT.TabIndex = 1;
+            this.txt_ketQuaTGDT.TabIndex = 3;
             // 
             // label11
             // 
@@ -165,7 +169,8 @@
             this.txt_phuCapTGDT.Margin = new System.Windows.Forms.Padding(2);
             this.txt_phuCapTGDT.Name = "txt_phuCapTGDT";
             this.txt_phuCapTGDT.Size = new System.Drawing.Size(237, 26);
-            this.txt_phuCapTGDT.TabIndex = 1;
+            this.txt_phuCapTGDT.TabIndex = 2;
+            this.txt_phuCapTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerInputHandler);
             // 
             // label10
             // 
@@ -187,6 +192,7 @@
             this.txt_maSinhVienTGDT.Name = "txt_maSinhVienTGDT";
             this.txt_maSinhVienTGDT.Size = new System.Drawing.Size(237, 26);
             this.txt_maSinhVienTGDT.TabIndex = 1;
+            this.txt_maSinhVienTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IntegerInputHandler);
             // 
             // label9
             // 
@@ -207,7 +213,7 @@
             this.txt_maDeTaiTGDT.Margin = new System.Windows.Forms.Padding(2);
             this.txt_maDeTaiTGDT.Name = "txt_maDeTaiTGDT";
             this.txt_maDeTaiTGDT.Size = new System.Drawing.Size(237, 26);
-            this.txt_maDeTaiTGDT.TabIndex = 1;
+            this.txt_maDeTaiTGDT.TabIndex = 0;
             // 
             // label8
             // 
@@ -236,7 +242,7 @@
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(356, 40);
-            this.flowLayoutPanel1.TabIndex = 5;
+            this.flowLayoutPanel1.TabIndex = 1;
             // 
             // panel1
             // 
@@ -253,7 +259,7 @@
             this.panel1.Location = new System.Drawing.Point(31, 62);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(378, 139);
-            this.panel1.TabIndex = 6;
+            this.panel1.TabIndex = 0;
             // 
             // FThamGiaDT
             // 
