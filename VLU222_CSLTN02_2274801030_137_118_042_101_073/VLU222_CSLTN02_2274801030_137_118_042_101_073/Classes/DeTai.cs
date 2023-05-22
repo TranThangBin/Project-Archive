@@ -55,5 +55,9 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         public List<ThamGiaDeTai> ThamGiaDeTais { get => thamGiaDeTais; set => thamGiaDeTais = value; }
         public SinhVien SinhViens { get => sinhViens; set => sinhViens = value; }
         public GiangVien GiangViens { get => giangViens; set => giangViens = value; }
+        public override string ToString()
+        {
+            return $"{maDT}: {tenDT}";
+        }
     }
 }

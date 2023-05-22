@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FKhoa));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.lsB_danhSachKhoa = new System.Windows.Forms.ListBox();
@@ -93,6 +94,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.dtP_namThanhLap);
@@ -102,7 +104,7 @@
             this.groupBox1.Controls.Add(this.txt_maKhoa);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.groupBox1.ForeColor = System.Drawing.Color.Red;
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(184)))), ((int)(((byte)(19)))));
             this.groupBox1.Location = new System.Drawing.Point(2, 3);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
@@ -115,7 +117,7 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.lsB_danhSachKhoa);
-            this.groupBox5.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.groupBox5.ForeColor = System.Drawing.Color.Red;
             this.groupBox5.Location = new System.Drawing.Point(13, 239);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
@@ -151,7 +153,7 @@
             // 
             // btn_troVeKhoa
             // 
-            this.btn_troVeKhoa.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btn_troVeKhoa.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_troVeKhoa.ForeColor = System.Drawing.Color.White;
             this.btn_troVeKhoa.Location = new System.Drawing.Point(271, 22);
             this.btn_troVeKhoa.Margin = new System.Windows.Forms.Padding(2);
@@ -164,7 +166,7 @@
             // 
             // btn_xoaKhoa
             // 
-            this.btn_xoaKhoa.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btn_xoaKhoa.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_xoaKhoa.ForeColor = System.Drawing.Color.White;
             this.btn_xoaKhoa.Location = new System.Drawing.Point(192, 22);
             this.btn_xoaKhoa.Margin = new System.Windows.Forms.Padding(2);
@@ -176,7 +178,7 @@
             // 
             // btn_suaKhoa
             // 
-            this.btn_suaKhoa.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btn_suaKhoa.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_suaKhoa.ForeColor = System.Drawing.Color.White;
             this.btn_suaKhoa.Location = new System.Drawing.Point(103, 22);
             this.btn_suaKhoa.Margin = new System.Windows.Forms.Padding(2);
@@ -188,7 +190,7 @@
             // 
             // btn_themKhoa
             // 
-            this.btn_themKhoa.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btn_themKhoa.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_themKhoa.ForeColor = System.Drawing.Color.White;
             this.btn_themKhoa.Location = new System.Drawing.Point(13, 23);
             this.btn_themKhoa.Margin = new System.Windows.Forms.Padding(2);
@@ -257,7 +259,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.cmB_gioiTinhGV);
             this.groupBox2.Controls.Add(this.groupBox7);
             this.groupBox2.Controls.Add(this.groupBox6);
@@ -273,7 +275,7 @@
             this.groupBox2.Controls.Add(this.txt_maGiangVienGV);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.groupBox2.ForeColor = System.Drawing.Color.Red;
+            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(184)))), ((int)(((byte)(19)))));
             this.groupBox2.Location = new System.Drawing.Point(409, 3);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
@@ -286,6 +288,10 @@
             // cmB_gioiTinhGV
             // 
             this.cmB_gioiTinhGV.FormattingEnabled = true;
+            this.cmB_gioiTinhGV.Items.AddRange(new object[] {
+            "Khác",
+            "Nam",
+            "Nữ"});
             this.cmB_gioiTinhGV.Location = new System.Drawing.Point(161, 162);
             this.cmB_gioiTinhGV.Margin = new System.Windows.Forms.Padding(2);
             this.cmB_gioiTinhGV.Name = "cmB_gioiTinhGV";
@@ -295,7 +301,7 @@
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.lsV_danhSachGV);
-            this.groupBox7.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.groupBox7.ForeColor = System.Drawing.Color.Red;
             this.groupBox7.Location = new System.Drawing.Point(21, 309);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox7.Name = "groupBox7";
@@ -482,7 +488,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
             this.groupBox3.Controls.Add(this.groupBox9);
             this.groupBox3.Controls.Add(this.groupBox8);
             this.groupBox3.Controls.Add(this.cmb_gioiTinhSV);
@@ -496,7 +502,7 @@
             this.groupBox3.Controls.Add(this.txt_maSinhVien);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.groupBox3.ForeColor = System.Drawing.Color.Red;
+            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(184)))), ((int)(((byte)(19)))));
             this.groupBox3.Location = new System.Drawing.Point(832, 3);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
@@ -509,7 +515,7 @@
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.lsV_danhSachSV);
-            this.groupBox9.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.groupBox9.ForeColor = System.Drawing.Color.Red;
             this.groupBox9.Location = new System.Drawing.Point(19, 264);
             this.groupBox9.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox9.Name = "groupBox9";
@@ -592,9 +598,9 @@
             // 
             this.cmb_gioiTinhSV.FormattingEnabled = true;
             this.cmb_gioiTinhSV.Items.AddRange(new object[] {
+            "Khác",
             "Nam ",
-            "Nữ",
-            "Khác"});
+            "Nữ"});
             this.cmb_gioiTinhSV.Location = new System.Drawing.Point(160, 131);
             this.cmb_gioiTinhSV.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_gioiTinhSV.Name = "cmb_gioiTinhSV";
@@ -692,6 +698,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1246, 669);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -702,6 +709,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh sách các khoa";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FKhoa_FormClosing);
+            this.Load += new System.EventHandler(this.FKhoa_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox5.ResumeLayout(false);

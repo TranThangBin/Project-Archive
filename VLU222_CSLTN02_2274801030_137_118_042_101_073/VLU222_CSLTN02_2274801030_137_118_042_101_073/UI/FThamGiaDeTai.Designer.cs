@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FThamGiaDT));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.lsB_danhSach = new System.Windows.Forms.ListBox();
-            this.btn_troveTGDT = new System.Windows.Forms.Button();
             this.btn_xoaTGDT = new System.Windows.Forms.Button();
             this.btn_suaTGDT = new System.Windows.Forms.Button();
             this.btn_themTGDT = new System.Windows.Forms.Button();
@@ -44,6 +44,7 @@
             this.txt_maDeTaiTGDT = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btn_troveTGDT = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox6.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -53,8 +54,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(184)))), ((int)(((byte)(19)))));
             this.label1.Location = new System.Drawing.Point(47, 17);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
@@ -67,7 +69,7 @@
             this.groupBox6.BackColor = System.Drawing.Color.Transparent;
             this.groupBox6.Controls.Add(this.lsB_danhSach);
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.groupBox6.ForeColor = System.Drawing.Color.DarkBlue;
+            this.groupBox6.ForeColor = System.Drawing.Color.Red;
             this.groupBox6.Location = new System.Drawing.Point(24, 252);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
@@ -81,6 +83,7 @@
             // 
             this.lsB_danhSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.lsB_danhSach.FormattingEnabled = true;
+            this.lsB_danhSach.HorizontalScrollbar = true;
             this.lsB_danhSach.ItemHeight = 20;
             this.lsB_danhSach.Location = new System.Drawing.Point(15, 24);
             this.lsB_danhSach.Margin = new System.Windows.Forms.Padding(2);
@@ -89,56 +92,46 @@
             this.lsB_danhSach.TabIndex = 0;
             this.lsB_danhSach.SelectedIndexChanged += new System.EventHandler(this.lsB_danhSach_SelectedIndexChanged);
             // 
-            // btn_troveTGDT
-            // 
-            this.btn_troveTGDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_troveTGDT.ForeColor = System.Drawing.Color.Black;
-            this.btn_troveTGDT.Location = new System.Drawing.Point(268, 6);
-            this.btn_troveTGDT.Margin = new System.Windows.Forms.Padding(6);
-            this.btn_troveTGDT.Name = "btn_troveTGDT";
-            this.btn_troveTGDT.Size = new System.Drawing.Size(80, 26);
-            this.btn_troveTGDT.TabIndex = 3;
-            this.btn_troveTGDT.Text = "Trở về";
-            this.btn_troveTGDT.UseVisualStyleBackColor = true;
-            this.btn_troveTGDT.Click += new System.EventHandler(this.btn_troveTGDT_Click);
-            // 
             // btn_xoaTGDT
             // 
+            this.btn_xoaTGDT.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_xoaTGDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_xoaTGDT.ForeColor = System.Drawing.Color.Black;
+            this.btn_xoaTGDT.ForeColor = System.Drawing.Color.White;
             this.btn_xoaTGDT.Location = new System.Drawing.Point(183, 6);
             this.btn_xoaTGDT.Margin = new System.Windows.Forms.Padding(6);
             this.btn_xoaTGDT.Name = "btn_xoaTGDT";
             this.btn_xoaTGDT.Size = new System.Drawing.Size(73, 26);
             this.btn_xoaTGDT.TabIndex = 2;
             this.btn_xoaTGDT.Text = "Xóa";
-            this.btn_xoaTGDT.UseVisualStyleBackColor = true;
+            this.btn_xoaTGDT.UseVisualStyleBackColor = false;
             this.btn_xoaTGDT.Click += new System.EventHandler(this.btn_xoaTGDT_Click);
             // 
             // btn_suaTGDT
             // 
+            this.btn_suaTGDT.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_suaTGDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_suaTGDT.ForeColor = System.Drawing.Color.Black;
+            this.btn_suaTGDT.ForeColor = System.Drawing.Color.White;
             this.btn_suaTGDT.Location = new System.Drawing.Point(95, 6);
             this.btn_suaTGDT.Margin = new System.Windows.Forms.Padding(6);
             this.btn_suaTGDT.Name = "btn_suaTGDT";
             this.btn_suaTGDT.Size = new System.Drawing.Size(76, 26);
             this.btn_suaTGDT.TabIndex = 1;
             this.btn_suaTGDT.Text = "Sửa";
-            this.btn_suaTGDT.UseVisualStyleBackColor = true;
+            this.btn_suaTGDT.UseVisualStyleBackColor = false;
             this.btn_suaTGDT.Click += new System.EventHandler(this.btn_suaTGDT_Click);
             // 
             // btn_themTGDT
             // 
+            this.btn_themTGDT.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_themTGDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btn_themTGDT.ForeColor = System.Drawing.Color.Black;
+            this.btn_themTGDT.ForeColor = System.Drawing.Color.White;
             this.btn_themTGDT.Location = new System.Drawing.Point(6, 6);
             this.btn_themTGDT.Margin = new System.Windows.Forms.Padding(6);
             this.btn_themTGDT.Name = "btn_themTGDT";
             this.btn_themTGDT.Size = new System.Drawing.Size(77, 26);
             this.btn_themTGDT.TabIndex = 0;
             this.btn_themTGDT.Text = "Thêm";
-            this.btn_themTGDT.UseVisualStyleBackColor = true;
+            this.btn_themTGDT.UseVisualStyleBackColor = false;
             this.btn_themTGDT.Click += new System.EventHandler(this.btn_themTGDT_Click);
             // 
             // txt_ketQuaTGDT
@@ -154,7 +147,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.ForeColor = System.Drawing.Color.SteelBlue;
             this.label11.Location = new System.Drawing.Point(41, 115);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
@@ -176,7 +169,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.ForeColor = System.Drawing.Color.SteelBlue;
             this.label10.Location = new System.Drawing.Point(37, 80);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
@@ -198,7 +191,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.ForeColor = System.Drawing.Color.SteelBlue;
             this.label9.Location = new System.Drawing.Point(7, 44);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
@@ -219,7 +212,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.ForeColor = System.Drawing.Color.SteelBlue;
             this.label8.Location = new System.Drawing.Point(31, 12);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
@@ -244,10 +237,25 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(356, 40);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
+            // btn_troveTGDT
+            // 
+            this.btn_troveTGDT.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_troveTGDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btn_troveTGDT.ForeColor = System.Drawing.Color.White;
+            this.btn_troveTGDT.Location = new System.Drawing.Point(268, 6);
+            this.btn_troveTGDT.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_troveTGDT.Name = "btn_troveTGDT";
+            this.btn_troveTGDT.Size = new System.Drawing.Size(80, 26);
+            this.btn_troveTGDT.TabIndex = 3;
+            this.btn_troveTGDT.Text = "Trở về";
+            this.btn_troveTGDT.UseVisualStyleBackColor = false;
+            this.btn_troveTGDT.Click += new System.EventHandler(this.btn_troveTGDT_Click);
+            // 
             // panel1
             // 
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.txt_phuCapTGDT);
@@ -265,7 +273,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(435, 607);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -277,6 +286,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tham gia đề tài";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FThamGiaDT_FormClosing);
+            this.Load += new System.EventHandler(this.FThamGiaDT_Load);
             this.groupBox6.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -290,7 +300,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.ListBox lsB_danhSach;
-        private System.Windows.Forms.Button btn_troveTGDT;
         private System.Windows.Forms.Button btn_xoaTGDT;
         private System.Windows.Forms.Button btn_suaTGDT;
         private System.Windows.Forms.Button btn_themTGDT;
@@ -304,5 +313,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btn_troveTGDT;
     }
 }

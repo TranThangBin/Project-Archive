@@ -26,11 +26,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073
         {
             InitializeComponent();
             Forms.MainMenu = this;
-            Forms.ThamGiaDT = new FThamGiaDT();
-            Forms.DeTai = new FDeTai();
-            Forms.GiangVien = new FGiangVien();
-            Forms.SinhVien = new FSinhVien();
-            Forms.Khoa = new FKhoa();
         }
 
         private void QLDETAINCKHSINHVIEN_Load(object sender, EventArgs e)
@@ -40,44 +35,49 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073
 
         private void QLDETAINCKHSINHVIEN_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Database.Disconnect();
-            Application.Exit();
+            if (MessageBox.Show("Xác nhận!", "Bạn muốn thoát Form?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+                Database.Disconnect();
+            else e.Cancel = true;
         }
 
         private void btn_TGDT_Click(object sender, EventArgs e)
         {
             Hide();
+            Forms.ThamGiaDT = new FThamGiaDT();
             Forms.ThamGiaDT.Show();
         }
 
         private void btn_DSDT_Click(object sender, EventArgs e)
         {
             Hide();
+            Forms.DeTai = new FDeTai();
             Forms.DeTai.Show();
         }
 
         private void btn_GVHD_Click(object sender, EventArgs e)
         {
             Hide();
+            Forms.GiangVien = new FGiangVien();
             Forms.GiangVien.Show();
         }
 
         private void btn_SVCN_Click(object sender, EventArgs e)
         {
             Hide();
+            Forms.SinhVien = new FSinhVien();
             Forms.SinhVien.Show();
         }
 
         private void btn_DSCK_Click(object sender, EventArgs e)
         {
             Hide();
+            Forms.Khoa = new FKhoa();
             Forms.Khoa.Show();
         }
 
         private void btn_thoat_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Xác nhận!", "Bạn muốn thoát Form?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
-                Close();
+            Close();
         }
     }
 }

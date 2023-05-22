@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FDeTai));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lsB_danhSachDeTai = new System.Windows.Forms.ListBox();
@@ -53,6 +54,11 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.lsv_danhSachTGDT = new System.Windows.Forms.ListView();
+            this.colMaDT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colTenDT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colMaSV = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colKinhPhi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colKetQua = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btn_truyCapTGDT = new System.Windows.Forms.Button();
             this.btn_xoaTGDT = new System.Windows.Forms.Button();
@@ -76,6 +82,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.dtP_ngayKetThuc);
@@ -93,8 +100,8 @@
             this.groupBox1.Controls.Add(this.txt_maDetai);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.groupBox1.ForeColor = System.Drawing.Color.Red;
-            this.groupBox1.Location = new System.Drawing.Point(8, 6);
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(184)))), ((int)(((byte)(19)))));
+            this.groupBox1.Location = new System.Drawing.Point(14, 2);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -106,7 +113,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.lsB_danhSachDeTai);
-            this.groupBox3.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.groupBox3.ForeColor = System.Drawing.Color.Red;
             this.groupBox3.Location = new System.Drawing.Point(9, 350);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
@@ -119,6 +126,7 @@
             // lsB_danhSachDeTai
             // 
             this.lsB_danhSachDeTai.FormattingEnabled = true;
+            this.lsB_danhSachDeTai.HorizontalScrollbar = true;
             this.lsB_danhSachDeTai.ItemHeight = 20;
             this.lsB_danhSachDeTai.Location = new System.Drawing.Point(12, 20);
             this.lsB_danhSachDeTai.Margin = new System.Windows.Forms.Padding(2);
@@ -142,7 +150,7 @@
             // 
             // btn_troVeDeTai
             // 
-            this.btn_troVeDeTai.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btn_troVeDeTai.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_troVeDeTai.ForeColor = System.Drawing.Color.White;
             this.btn_troVeDeTai.Location = new System.Drawing.Point(297, 17);
             this.btn_troVeDeTai.Margin = new System.Windows.Forms.Padding(2);
@@ -155,7 +163,7 @@
             // 
             // btn_xoaDeTai
             // 
-            this.btn_xoaDeTai.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btn_xoaDeTai.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_xoaDeTai.ForeColor = System.Drawing.Color.White;
             this.btn_xoaDeTai.Location = new System.Drawing.Point(205, 17);
             this.btn_xoaDeTai.Margin = new System.Windows.Forms.Padding(2);
@@ -164,10 +172,11 @@
             this.btn_xoaDeTai.TabIndex = 2;
             this.btn_xoaDeTai.Text = "Xóa";
             this.btn_xoaDeTai.UseVisualStyleBackColor = false;
+            this.btn_xoaDeTai.Click += new System.EventHandler(this.btn_xoaDeTai_Click);
             // 
             // btn_suaDeTai
             // 
-            this.btn_suaDeTai.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btn_suaDeTai.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_suaDeTai.ForeColor = System.Drawing.Color.White;
             this.btn_suaDeTai.Location = new System.Drawing.Point(109, 17);
             this.btn_suaDeTai.Margin = new System.Windows.Forms.Padding(2);
@@ -176,10 +185,11 @@
             this.btn_suaDeTai.TabIndex = 1;
             this.btn_suaDeTai.Text = "Sửa";
             this.btn_suaDeTai.UseVisualStyleBackColor = false;
+            this.btn_suaDeTai.Click += new System.EventHandler(this.btn_suaDeTai_Click);
             // 
             // btn_themDeTai
             // 
-            this.btn_themDeTai.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btn_themDeTai.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_themDeTai.ForeColor = System.Drawing.Color.White;
             this.btn_themDeTai.Location = new System.Drawing.Point(13, 17);
             this.btn_themDeTai.Margin = new System.Windows.Forms.Padding(2);
@@ -188,6 +198,7 @@
             this.btn_themDeTai.TabIndex = 0;
             this.btn_themDeTai.Text = "Thêm";
             this.btn_themDeTai.UseVisualStyleBackColor = false;
+            this.btn_themDeTai.Click += new System.EventHandler(this.btn_themDeTai_Click);
             // 
             // dtP_ngayKetThuc
             // 
@@ -324,7 +335,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.groupBox4.BackColor = System.Drawing.Color.Transparent;
             this.groupBox4.Controls.Add(this.groupBox6);
             this.groupBox4.Controls.Add(this.groupBox5);
             this.groupBox4.Controls.Add(this.txt_ketQuaTGDT);
@@ -336,8 +347,8 @@
             this.groupBox4.Controls.Add(this.txt_maDeTaiTGDT);
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.groupBox4.ForeColor = System.Drawing.Color.Red;
-            this.groupBox4.Location = new System.Drawing.Point(455, 6);
+            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(184)))), ((int)(((byte)(19)))));
+            this.groupBox4.Location = new System.Drawing.Point(449, 1);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
@@ -349,7 +360,7 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.lsv_danhSachTGDT);
-            this.groupBox6.ForeColor = System.Drawing.Color.DarkBlue;
+            this.groupBox6.ForeColor = System.Drawing.Color.Red;
             this.groupBox6.Location = new System.Drawing.Point(23, 262);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
@@ -361,6 +372,12 @@
             // 
             // lsv_danhSachTGDT
             // 
+            this.lsv_danhSachTGDT.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colMaDT,
+            this.colTenDT,
+            this.colMaSV,
+            this.colKinhPhi,
+            this.colKetQua});
             this.lsv_danhSachTGDT.HideSelection = false;
             this.lsv_danhSachTGDT.Location = new System.Drawing.Point(17, 27);
             this.lsv_danhSachTGDT.Margin = new System.Windows.Forms.Padding(2);
@@ -368,6 +385,34 @@
             this.lsv_danhSachTGDT.Size = new System.Drawing.Size(353, 334);
             this.lsv_danhSachTGDT.TabIndex = 0;
             this.lsv_danhSachTGDT.UseCompatibleStateImageBehavior = false;
+            this.lsv_danhSachTGDT.View = System.Windows.Forms.View.Details;
+            // 
+            // colMaDT
+            // 
+            this.colMaDT.Text = "Mã đề tài";
+            this.colMaDT.Width = 70;
+            // 
+            // colTenDT
+            // 
+            this.colTenDT.DisplayIndex = 2;
+            this.colTenDT.Text = "Tên đề tài";
+            this.colTenDT.Width = 70;
+            // 
+            // colMaSV
+            // 
+            this.colMaSV.DisplayIndex = 1;
+            this.colMaSV.Text = "Mã sinh viên";
+            this.colMaSV.Width = 70;
+            // 
+            // colKinhPhi
+            // 
+            this.colKinhPhi.Text = "Kinh phí";
+            this.colKinhPhi.Width = 70;
+            // 
+            // colKetQua
+            // 
+            this.colKetQua.Text = "Kết quả";
+            this.colKetQua.Width = 70;
             // 
             // groupBox5
             // 
@@ -508,6 +553,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(895, 652);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
@@ -517,6 +563,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh sách đề tài";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FDeTai_FormClosing);
+            this.Load += new System.EventHandler(this.FDeTai_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -569,5 +616,10 @@
         private System.Windows.Forms.Button btn_themTGDT;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.ListView lsv_danhSachTGDT;
+        private System.Windows.Forms.ColumnHeader colMaDT;
+        private System.Windows.Forms.ColumnHeader colTenDT;
+        private System.Windows.Forms.ColumnHeader colMaSV;
+        private System.Windows.Forms.ColumnHeader colKinhPhi;
+        private System.Windows.Forms.ColumnHeader colKetQua;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FGiangVien));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmB_gioiTinh = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -81,6 +82,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.cmB_gioiTinh);
             this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Controls.Add(this.groupBox3);
@@ -96,8 +98,8 @@
             this.groupBox1.Controls.Add(this.txt_maGiangVien);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.groupBox1.ForeColor = System.Drawing.Color.Red;
-            this.groupBox1.Location = new System.Drawing.Point(15, 10);
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(184)))), ((int)(((byte)(19)))));
+            this.groupBox1.Location = new System.Drawing.Point(20, 5);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -110,9 +112,9 @@
             // 
             this.cmB_gioiTinh.FormattingEnabled = true;
             this.cmB_gioiTinh.Items.AddRange(new object[] {
+            "Khác",
             "Nam",
-            "Nữ ",
-            "khác"});
+            "Nữ "});
             this.cmB_gioiTinh.Location = new System.Drawing.Point(141, 186);
             this.cmB_gioiTinh.Margin = new System.Windows.Forms.Padding(2);
             this.cmB_gioiTinh.Name = "cmB_gioiTinh";
@@ -122,7 +124,7 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.lsB_danhSachGiangVien);
-            this.groupBox5.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.groupBox5.ForeColor = System.Drawing.Color.Red;
             this.groupBox5.Location = new System.Drawing.Point(10, 337);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
@@ -158,7 +160,7 @@
             // 
             // btn_troVeGV
             // 
-            this.btn_troVeGV.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btn_troVeGV.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_troVeGV.ForeColor = System.Drawing.Color.White;
             this.btn_troVeGV.Location = new System.Drawing.Point(278, 18);
             this.btn_troVeGV.Margin = new System.Windows.Forms.Padding(2);
@@ -171,7 +173,7 @@
             // 
             // btn_suaGV
             // 
-            this.btn_suaGV.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btn_suaGV.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_suaGV.ForeColor = System.Drawing.Color.White;
             this.btn_suaGV.Location = new System.Drawing.Point(187, 18);
             this.btn_suaGV.Margin = new System.Windows.Forms.Padding(2);
@@ -183,7 +185,7 @@
             // 
             // btn_xoaGV
             // 
-            this.btn_xoaGV.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btn_xoaGV.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_xoaGV.ForeColor = System.Drawing.Color.White;
             this.btn_xoaGV.Location = new System.Drawing.Point(99, 18);
             this.btn_xoaGV.Margin = new System.Windows.Forms.Padding(2);
@@ -195,7 +197,7 @@
             // 
             // btn_themGV
             // 
-            this.btn_themGV.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btn_themGV.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_themGV.ForeColor = System.Drawing.Color.White;
             this.btn_themGV.Location = new System.Drawing.Point(15, 18);
             this.btn_themGV.Margin = new System.Windows.Forms.Padding(2);
@@ -216,8 +218,9 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label6.Location = new System.Drawing.Point(45, 224);
+            this.label6.Location = new System.Drawing.Point(58, 224);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 20);
@@ -228,7 +231,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label5.Location = new System.Drawing.Point(47, 189);
+            this.label5.Location = new System.Drawing.Point(60, 189);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 20);
@@ -247,7 +250,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label4.Location = new System.Drawing.Point(46, 149);
+            this.label4.Location = new System.Drawing.Point(59, 149);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 20);
@@ -266,7 +269,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label3.Location = new System.Drawing.Point(0, 112);
+            this.label3.Location = new System.Drawing.Point(15, 112);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(119, 20);
@@ -285,7 +288,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label2.Location = new System.Drawing.Point(64, 77);
+            this.label2.Location = new System.Drawing.Point(77, 77);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 20);
@@ -304,7 +307,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(7, 42);
+            this.label1.Location = new System.Drawing.Point(20, 42);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 20);
@@ -313,7 +316,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.dtP_ngayKetThuc);
             this.groupBox2.Controls.Add(this.dtP_ngayBatDau);
             this.groupBox2.Controls.Add(this.groupBox6);
@@ -331,12 +334,12 @@
             this.groupBox2.Controls.Add(this.txt_maDetai);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.groupBox2.ForeColor = System.Drawing.Color.Red;
-            this.groupBox2.Location = new System.Drawing.Point(447, 14);
+            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(184)))), ((int)(((byte)(19)))));
+            this.groupBox2.Location = new System.Drawing.Point(438, 5);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(412, 691);
+            this.groupBox2.Size = new System.Drawing.Size(412, 695);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Đề tài";
@@ -360,7 +363,7 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.lsV_giangVienGuongdanVeDT);
-            this.groupBox6.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.groupBox6.ForeColor = System.Drawing.Color.Red;
             this.groupBox6.Location = new System.Drawing.Point(13, 365);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
@@ -560,6 +563,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(870, 707);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -569,6 +573,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Giảng viên hướng dẫn";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FGiangVien_FormClosing);
+            this.Load += new System.EventHandler(this.FGiangVien_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox5.ResumeLayout(false);

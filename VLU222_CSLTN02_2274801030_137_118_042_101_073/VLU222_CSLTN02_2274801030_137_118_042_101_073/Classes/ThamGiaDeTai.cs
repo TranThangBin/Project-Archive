@@ -39,7 +39,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         public SinhVien SinhViens { get => sinhViens; set => sinhViens = value; }
         public override string ToString()
         {
-            return $"{maDT}--{sinhViens.HoLot} {sinhViens.TenSV}--{ketQua}";
+            return $"{maDT}--{maSV}--{phuCap}--{ketQua}";
         }
     }
 }

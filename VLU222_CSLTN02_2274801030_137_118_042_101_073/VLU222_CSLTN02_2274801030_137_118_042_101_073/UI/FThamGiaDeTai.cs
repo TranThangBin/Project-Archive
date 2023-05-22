@@ -18,6 +18,19 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             InitializeComponent();
         }
 
+        private void FThamGiaDT_Load(object sender, EventArgs e)
+        {
+            //render Database data in this event
+        }
+
+        private void FThamGiaDT_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Xác nhận!", "Bạn muốn quay về trang chủ?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+                Forms.MainMenu.Show();
+            else
+                e.Cancel = true;
+        }
+
         private ThamGiaDeTai GetThamGiaDeTai()
         {
             string maDT = txt_maDeTaiTGDT.Text;
@@ -25,7 +38,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             int phuCap = int.Parse(txt_phuCapTGDT.Text);
             string ketQua = txt_ketQuaTGDT.Text;
             // Place holder for Database pulling
-            SinhVien sinhViens = new SinhVien("2274801030137", "Trần Quang", "Thắng", "Nam", "003", new Khoa());
+            SinhVien sinhViens = new SinhVien("2274801030123", "Nguyễn Văn", "A", "Nam", "003", new Khoa());
             //----------------------------------
             return new ThamGiaDeTai(maDT, maSV, phuCap, ketQua, sinhViens);
         }
@@ -68,11 +81,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_troveTGDT_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Xác nhận!", "Bạn muốn quay về trang chủ?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
-            {
-                Hide();
-                Forms.MainMenu.Show();
-            }
+            Close();
         }
 
         private void IntegerInputHandler(object sender, KeyPressEventArgs e)
@@ -80,12 +89,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             if (char.IsDigit(e.KeyChar)) return;
             if (e.KeyChar == (char)Keys.Back) return;
             e.Handled = true;
-        }
-
-        private void FThamGiaDT_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Database.Disconnect();
-            Application.Exit();
         }
     }
 }

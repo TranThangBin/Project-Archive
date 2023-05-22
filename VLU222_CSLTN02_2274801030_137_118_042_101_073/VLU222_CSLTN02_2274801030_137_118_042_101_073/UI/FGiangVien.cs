@@ -13,33 +13,45 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 {
     public partial class FGiangVien : Form
     {
+        private bool toMenu = true;
+        private bool toDeTai = false;
         public FGiangVien()
         {
             InitializeComponent();
         }
 
-        private void btn_troVeGV_Click(object sender, EventArgs e)
+        private void FGiangVien_Load(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Xác nhận!", "Bạn muốn quay về trang chủ?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
-            {
-                Hide();
-                Forms.MainMenu.Show();
-            }
-        }
-
-        private void btn_truyCapDT_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Xác nhận!", "Bạn muốn truy cập Form đề tài?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
-            {
-                Hide();
-                Forms.DeTai.Show();
-            }
+            //render Database data in this event
         }
 
         private void FGiangVien_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Database.Disconnect();
-            Application.Exit();
+            if (toMenu && MessageBox.Show("Xác nhận!", "Bạn muốn quay về trang chủ?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+                Forms.MainMenu.Show();
+            else if (toDeTai && MessageBox.Show("Xác nhận!", "Bạn muốn truy cập Form đề tài?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            {
+                Forms.DeTai = new FDeTai();
+                Forms.DeTai.Show();
+            }
+            else
+            {
+                e.Cancel = true;
+                toMenu = true;
+                toDeTai = false;
+            }
+        }
+
+        private void btn_troVeGV_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btn_truyCapDT_Click(object sender, EventArgs e)
+        {
+            toMenu = false;
+            toDeTai = true;
+            Close();
         }
     }
 }
