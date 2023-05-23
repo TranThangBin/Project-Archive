@@ -99,11 +99,11 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(184)))), ((int)(((byte)(19)))));
-            this.groupBox1.Location = new System.Drawing.Point(20, 5);
+            this.groupBox1.Location = new System.Drawing.Point(16, 5);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(402, 695);
+            this.groupBox1.Size = new System.Drawing.Size(412, 675);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Giảng viên";
@@ -115,7 +115,7 @@
             "Khác",
             "Nam",
             "Nữ "});
-            this.cmB_gioiTinh.Location = new System.Drawing.Point(141, 186);
+            this.cmB_gioiTinh.Location = new System.Drawing.Point(148, 186);
             this.cmB_gioiTinh.Margin = new System.Windows.Forms.Padding(2);
             this.cmB_gioiTinh.Name = "cmB_gioiTinh";
             this.cmB_gioiTinh.Size = new System.Drawing.Size(239, 28);
@@ -125,7 +125,7 @@
             // 
             this.groupBox5.Controls.Add(this.lsB_danhSachGiangVien);
             this.groupBox5.ForeColor = System.Drawing.Color.Red;
-            this.groupBox5.Location = new System.Drawing.Point(10, 337);
+            this.groupBox5.Location = new System.Drawing.Point(17, 337);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
@@ -150,7 +150,7 @@
             this.groupBox3.Controls.Add(this.btn_suaGV);
             this.groupBox3.Controls.Add(this.btn_xoaGV);
             this.groupBox3.Controls.Add(this.btn_themGV);
-            this.groupBox3.Location = new System.Drawing.Point(21, 266);
+            this.groupBox3.Location = new System.Drawing.Point(28, 266);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
@@ -209,7 +209,7 @@
             // 
             // txt_maKhoa
             // 
-            this.txt_maKhoa.Location = new System.Drawing.Point(141, 220);
+            this.txt_maKhoa.Location = new System.Drawing.Point(148, 220);
             this.txt_maKhoa.Margin = new System.Windows.Forms.Padding(2);
             this.txt_maKhoa.Name = "txt_maKhoa";
             this.txt_maKhoa.Size = new System.Drawing.Size(239, 26);
@@ -220,7 +220,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label6.Location = new System.Drawing.Point(58, 224);
+            this.label6.Location = new System.Drawing.Point(65, 224);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 20);
@@ -231,7 +231,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label5.Location = new System.Drawing.Point(60, 189);
+            this.label5.Location = new System.Drawing.Point(67, 189);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 20);
@@ -240,7 +240,7 @@
             // 
             // txt_trinhDo
             // 
-            this.txt_trinhDo.Location = new System.Drawing.Point(141, 145);
+            this.txt_trinhDo.Location = new System.Drawing.Point(148, 145);
             this.txt_trinhDo.Margin = new System.Windows.Forms.Padding(2);
             this.txt_trinhDo.Name = "txt_trinhDo";
             this.txt_trinhDo.Size = new System.Drawing.Size(239, 26);
@@ -250,7 +250,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label4.Location = new System.Drawing.Point(59, 149);
+            this.label4.Location = new System.Drawing.Point(66, 149);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 20);
@@ -259,7 +259,7 @@
             // 
             // txt_tenGiangVien
             // 
-            this.txt_tenGiangVien.Location = new System.Drawing.Point(141, 109);
+            this.txt_tenGiangVien.Location = new System.Drawing.Point(148, 109);
             this.txt_tenGiangVien.Margin = new System.Windows.Forms.Padding(2);
             this.txt_tenGiangVien.Name = "txt_tenGiangVien";
             this.txt_tenGiangVien.Size = new System.Drawing.Size(239, 26);
@@ -269,7 +269,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label3.Location = new System.Drawing.Point(15, 112);
+            this.label3.Location = new System.Drawing.Point(22, 112);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(119, 20);
@@ -278,7 +278,7 @@
             // 
             // txt_hoLot
             // 
-            this.txt_hoLot.Location = new System.Drawing.Point(141, 73);
+            this.txt_hoLot.Location = new System.Drawing.Point(148, 73);
             this.txt_hoLot.Margin = new System.Windows.Forms.Padding(2);
             this.txt_hoLot.Name = "txt_hoLot";
             this.txt_hoLot.Size = new System.Drawing.Size(239, 26);
@@ -288,7 +288,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label2.Location = new System.Drawing.Point(77, 77);
+            this.label2.Location = new System.Drawing.Point(84, 77);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 20);
@@ -297,7 +297,7 @@
             // 
             // txt_maGiangVien
             // 
-            this.txt_maGiangVien.Location = new System.Drawing.Point(141, 42);
+            this.txt_maGiangVien.Location = new System.Drawing.Point(148, 42);
             this.txt_maGiangVien.Margin = new System.Windows.Forms.Padding(2);
             this.txt_maGiangVien.Name = "txt_maGiangVien";
             this.txt_maGiangVien.Size = new System.Drawing.Size(239, 26);
@@ -307,7 +307,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(20, 42);
+            this.label1.Location = new System.Drawing.Point(27, 42);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 20);
@@ -335,17 +335,18 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(184)))), ((int)(((byte)(19)))));
-            this.groupBox2.Location = new System.Drawing.Point(438, 5);
+            this.groupBox2.Location = new System.Drawing.Point(445, 5);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(412, 695);
+            this.groupBox2.Size = new System.Drawing.Size(412, 675);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Đề tài";
             // 
             // dtP_ngayKetThuc
             // 
+            this.dtP_ngayKetThuc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtP_ngayKetThuc.Location = new System.Drawing.Point(156, 180);
             this.dtP_ngayKetThuc.Margin = new System.Windows.Forms.Padding(2);
             this.dtP_ngayKetThuc.Name = "dtP_ngayKetThuc";
@@ -354,6 +355,7 @@
             // 
             // dtP_ngayBatDau
             // 
+            this.dtP_ngayBatDau.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtP_ngayBatDau.Location = new System.Drawing.Point(156, 146);
             this.dtP_ngayBatDau.Margin = new System.Windows.Forms.Padding(2);
             this.dtP_ngayBatDau.Name = "dtP_ngayBatDau";
@@ -368,7 +370,7 @@
             this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox6.Size = new System.Drawing.Size(385, 300);
+            this.groupBox6.Size = new System.Drawing.Size(385, 304);
             this.groupBox6.TabIndex = 8;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Giảng Viên Hướng dẫn về đề tài";
@@ -564,7 +566,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(870, 707);
+            this.ClientSize = new System.Drawing.Size(870, 687);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;

@@ -28,14 +28,14 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void FKhoa_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (toMenu && MessageBox.Show("Xác nhận!", "Bạn muốn quay về trang chủ?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            if (toMenu && MessageBox.Show("Bạn muốn quay về trang chủ?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 Forms.MainMenu.Show();
-            else if (toGiangVien && MessageBox.Show("Xác nhận!", "Bạn muốn truy cập Form giảng viên?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            else if (toGiangVien && MessageBox.Show("Bạn muốn truy cập Form giảng viên?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
             {
                 Forms.GiangVien = new FGiangVien();
                 Forms.GiangVien.Show();
             }
-            else if (toSinhVien && MessageBox.Show("Xác nhận!", "Bạn muốn truy cập Form sinh viên?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            else if (toSinhVien && MessageBox.Show("Bạn muốn truy cập Form sinh viên?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
             {
                 Forms.SinhVien = new FSinhVien();
                 Forms.SinhVien.Show();

@@ -424,6 +424,7 @@
             // 
             // dtP_ngayKetThucDT
             // 
+            this.dtP_ngayKetThucDT.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtP_ngayKetThucDT.Location = new System.Drawing.Point(159, 161);
             this.dtP_ngayKetThucDT.Margin = new System.Windows.Forms.Padding(2);
             this.dtP_ngayKetThucDT.Name = "dtP_ngayKetThucDT";
@@ -432,6 +433,7 @@
             // 
             // dtP_ngayBatDauDT
             // 
+            this.dtP_ngayBatDauDT.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtP_ngayBatDauDT.Location = new System.Drawing.Point(159, 125);
             this.dtP_ngayBatDauDT.Margin = new System.Windows.Forms.Padding(2);
             this.dtP_ngayBatDauDT.Name = "dtP_ngayBatDauDT";

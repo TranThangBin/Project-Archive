@@ -13,9 +13,14 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 {
     public partial class FThamGiaDT : Form
     {
+        private List<TextBox> txtTGDTs = new List<TextBox>();
         public FThamGiaDT()
         {
             InitializeComponent();
+            txtTGDTs.Add(txt_maDeTaiTGDT);
+            txtTGDTs.Add(txt_maSinhVienTGDT);
+            txtTGDTs.Add(txt_phuCapTGDT);
+            txtTGDTs.Add(txt_ketQuaTGDT);
         }
 
         private void FThamGiaDT_Load(object sender, EventArgs e)
@@ -25,7 +30,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void FThamGiaDT_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Xác nhận!", "Bạn muốn quay về trang chủ?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            if (MessageBox.Show("Bạn muốn quay về trang chủ?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 Forms.MainMenu.Show();
             else
                 e.Cancel = true;
@@ -35,18 +40,15 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             string maDT = txt_maDeTaiTGDT.Text;
             string maSV = txt_maSinhVienTGDT.Text;
-            int phuCap = int.Parse(txt_phuCapTGDT.Text);
+            long phuCap = long.Parse(txt_phuCapTGDT.Text);
             string ketQua = txt_ketQuaTGDT.Text;
-            // Place holder for Database pulling
-            SinhVien sinhViens = new SinhVien("2274801030123", "Nguyễn Văn", "A", "Nam", "003", new Khoa());
-            //----------------------------------
-            return new ThamGiaDeTai(maDT, maSV, phuCap, ketQua, sinhViens);
+            return new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
         }
 
         private void btn_themTGDT_Click(object sender, EventArgs e)
         {
             lsB_danhSach.Items.Add(GetThamGiaDeTai());
-            txt_maDeTaiTGDT.Focus();
+            Forms.ClearInput(txtTGDTs);
         }
 
         private void btn_suaTGDT_Click(object sender, EventArgs e)
@@ -59,14 +61,14 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             }
             lsB_danhSach.Items.RemoveAt(selectedIndex);
             lsB_danhSach.Items.Insert(selectedIndex, GetThamGiaDeTai());
-            txt_maDeTaiTGDT.Focus();
+            Forms.ClearInput(txtTGDTs);
         }
 
         private void btn_xoaTGDT_Click(object sender, EventArgs e)
         {
             ThamGiaDeTai selectedThamGiaDeTai = lsB_danhSach.SelectedItem as ThamGiaDeTai;
             lsB_danhSach.Items.Remove(selectedThamGiaDeTai);
-            txt_maDeTaiTGDT.Focus();
+            Forms.ClearInput(txtTGDTs);
         }
 
         private void lsB_danhSach_SelectedIndexChanged(object sender, EventArgs e)
@@ -84,11 +86,14 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             Close();
         }
 
-        private void IntegerInputHandler(object sender, KeyPressEventArgs e)
+        private void txt_maSinhVienTGDT_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsDigit(e.KeyChar)) return;
-            if (e.KeyChar == (char)Keys.Back) return;
-            e.Handled = true;
+            Forms.NumberInputHandler(false, sender as TextBox, e);
+        }
+
+        private void txt_phuCapTGDT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Forms.NumberInputHandler(false, sender as TextBox, e);
         }
     }
 }

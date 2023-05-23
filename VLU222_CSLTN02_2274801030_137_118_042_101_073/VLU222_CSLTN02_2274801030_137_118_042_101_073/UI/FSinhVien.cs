@@ -28,14 +28,14 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void FSinhVien_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (toMenu && MessageBox.Show("Xác nhận!", "Bạn muốn quay về trang chủ?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            if (toMenu && MessageBox.Show("Bạn muốn quay về trang chủ?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 Forms.MainMenu.Show();
-            else if (toDeTai && MessageBox.Show("Xác nhận!", "Bạn muốn truy cập Form đề tài?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            else if (toDeTai && MessageBox.Show("Bạn muốn truy cập Form đề tài?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
             {
                 Forms.DeTai = new FDeTai();
                 Forms.DeTai.Show();
             }
-            else if (toTGDT && MessageBox.Show("Xác nhận!", "Bạn muốn tham gia đề tài?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            else if (toTGDT && MessageBox.Show("Bạn muốn tham gia đề tài?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
             {
                 Forms.ThamGiaDT = new FThamGiaDT();
                 Forms.ThamGiaDT.Show();

@@ -202,6 +202,7 @@
             // 
             // dtP_namThanhLap
             // 
+            this.dtP_namThanhLap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtP_namThanhLap.Location = new System.Drawing.Point(158, 112);
             this.dtP_namThanhLap.Margin = new System.Windows.Forms.Padding(2);
             this.dtP_namThanhLap.Name = "dtP_namThanhLap";

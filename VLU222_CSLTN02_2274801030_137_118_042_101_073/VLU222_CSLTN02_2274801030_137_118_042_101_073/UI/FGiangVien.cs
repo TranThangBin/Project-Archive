@@ -27,9 +27,9 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void FGiangVien_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (toMenu && MessageBox.Show("Xác nhận!", "Bạn muốn quay về trang chủ?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            if (toMenu && MessageBox.Show("Bạn muốn quay về trang chủ?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 Forms.MainMenu.Show();
-            else if (toDeTai && MessageBox.Show("Xác nhận!", "Bạn muốn truy cập Form đề tài?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            else if (toDeTai && MessageBox.Show("Bạn muốn truy cập Form đề tài?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
             {
                 Forms.DeTai = new FDeTai();
                 Forms.DeTai.Show();

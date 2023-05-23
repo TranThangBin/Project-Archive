@@ -35,7 +35,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073
 
         private void QLDETAINCKHSINHVIEN_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Xác nhận!", "Bạn muốn thoát Form?", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            if (MessageBox.Show("Bạn muốn thoát Form?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 Database.Disconnect();
             else e.Cancel = true;
         }

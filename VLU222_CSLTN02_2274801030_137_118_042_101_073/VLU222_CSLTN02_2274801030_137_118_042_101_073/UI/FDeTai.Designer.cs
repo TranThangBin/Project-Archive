@@ -55,9 +55,8 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.lsv_danhSachTGDT = new System.Windows.Forms.ListView();
             this.colMaDT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colTenDT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colMaSV = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colKinhPhi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colPhuCap = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colKetQua = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btn_truyCapTGDT = new System.Windows.Forms.Button();
@@ -68,10 +67,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txt_phuCapTGDT = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txt_maSinhVienTGDT = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txt_maDeTaiTGDT = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -125,14 +120,16 @@
             // 
             // lsB_danhSachDeTai
             // 
+            this.lsB_danhSachDeTai.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lsB_danhSachDeTai.FormattingEnabled = true;
             this.lsB_danhSachDeTai.HorizontalScrollbar = true;
             this.lsB_danhSachDeTai.ItemHeight = 20;
-            this.lsB_danhSachDeTai.Location = new System.Drawing.Point(12, 20);
+            this.lsB_danhSachDeTai.Location = new System.Drawing.Point(2, 21);
             this.lsB_danhSachDeTai.Margin = new System.Windows.Forms.Padding(2);
             this.lsB_danhSachDeTai.Name = "lsB_danhSachDeTai";
-            this.lsB_danhSachDeTai.Size = new System.Drawing.Size(367, 264);
+            this.lsB_danhSachDeTai.Size = new System.Drawing.Size(382, 268);
             this.lsB_danhSachDeTai.TabIndex = 0;
+            this.lsB_danhSachDeTai.SelectedIndexChanged += new System.EventHandler(this.lsB_danhSachDeTai_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -202,6 +199,7 @@
             // 
             // dtP_ngayKetThuc
             // 
+            this.dtP_ngayKetThuc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtP_ngayKetThuc.Location = new System.Drawing.Point(149, 168);
             this.dtP_ngayKetThuc.Margin = new System.Windows.Forms.Padding(2);
             this.dtP_ngayKetThuc.Name = "dtP_ngayKetThuc";
@@ -210,6 +208,7 @@
             // 
             // dtP_ngayBatDau
             // 
+            this.dtP_ngayBatDau.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtP_ngayBatDau.Location = new System.Drawing.Point(149, 132);
             this.dtP_ngayBatDau.Margin = new System.Windows.Forms.Padding(2);
             this.dtP_ngayBatDau.Name = "dtP_ngayBatDau";
@@ -223,6 +222,7 @@
             this.txt_maSinhVien.Name = "txt_maSinhVien";
             this.txt_maSinhVien.Size = new System.Drawing.Size(229, 26);
             this.txt_maSinhVien.TabIndex = 6;
+            this.txt_maSinhVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_maSinhVien_KeyPress);
             // 
             // label7
             // 
@@ -242,6 +242,7 @@
             this.txt_maGiangVien.Name = "txt_maGiangVien";
             this.txt_maGiangVien.Size = new System.Drawing.Size(229, 26);
             this.txt_maGiangVien.TabIndex = 5;
+            this.txt_maGiangVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_maGiangVien_KeyPress);
             // 
             // label6
             // 
@@ -283,6 +284,7 @@
             this.txt_kinhPhi.Name = "txt_kinhPhi";
             this.txt_kinhPhi.Size = new System.Drawing.Size(229, 26);
             this.txt_kinhPhi.TabIndex = 2;
+            this.txt_kinhPhi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_kinhPhi_KeyPress);
             // 
             // label3
             // 
@@ -342,10 +344,6 @@
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.txt_phuCapTGDT);
             this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.txt_maSinhVienTGDT);
-            this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Controls.Add(this.txt_maDeTaiTGDT);
-            this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(184)))), ((int)(((byte)(19)))));
             this.groupBox4.Location = new System.Drawing.Point(449, 1);
@@ -361,11 +359,11 @@
             // 
             this.groupBox6.Controls.Add(this.lsv_danhSachTGDT);
             this.groupBox6.ForeColor = System.Drawing.Color.Red;
-            this.groupBox6.Location = new System.Drawing.Point(23, 262);
+            this.groupBox6.Location = new System.Drawing.Point(12, 153);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox6.Size = new System.Drawing.Size(385, 373);
+            this.groupBox6.Size = new System.Drawing.Size(408, 488);
             this.groupBox6.TabIndex = 5;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Danh sách tham gia đề tài";
@@ -374,45 +372,40 @@
             // 
             this.lsv_danhSachTGDT.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colMaDT,
-            this.colTenDT,
             this.colMaSV,
-            this.colKinhPhi,
+            this.colPhuCap,
             this.colKetQua});
+            this.lsv_danhSachTGDT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lsv_danhSachTGDT.FullRowSelect = true;
             this.lsv_danhSachTGDT.HideSelection = false;
-            this.lsv_danhSachTGDT.Location = new System.Drawing.Point(17, 27);
+            this.lsv_danhSachTGDT.Location = new System.Drawing.Point(2, 21);
             this.lsv_danhSachTGDT.Margin = new System.Windows.Forms.Padding(2);
             this.lsv_danhSachTGDT.Name = "lsv_danhSachTGDT";
-            this.lsv_danhSachTGDT.Size = new System.Drawing.Size(353, 334);
+            this.lsv_danhSachTGDT.Size = new System.Drawing.Size(404, 465);
             this.lsv_danhSachTGDT.TabIndex = 0;
             this.lsv_danhSachTGDT.UseCompatibleStateImageBehavior = false;
             this.lsv_danhSachTGDT.View = System.Windows.Forms.View.Details;
+            this.lsv_danhSachTGDT.SelectedIndexChanged += new System.EventHandler(this.lsv_danhSachTGDT_SelectedIndexChanged);
             // 
             // colMaDT
             // 
             this.colMaDT.Text = "Mã đề tài";
-            this.colMaDT.Width = 70;
-            // 
-            // colTenDT
-            // 
-            this.colTenDT.DisplayIndex = 2;
-            this.colTenDT.Text = "Tên đề tài";
-            this.colTenDT.Width = 70;
+            this.colMaDT.Width = 101;
             // 
             // colMaSV
             // 
-            this.colMaSV.DisplayIndex = 1;
             this.colMaSV.Text = "Mã sinh viên";
-            this.colMaSV.Width = 70;
+            this.colMaSV.Width = 101;
             // 
-            // colKinhPhi
+            // colPhuCap
             // 
-            this.colKinhPhi.Text = "Kinh phí";
-            this.colKinhPhi.Width = 70;
+            this.colPhuCap.Text = "Phụ cấp";
+            this.colPhuCap.Width = 101;
             // 
             // colKetQua
             // 
             this.colKetQua.Text = "Kết quả";
-            this.colKetQua.Width = 70;
+            this.colKetQua.Width = 101;
             // 
             // groupBox5
             // 
@@ -420,18 +413,18 @@
             this.groupBox5.Controls.Add(this.btn_xoaTGDT);
             this.groupBox5.Controls.Add(this.btn_suaTGDT);
             this.groupBox5.Controls.Add(this.btn_themTGDT);
-            this.groupBox5.Location = new System.Drawing.Point(18, 187);
+            this.groupBox5.Location = new System.Drawing.Point(12, 99);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox5.Size = new System.Drawing.Size(384, 50);
+            this.groupBox5.Size = new System.Drawing.Size(406, 50);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             // 
             // btn_truyCapTGDT
             // 
             this.btn_truyCapTGDT.ForeColor = System.Drawing.Color.Black;
-            this.btn_truyCapTGDT.Location = new System.Drawing.Point(294, 13);
+            this.btn_truyCapTGDT.Location = new System.Drawing.Point(303, 15);
             this.btn_truyCapTGDT.Margin = new System.Windows.Forms.Padding(2);
             this.btn_truyCapTGDT.Name = "btn_truyCapTGDT";
             this.btn_truyCapTGDT.Size = new System.Drawing.Size(80, 26);
@@ -443,49 +436,52 @@
             // btn_xoaTGDT
             // 
             this.btn_xoaTGDT.ForeColor = System.Drawing.Color.Black;
-            this.btn_xoaTGDT.Location = new System.Drawing.Point(201, 15);
+            this.btn_xoaTGDT.Location = new System.Drawing.Point(210, 15);
             this.btn_xoaTGDT.Margin = new System.Windows.Forms.Padding(2);
             this.btn_xoaTGDT.Name = "btn_xoaTGDT";
             this.btn_xoaTGDT.Size = new System.Drawing.Size(73, 26);
             this.btn_xoaTGDT.TabIndex = 2;
             this.btn_xoaTGDT.Text = "Xóa";
             this.btn_xoaTGDT.UseVisualStyleBackColor = true;
+            this.btn_xoaTGDT.Click += new System.EventHandler(this.btn_xoaTGDT_Click);
             // 
             // btn_suaTGDT
             // 
             this.btn_suaTGDT.ForeColor = System.Drawing.Color.Black;
-            this.btn_suaTGDT.Location = new System.Drawing.Point(111, 15);
+            this.btn_suaTGDT.Location = new System.Drawing.Point(120, 16);
             this.btn_suaTGDT.Margin = new System.Windows.Forms.Padding(2);
             this.btn_suaTGDT.Name = "btn_suaTGDT";
             this.btn_suaTGDT.Size = new System.Drawing.Size(76, 26);
             this.btn_suaTGDT.TabIndex = 1;
             this.btn_suaTGDT.Text = "Sửa";
             this.btn_suaTGDT.UseVisualStyleBackColor = true;
+            this.btn_suaTGDT.Click += new System.EventHandler(this.btn_suaTGDT_Click);
             // 
             // btn_themTGDT
             // 
             this.btn_themTGDT.ForeColor = System.Drawing.Color.Black;
-            this.btn_themTGDT.Location = new System.Drawing.Point(16, 15);
+            this.btn_themTGDT.Location = new System.Drawing.Point(25, 16);
             this.btn_themTGDT.Margin = new System.Windows.Forms.Padding(2);
             this.btn_themTGDT.Name = "btn_themTGDT";
             this.btn_themTGDT.Size = new System.Drawing.Size(77, 26);
             this.btn_themTGDT.TabIndex = 0;
             this.btn_themTGDT.Text = "Thêm";
             this.btn_themTGDT.UseVisualStyleBackColor = true;
+            this.btn_themTGDT.Click += new System.EventHandler(this.btn_themTGDT_Click);
             // 
             // txt_ketQuaTGDT
             // 
-            this.txt_ketQuaTGDT.Location = new System.Drawing.Point(145, 135);
+            this.txt_ketQuaTGDT.Location = new System.Drawing.Point(141, 64);
             this.txt_ketQuaTGDT.Margin = new System.Windows.Forms.Padding(2);
             this.txt_ketQuaTGDT.Name = "txt_ketQuaTGDT";
-            this.txt_ketQuaTGDT.Size = new System.Drawing.Size(237, 26);
+            this.txt_ketQuaTGDT.Size = new System.Drawing.Size(250, 26);
             this.txt_ketQuaTGDT.TabIndex = 3;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(47, 139);
+            this.label11.Location = new System.Drawing.Point(43, 68);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(72, 20);
@@ -494,60 +490,23 @@
             // 
             // txt_phuCapTGDT
             // 
-            this.txt_phuCapTGDT.Location = new System.Drawing.Point(145, 100);
+            this.txt_phuCapTGDT.Location = new System.Drawing.Point(141, 29);
             this.txt_phuCapTGDT.Margin = new System.Windows.Forms.Padding(2);
             this.txt_phuCapTGDT.Name = "txt_phuCapTGDT";
-            this.txt_phuCapTGDT.Size = new System.Drawing.Size(237, 26);
+            this.txt_phuCapTGDT.Size = new System.Drawing.Size(250, 26);
             this.txt_phuCapTGDT.TabIndex = 2;
+            this.txt_phuCapTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_phuCapTGDT_KeyPress);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(43, 104);
+            this.label10.Location = new System.Drawing.Point(39, 33);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(75, 20);
             this.label10.TabIndex = 0;
             this.label10.Text = "Phụ cấp :";
-            // 
-            // txt_maSinhVienTGDT
-            // 
-            this.txt_maSinhVienTGDT.Location = new System.Drawing.Point(145, 64);
-            this.txt_maSinhVienTGDT.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_maSinhVienTGDT.Name = "txt_maSinhVienTGDT";
-            this.txt_maSinhVienTGDT.Size = new System.Drawing.Size(237, 26);
-            this.txt_maSinhVienTGDT.TabIndex = 1;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(13, 68);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(104, 20);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Mã sinh viên :";
-            // 
-            // txt_maDeTaiTGDT
-            // 
-            this.txt_maDeTaiTGDT.Location = new System.Drawing.Point(145, 30);
-            this.txt_maDeTaiTGDT.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_maDeTaiTGDT.Name = "txt_maDeTaiTGDT";
-            this.txt_maDeTaiTGDT.Size = new System.Drawing.Size(237, 26);
-            this.txt_maDeTaiTGDT.TabIndex = 0;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(37, 36);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(82, 20);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Mã đề tài :";
             // 
             // FDeTai
             // 
@@ -605,10 +564,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txt_phuCapTGDT;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txt_maSinhVienTGDT;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txt_maDeTaiTGDT;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btn_truyCapTGDT;
         private System.Windows.Forms.Button btn_xoaTGDT;
@@ -617,9 +572,8 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.ListView lsv_danhSachTGDT;
         private System.Windows.Forms.ColumnHeader colMaDT;
-        private System.Windows.Forms.ColumnHeader colTenDT;
         private System.Windows.Forms.ColumnHeader colMaSV;
-        private System.Windows.Forms.ColumnHeader colKinhPhi;
+        private System.Windows.Forms.ColumnHeader colPhuCap;
         private System.Windows.Forms.ColumnHeader colKetQua;
     }
 }

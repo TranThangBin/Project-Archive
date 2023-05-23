@@ -10,7 +10,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
     {
         private string maDT;
         private string tenDT;
-        private decimal kinhPhi;
+        private long kinhPhi;
         private DateTime ngayBD;
         private DateTime ngayKT;
         private string maGVHD;
@@ -28,11 +28,9 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             ngayKT = DateTime.Today;
             maGVHD = "";
             maSVCNDT = "";
-            sinhViens = new SinhVien();
-            giangViens = new GiangVien();
         }
 
-        public DeTai(string maDT, string tenDT, decimal kinhPhi, DateTime ngayBD, DateTime ngayKT, string maGVHD, string maSVCNDT, SinhVien sinhViens, GiangVien giangViens)
+        public DeTai(string maDT, string tenDT, long kinhPhi, DateTime ngayBD, DateTime ngayKT, string maGVHD, string maSVCNDT)
         {
             this.maDT = maDT;
             this.tenDT = tenDT;
@@ -41,13 +39,11 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             this.ngayKT = ngayKT;
             this.maGVHD = maGVHD;
             this.maSVCNDT = maSVCNDT;
-            this.sinhViens = sinhViens;
-            this.giangViens = giangViens;
         }
 
         public string MaDT { get => maDT; set => maDT = value; }
         public string TenDT { get => tenDT; set => tenDT = value; }
-        public decimal KinhPhi { get => kinhPhi; set => kinhPhi = value; }
+        public long KinhPhi { get => kinhPhi; set => kinhPhi = value; }
         public DateTime NgayBD { get => ngayBD; set => ngayBD = value; }
         public DateTime NgayKT { get => ngayKT; set => ngayKT = value; }
         public string MaGVHD { get => maGVHD; set => maGVHD = value; }
