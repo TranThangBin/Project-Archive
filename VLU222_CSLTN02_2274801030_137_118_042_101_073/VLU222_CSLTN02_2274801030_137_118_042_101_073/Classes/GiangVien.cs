@@ -37,6 +37,11 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             this.maKhoa = maKhoa;
         }
 
+        public override string ToString()
+        {
+            return $"{maGV}/{maKhoa} {trinhDo}: {hoLot} {tenGV}";
+        }
+
         public string MaGV { get => maGV; set => maGV = value; }
         public string HoLot { get => hoLot; set => hoLot = value; }
         public string TenGV { get => tenGV; set => tenGV = value; }

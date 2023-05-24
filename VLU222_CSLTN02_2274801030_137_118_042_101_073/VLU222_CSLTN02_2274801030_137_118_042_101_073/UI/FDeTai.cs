@@ -15,18 +15,24 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
     {
         private bool toMenu = true;
         private bool toTGDT = false;
-        private List<TextBox> txtDeTais = new List<TextBox>();
-        private List<TextBox> txtTGDTs = new List<TextBox>();
+        private List<TextBox> txtDeTais;
+        private List<TextBox> txtTGDTs;
         public FDeTai()
         {
             InitializeComponent();
-            txtDeTais.Add(txt_maDetai);
-            txtDeTais.Add(txt_tenDetai);
-            txtDeTais.Add(txt_kinhPhi);
-            txtDeTais.Add(txt_maGiangVien);
-            txtDeTais.Add(txt_maSinhVien);
-            txtTGDTs.Add(txt_phuCapTGDT);
-            txtTGDTs.Add(txt_ketQuaTGDT);
+            txtDeTais = new List<TextBox>()
+            {
+                txt_maDetai,
+                txt_tenDetai,
+                txt_kinhPhi,
+                txt_maGiangVien,
+                txt_maSinhVien
+            };
+            txtTGDTs = new List<TextBox>()
+            {
+                txt_phuCapTGDT,
+                txt_ketQuaTGDT
+            };
         }
 
         private void FDeTai_Load(object sender, EventArgs e)
@@ -71,16 +77,24 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             return new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
         }
 
-        private void ReplaceDeTai(int index, DeTai deTai)
+        private void UpdateDeTai(int index, DeTai deTai)
         {
             lsB_danhSachDeTai.Items.RemoveAt(index);
             lsB_danhSachDeTai.Items.Insert(index, deTai);
+            lsB_danhSachDeTai.SelectedIndex = index;
+        }
+
+        private void txtDeTaisFullClear()
+        {
+            Forms.ClearInput(txtDeTais);
+            dtP_ngayBatDau.Value = DateTime.Today;
+            dtP_ngayKetThuc.Value = DateTime.Today;
         }
 
         private void btn_themDeTai_Click(object sender, EventArgs e)
         {
             lsB_danhSachDeTai.Items.Add(GetDeTai());
-            Forms.ClearInput(txtDeTais);
+            txtDeTaisFullClear();
         }
 
         private void btn_suaDeTai_Click(object sender, EventArgs e)
@@ -91,15 +105,18 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 MessageBox.Show("Vui lòng chọn 1 đề tài để chỉnh sửa!");
                 return;
             }
-            ReplaceDeTai(DeTaiSelectedIndex, GetDeTai());
-            Forms.ClearInput(txtDeTais);
+            DeTai selectedDeTai = lsB_danhSachDeTai.SelectedItem as DeTai;
+            DeTai newDeTai = GetDeTai();
+            newDeTai.ThamGiaDeTais = selectedDeTai.ThamGiaDeTais;
+            UpdateDeTai(DeTaiSelectedIndex, newDeTai);
+            txtDeTaisFullClear();
         }
 
         private void btn_xoaDeTai_Click(object sender, EventArgs e)
         {
             DeTai selectedThamGiaDeTai = lsB_danhSachDeTai.SelectedItem as DeTai;
             lsB_danhSachDeTai.Items.Remove(selectedThamGiaDeTai);
-            Forms.ClearInput(txtDeTais);
+            txtDeTaisFullClear();
         }
 
         private void btn_troVeDeTai_Click(object sender, EventArgs e)
@@ -121,10 +138,21 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             txt_maSinhVien.Text = selectedDeTai.MaSVCNDT;
             foreach (ThamGiaDeTai thamGiaDeTai in selectedDeTai.ThamGiaDeTais)
             {
-                string[] lsviObj = new string[] { thamGiaDeTai.MaDT, thamGiaDeTai.MaSV, thamGiaDeTai.PhuCap + "", thamGiaDeTai.KetQua };
+                string[] lsviObj = new string[]
+                {
+                    thamGiaDeTai.MaDT,
+                    thamGiaDeTai.MaSV,
+                    thamGiaDeTai.PhuCap + "",
+                    thamGiaDeTai.KetQua
+                };
                 ListViewItem lsvItem = new ListViewItem(lsviObj);
                 lsv_danhSachTGDT.Items.Add(lsvItem);
             }
+        }
+
+        private void lsB_danhSachDeTai_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right) lsB_danhSachDeTai.SelectedIndex = -1;
         }
 
         private void txt_kinhPhi_KeyPress(object sender, KeyPressEventArgs e)
@@ -152,11 +180,17 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             }
             DeTai selectedDeTai = lsB_danhSachDeTai.SelectedItem as DeTai;
             ThamGiaDeTai thamGiaDeTai = GetThamGiaDeTai(selectedDeTai);
-            string[] lsviObj = new string[] { thamGiaDeTai.MaDT, thamGiaDeTai.MaSV, thamGiaDeTai.PhuCap + "", thamGiaDeTai.KetQua };
+            string[] lsviObj = new string[]
+            {
+                thamGiaDeTai.MaDT,
+                thamGiaDeTai.MaSV,
+                thamGiaDeTai.PhuCap + "",
+                thamGiaDeTai.KetQua
+            };
             ListViewItem lsvItem = new ListViewItem(lsviObj);
             lsv_danhSachTGDT.Items.Add(lsvItem);
             selectedDeTai.ThamGiaDeTais.Add(thamGiaDeTai);
-            ReplaceDeTai(DeTaiSelectedIndex, selectedDeTai);
+            UpdateDeTai(DeTaiSelectedIndex, selectedDeTai);
             Forms.ClearInput(txtTGDTs);
         }
 
@@ -173,7 +207,13 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             ThamGiaDeTai newThamGiaDeTai = GetThamGiaDeTai(selectedDeTai);
             selectedDeTai.ThamGiaDeTais.RemoveAt(TGDTSelectedIndex);
             selectedDeTai.ThamGiaDeTais.Insert(TGDTSelectedIndex, newThamGiaDeTai);
-            string[] newLsviObj = new string[] { newThamGiaDeTai.MaDT, newThamGiaDeTai.MaSV, newThamGiaDeTai.PhuCap + "", newThamGiaDeTai.KetQua };
+            string[] newLsviObj = new string[]
+            {
+                newThamGiaDeTai.MaDT,
+                newThamGiaDeTai.MaSV,
+                newThamGiaDeTai.PhuCap + "",
+                newThamGiaDeTai.KetQua
+            };
             ListViewItem newLsvItem = new ListViewItem(newLsviObj);
             lsv_danhSachTGDT.Items.RemoveAt(TGDTSelectedIndex);
             lsv_danhSachTGDT.Items.Insert(TGDTSelectedIndex, newLsvItem);
@@ -188,7 +228,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             int DeTaiSelectedIndex = lsB_danhSachDeTai.SelectedIndex;
             DeTai selectedDeTai = lsB_danhSachDeTai.SelectedItem as DeTai;
             selectedDeTai.ThamGiaDeTais.RemoveAt(TGDTSelectedIndex);
-            ReplaceDeTai(DeTaiSelectedIndex, selectedDeTai);
+            UpdateDeTai(DeTaiSelectedIndex, selectedDeTai);
             Forms.ClearInput(txtTGDTs);
         }
 

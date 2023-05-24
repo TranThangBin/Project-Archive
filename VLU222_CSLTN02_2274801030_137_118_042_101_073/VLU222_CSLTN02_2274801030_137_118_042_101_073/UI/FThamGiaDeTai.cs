@@ -13,14 +13,17 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 {
     public partial class FThamGiaDT : Form
     {
-        private List<TextBox> txtTGDTs = new List<TextBox>();
+        private List<TextBox> txtTGDTs;
         public FThamGiaDT()
         {
             InitializeComponent();
-            txtTGDTs.Add(txt_maDeTaiTGDT);
-            txtTGDTs.Add(txt_maSinhVienTGDT);
-            txtTGDTs.Add(txt_phuCapTGDT);
-            txtTGDTs.Add(txt_ketQuaTGDT);
+            txtTGDTs = new List<TextBox>()
+            {
+                txt_maDeTaiTGDT,
+                txt_maSinhVienTGDT,
+                txt_phuCapTGDT,
+                txt_ketQuaTGDT
+            };
         }
 
         private void FThamGiaDT_Load(object sender, EventArgs e)

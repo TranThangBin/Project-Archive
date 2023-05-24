@@ -130,6 +130,7 @@
             this.lsB_danhSachDeTai.Size = new System.Drawing.Size(382, 268);
             this.lsB_danhSachDeTai.TabIndex = 0;
             this.lsB_danhSachDeTai.SelectedIndexChanged += new System.EventHandler(this.lsB_danhSachDeTai_SelectedIndexChanged);
+            this.lsB_danhSachDeTai.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lsB_danhSachDeTai_MouseDown);
             // 
             // groupBox2
             // 
