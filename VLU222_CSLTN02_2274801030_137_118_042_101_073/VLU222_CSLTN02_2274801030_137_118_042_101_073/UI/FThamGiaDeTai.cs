@@ -56,9 +56,9 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_suaTGDT_Click(object sender, EventArgs e)
         {
-            if (!Forms.LsbHasItemSelected(lsB_danhSach.SelectedIndex, "Vui lòng chọn 1 mục tiêu để chỉnh sửa!")) return;
-            lsB_danhSach.Items.RemoveAt(lsB_danhSach.SelectedIndex);
-            lsB_danhSach.Items.Insert(lsB_danhSach.SelectedIndex, GetThamGiaDeTai());
+            int danhSachSelectedIndex = lsB_danhSach.SelectedIndex;
+            if (!Forms.LsbHasItemSelected(danhSachSelectedIndex, "Vui lòng chọn 1 mục tiêu để chỉnh sửa!")) return;
+            Forms.LsbUpdateItem(lsB_danhSach, danhSachSelectedIndex, GetThamGiaDeTai());
             Forms.TxtClearInput(txtTGDTs);
         }
 

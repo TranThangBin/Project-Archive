@@ -28,6 +28,11 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             this.namThanhLap = namThanhLap;
         }
 
+        public override string ToString()
+        {
+            return $"{maKhoa}/{tenKhoa}/{namThanhLap}";
+        }
+
         public string MaKhoa { get => maKhoa; set => maKhoa = value; }
         public string TenKhoa { get => tenKhoa; set => tenKhoa = value; }
         public int NamThanhLap { get => namThanhLap; set => namThanhLap = value; }

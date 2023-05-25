@@ -34,7 +34,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         public static void TxtClearInput(List<TextBox> textBoxes)
         {
             foreach (TextBox textBox in textBoxes)
-                textBox.Text = "";
+                textBox.Clear();
             textBoxes[0].Focus();
         }
 
@@ -51,6 +51,13 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                 return false;
             }
             return true;
+        }
+
+        public static void LsbUpdateItem(ListBox listBox, int index, object item)
+        {
+            listBox.Items.RemoveAt(index);
+            listBox.Items.Insert(index, item);
+            listBox.SelectedIndex = index;
         }
     }
 }

@@ -15,7 +15,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         private string maKhoa;
         private Khoa khoas;
         private List<DeTai> detais = new List<DeTai>();
-        private List<ThamGiaDeTai> thamGiaDeTais = new List<ThamGiaDeTai>();
 
         public SinhVien()
         {
@@ -47,6 +46,5 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         public string MaKhoa { get => maKhoa; set => maKhoa = value; }
         public Khoa Khoas { get => khoas; set => khoas = value; }
         public List<DeTai> Detais { get => detais; set => detais = value; }
-        public List<ThamGiaDeTai> ThamGiaDeTais { get => thamGiaDeTais; set => thamGiaDeTais = value; }
     }
 }
