@@ -16,8 +16,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         private string maGVHD;
         private string maSVCNDT;
         private List<ThamGiaDeTai> thamGiaDeTais = new List<ThamGiaDeTai>();
-        private SinhVien sinhViens;
-        private GiangVien giangViens;
 
         public DeTai()
         {
@@ -54,7 +52,5 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         public string MaGVHD { get => maGVHD; set => maGVHD = value; }
         public string MaSVCNDT { get => maSVCNDT; set => maSVCNDT = value; }
         public List<ThamGiaDeTai> ThamGiaDeTais { get => thamGiaDeTais; set => thamGiaDeTais = value; }
-        public SinhVien SinhViens { get => sinhViens; set => sinhViens = value; }
-        public GiangVien GiangViens { get => giangViens; set => giangViens = value; }
     }
 }

@@ -13,7 +13,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         private string tenSV;
         private string gioiTinh;
         private string maKhoa;
-        private Khoa khoas;
         private List<DeTai> detais = new List<DeTai>();
 
         public SinhVien()
@@ -44,7 +43,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         public string TenSV { get => tenSV; set => tenSV = value; }
         public string GioiTinh { get => gioiTinh; set => gioiTinh = value; }
         public string MaKhoa { get => maKhoa; set => maKhoa = value; }
-        public Khoa Khoas { get => khoas; set => khoas = value; }
         public List<DeTai> Detais { get => detais; set => detais = value; }
     }
 }

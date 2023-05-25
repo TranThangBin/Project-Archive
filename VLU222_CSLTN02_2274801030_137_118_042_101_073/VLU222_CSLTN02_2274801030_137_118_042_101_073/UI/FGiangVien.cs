@@ -62,6 +62,18 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private GiangVien GetGiangVien()
         {
+            if (txt_maGiangVien.Text == "")
+                throw new Exception("Vui lòng không để trống mã giảng viên!");
+            if (txt_hoLot.Text == "")
+                throw new Exception("Vui lòng không để trống họ lót!");
+            if (txt_tenGiangVien.Text == "")
+                throw new Exception("Vui lòng không để trống tên giảng viên!");
+            if (txt_trinhDo.Text == "")
+                throw new Exception("Vui lòng không để trống trình độ!");
+            if (cmB_gioiTinh.Text == "")
+                throw new Exception("Vui lòng không để trống giới tính!");
+            if (txt_maKhoa.Text == "")
+                throw new Exception("Vui lòng không để trống mã khoa!");
             string maGV = txt_maGiangVien.Text;
             string hoLot = txt_hoLot.Text;
             string tenGV = txt_tenGiangVien.Text;
@@ -83,6 +95,14 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private DeTai GetDeTai(GiangVien giangVien)
         {
+            if (txt_maDetai.Text == "")
+                throw new Exception("Vui lòng không để trống mã đề tài!");
+            if (txt_tenDeTai.Text == "")
+                throw new Exception("Vui lòng không để trống tên đề tài!");
+            if (txt_kinhPhi.Text == "")
+                throw new Exception("Vui lòng không để trống kinh phí!");
+            if (txt_maSinhVien.Text == "")
+                throw new Exception("Vui lòng không để trống mã sinh viên!");
             string maDT = txt_maDetai.Text;
             string tenDT = txt_tenDeTai.Text;
             long kinhPhi = long.Parse(txt_kinhPhi.Text);
@@ -106,15 +126,28 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             dtP_ngayKetThuc.Value = DateTime.Today;
         }
 
-        private void txtNumber_KeyPressed(object sender, KeyPressEventArgs e)
+        private void txtNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.TxtNumberInputHandler(false, sender as TextBox, e);
+            Forms.TxtNumberInputHandler(false, false, sender as TextBox, e);
+        }
+
+        private void txtSpacesHandled_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Forms.TxtPrematureSpacesHandler(sender as TextBox, e);
         }
 
         private void btn_themGV_Click(object sender, EventArgs e)
         {
-            lsB_danhSachGiangVien.Items.Add(GetGiangVien());
-            txtGiangViensFullClear();
+            try
+            {
+                GiangVien giangVien = GetGiangVien();
+                lsB_danhSachGiangVien.Items.Add(giangVien);
+                txtGiangViensFullClear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_suaGV_Click(object sender, EventArgs e)
@@ -122,10 +155,17 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             int giangVienSelectedIndex = GetGiangVienSelectedIndex();
             if (!Forms.LsbHasItemSelected(giangVienSelectedIndex, "Vui lòng chọn 1 giảng viên để chỉnh sửa!")) return;
             GiangVien selectedGiangVien = GetSelectedGiangVien();
-            GiangVien newGiangVien = GetGiangVien();
-            newGiangVien.Detais = selectedGiangVien.Detais;
-            Forms.LsbUpdateItem(lsB_danhSachGiangVien, giangVienSelectedIndex, newGiangVien);
-            txtGiangViensFullClear();
+            try
+            {
+                GiangVien newGiangVien = GetGiangVien();
+                newGiangVien.Detais = selectedGiangVien.Detais;
+                Forms.LsbUpdateItem(lsB_danhSachGiangVien, giangVienSelectedIndex, newGiangVien);
+                txtGiangViensFullClear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_xoaGV_Click(object sender, EventArgs e)
@@ -185,9 +225,11 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             if (!Forms.LsbHasItemSelected(GetGiangVienSelectedIndex(), "Bạn cần phải chọn 1 giảng viên để thêm đề tài!")) return;
             GiangVien selectedGiangVien = GetSelectedGiangVien();
-            DeTai deTai = GetDeTai(selectedGiangVien);
-            string[] lsviObj = new string[]
+            try
             {
+                DeTai deTai = GetDeTai(selectedGiangVien);
+                string[] lsviObj = new string[]
+                {
                     deTai.MaDT,
                     deTai.TenDT,
                     deTai.KinhPhi + "",
@@ -195,11 +237,16 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                     deTai.NgayKT + "",
                     deTai.MaGVHD,
                     deTai.MaSVCNDT
-            };
-            ListViewItem lsvItem = new ListViewItem(lsviObj);
-            lsV_giangVienGuongdanVeDT.Items.Add(lsvItem);
-            selectedGiangVien.Detais.Add(deTai);
-            txtDeTaisFullClear();
+                };
+                ListViewItem lsvItem = new ListViewItem(lsviObj);
+                lsV_giangVienGuongdanVeDT.Items.Add(lsvItem);
+                selectedGiangVien.Detais.Add(deTai);
+                txtDeTaisFullClear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_suaDT_Click(object sender, EventArgs e)
@@ -212,11 +259,13 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             ListViewItem deTaiSelectedItem = lsV_giangVienGuongdanVeDT.SelectedItems[0];
             int deTaiSelectedIndex = deTaiSelectedItem.Index;
             GiangVien selectedGiangVien = GetSelectedGiangVien();
-            DeTai newDeTai = GetDeTai(selectedGiangVien);
-            selectedGiangVien.Detais.RemoveAt(deTaiSelectedIndex);
-            selectedGiangVien.Detais.Insert(deTaiSelectedIndex, newDeTai);
-            string[] newLsviObj = new string[]
+            try
             {
+                DeTai newDeTai = GetDeTai(selectedGiangVien);
+                selectedGiangVien.Detais.RemoveAt(deTaiSelectedIndex);
+                selectedGiangVien.Detais.Insert(deTaiSelectedIndex, newDeTai);
+                string[] newLsviObj = new string[]
+                {
                 newDeTai.MaDT,
                 newDeTai.TenDT,
                 newDeTai.KinhPhi + "",
@@ -224,11 +273,16 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 newDeTai.NgayKT + "",
                 newDeTai.MaGVHD,
                 newDeTai.MaSVCNDT
-            };
-            ListViewItem newLsvItem = new ListViewItem(newLsviObj);
-            lsV_giangVienGuongdanVeDT.Items.RemoveAt(deTaiSelectedIndex);
-            lsV_giangVienGuongdanVeDT.Items.Insert(deTaiSelectedIndex, newLsvItem);
-            txtDeTaisFullClear();
+                };
+                ListViewItem newLsvItem = new ListViewItem(newLsviObj);
+                lsV_giangVienGuongdanVeDT.Items.RemoveAt(deTaiSelectedIndex);
+                lsV_giangVienGuongdanVeDT.Items.Insert(deTaiSelectedIndex, newLsvItem);
+                txtDeTaisFullClear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_xoaDT_Click(object sender, EventArgs e)

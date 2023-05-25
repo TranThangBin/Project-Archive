@@ -12,7 +12,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         private string maSV;
         private long phuCap;
         private string ketQua;
-        private SinhVien sinhViens;
 
         public ThamGiaDeTai()
         {
@@ -29,15 +28,14 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             this.phuCap = phuCap;
             this.ketQua = ketQua;
         }
+        public override string ToString()
+        {
+            return $"Mã đề tài: {maDT}/Mã sinh viên:{maSV}/Phụ cấp: {phuCap}/Kết quả: {ketQua}";
+        }
 
         public string MaDT { get => maDT; set => maDT = value; }
         public string MaSV { get => maSV; set => maSV = value; }
         public long PhuCap { get => phuCap; set => phuCap = value; }
         public string KetQua { get => ketQua; set => ketQua = value; }
-        public SinhVien SinhViens { get => sinhViens; set => sinhViens = value; }
-        public override string ToString()
-        {
-            return $"Mã đề tài: {maDT}/Mã sinh viên:{maSV}/Phụ cấp: {phuCap}/Kết quả{ketQua}";
-        }
     }
 }

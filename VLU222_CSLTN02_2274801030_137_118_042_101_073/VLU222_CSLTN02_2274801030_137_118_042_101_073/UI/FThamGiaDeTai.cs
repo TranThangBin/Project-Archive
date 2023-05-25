@@ -41,6 +41,14 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private ThamGiaDeTai GetThamGiaDeTai()
         {
+            if (txt_maDeTaiTGDT.Text == "")
+                throw new Exception("Vui lòng không để trống mã đề tài!");
+            if (txt_maSinhVienTGDT.Text == "")
+                throw new Exception("Vui lòng không để trống mã sinh viên!");
+            if (txt_phuCapTGDT.Text == "")
+                throw new Exception("Vui lòng không để trống tiền phụ cấp!");
+            if (txt_ketQuaTGDT.Text == "")
+                throw new Exception("Vui lòng không để trống kết quả!");
             string maDT = txt_maDeTaiTGDT.Text;
             string maSV = txt_maSinhVienTGDT.Text;
             long phuCap = long.Parse(txt_phuCapTGDT.Text);
@@ -48,18 +56,45 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             return new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
         }
 
+
+        private void txtNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Forms.TxtNumberInputHandler(false, false, sender as TextBox, e);
+        }
+
+        private void txtSpacesHandled_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Forms.TxtPrematureSpacesHandler(sender as TextBox, e);
+        }
+
         private void btn_themTGDT_Click(object sender, EventArgs e)
         {
-            lsB_danhSach.Items.Add(GetThamGiaDeTai());
-            Forms.TxtClearInput(txtTGDTs);
+            try
+            {
+                ThamGiaDeTai thamGiaDeTai = GetThamGiaDeTai();
+                lsB_danhSach.Items.Add(thamGiaDeTai);
+                Forms.TxtClearInput(txtTGDTs);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_suaTGDT_Click(object sender, EventArgs e)
         {
             int danhSachSelectedIndex = lsB_danhSach.SelectedIndex;
             if (!Forms.LsbHasItemSelected(danhSachSelectedIndex, "Vui lòng chọn 1 mục tiêu để chỉnh sửa!")) return;
-            Forms.LsbUpdateItem(lsB_danhSach, danhSachSelectedIndex, GetThamGiaDeTai());
-            Forms.TxtClearInput(txtTGDTs);
+            try
+            {
+                ThamGiaDeTai thamGiaDeTai = GetThamGiaDeTai();
+                Forms.LsbUpdateItem(lsB_danhSach, danhSachSelectedIndex, thamGiaDeTai);
+                Forms.TxtClearInput(txtTGDTs);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_xoaTGDT_Click(object sender, EventArgs e)
@@ -91,16 +126,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void lsB_danhSach_MouseDown(object sender, MouseEventArgs e)
         {
             Forms.LsbRightClickDeselected(sender as ListBox, e);
-        }
-
-        private void txt_maSinhVienTGDT_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Forms.TxtNumberInputHandler(false, sender as TextBox, e);
-        }
-
-        private void txt_phuCapTGDT_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Forms.TxtNumberInputHandler(false, sender as TextBox, e);
         }
     }
 }

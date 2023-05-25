@@ -143,6 +143,7 @@
             this.txt_ketQuaTGDT.Name = "txt_ketQuaTGDT";
             this.txt_ketQuaTGDT.Size = new System.Drawing.Size(237, 26);
             this.txt_ketQuaTGDT.TabIndex = 3;
+            this.txt_ketQuaTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSpacesHandled_KeyPress);
             // 
             // label11
             // 
@@ -164,7 +165,7 @@
             this.txt_phuCapTGDT.Name = "txt_phuCapTGDT";
             this.txt_phuCapTGDT.Size = new System.Drawing.Size(237, 26);
             this.txt_phuCapTGDT.TabIndex = 2;
-            this.txt_phuCapTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_phuCapTGDT_KeyPress);
+            this.txt_phuCapTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumber_KeyPress);
             // 
             // label10
             // 
@@ -186,7 +187,7 @@
             this.txt_maSinhVienTGDT.Name = "txt_maSinhVienTGDT";
             this.txt_maSinhVienTGDT.Size = new System.Drawing.Size(237, 26);
             this.txt_maSinhVienTGDT.TabIndex = 1;
-            this.txt_maSinhVienTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_maSinhVienTGDT_KeyPress);
+            this.txt_maSinhVienTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumber_KeyPress);
             // 
             // label9
             // 
@@ -208,6 +209,7 @@
             this.txt_maDeTaiTGDT.Name = "txt_maDeTaiTGDT";
             this.txt_maDeTaiTGDT.Size = new System.Drawing.Size(237, 26);
             this.txt_maDeTaiTGDT.TabIndex = 0;
+            this.txt_maDeTaiTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSpacesHandled_KeyPress);
             // 
             // label8
             // 

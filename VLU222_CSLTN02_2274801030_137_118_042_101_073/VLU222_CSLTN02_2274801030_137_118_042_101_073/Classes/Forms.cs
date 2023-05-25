@@ -23,14 +23,25 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         public static FGiangVien GiangVien { get => giangVien; set => giangVien = value; }
         public static FSinhVien SinhVien { get => sinhVien; set => sinhVien = value; }
         public static FKhoa Khoa { get => khoa; set => khoa = value; }
-        public static void TxtNumberInputHandler(bool isDecimal, TextBox textBox, KeyPressEventArgs e)
+
+        public static void TxtNumberInputHandler(bool allowNegative, bool isDecimal, TextBox textBox, KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar)) return;
             if (e.KeyChar == (char)Keys.Back) return;
+            if (allowNegative)
+                if (e.KeyChar == '-' && textBox.Text.Length == 0) return;
             if (isDecimal)
                 if (e.KeyChar == '.' && textBox.Text.Length > 0 && !textBox.Text.Contains(".")) return;
             e.Handled = true;
         }
+
+        public static void TxtPrematureSpacesHandler(TextBox textBox, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ' ')
+                if (textBox.Text.EndsWith(" ") || textBox.Text.Length == 0)
+                    e.Handled = true;
+        }
+
         public static void TxtClearInput(List<TextBox> textBoxes)
         {
             foreach (TextBox textBox in textBoxes)
