@@ -108,6 +108,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             long kinhPhi = long.Parse(txt_kinhPhi.Text);
             DateTime ngayBD = dtP_ngayBatDau.Value;
             DateTime ngayKT = dtP_ngayKetThuc.Value;
+            if (ngayBD > ngayKT)
+                throw new Exception("Ngày bắt đầu không được trễ hơn ngày kết thúc!");
             string maGVHD = giangVien.MaGV;
             string maSVCNDT = txt_maSinhVien.Text;
             return new DeTai(maDT, tenDT, kinhPhi, ngayBD, ngayKT, maGVHD, maSVCNDT);
@@ -170,7 +172,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_xoaGV_Click(object sender, EventArgs e)
         {
-            lsB_danhSachGiangVien.Items.Remove(GetSelectedGiangVien());
+            GiangVien giangVien = GetSelectedGiangVien();
+            lsB_danhSachGiangVien.Items.Remove(giangVien);
             txtGiangViensFullClear();
         }
 
@@ -185,6 +188,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             if (GetGiangVienSelectedIndex() == -1)
             {
                 txtGiangViensFullClear();
+                txtDeTaisFullClear();
                 return;
             }
             GiangVien selectedGiangVien = GetSelectedGiangVien();

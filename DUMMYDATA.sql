@@ -18,9 +18,9 @@ VALUES ('01', N'Nguyễn Văn', 'D', N'Nam', 'KH01'),
 
 -- Insert dummy data into DETAI table
 INSERT INTO DETAI (MADT, TENDT, KINHPHI, NGAYBD, NGAYKT, MAGVHD, MASV_CNDT)
-VALUES ('DT01','Đồ án 1','1000000','2022-01-01','2022-12-31','01','01'),
-       ('DT02','Đồ án 2','2000000','2022-02-01','2022-11-30','02','02'),
-       ('DT03','Đồ án 3','3000000','2022-03-01','2022-10-31','03','03');
+VALUES ('DT01',N'Đồ án 1','1000000','2022-01-01','2022-12-31','01','01'),
+       ('DT02',N'Đồ án 2','2000000','2022-02-01','2022-11-30','02','02'),
+       ('DT03',N'Đồ án 3','3000000','2022-03-01','2022-10-31','03','03');
 
 -- Insert dummy data into THAMGIADETAI table
 INSERT INTO THAMGIADETAI (MADT,MASV,PHUCAP,KETQUA)

@@ -117,7 +117,6 @@
             // 
             this.cmB_gioiTinh.FormattingEnabled = true;
             this.cmB_gioiTinh.Items.AddRange(new object[] {
-            "Khác",
             "Nam",
             "Nữ "});
             this.cmB_gioiTinh.Location = new System.Drawing.Point(148, 182);
@@ -224,6 +223,7 @@
             // 
             this.txt_maKhoa.Location = new System.Drawing.Point(148, 220);
             this.txt_maKhoa.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_maKhoa.MaxLength = 10;
             this.txt_maKhoa.Name = "txt_maKhoa";
             this.txt_maKhoa.Size = new System.Drawing.Size(239, 26);
             this.txt_maKhoa.TabIndex = 5;
@@ -256,6 +256,7 @@
             // 
             this.txt_trinhDo.Location = new System.Drawing.Point(148, 145);
             this.txt_trinhDo.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_trinhDo.MaxLength = 30;
             this.txt_trinhDo.Name = "txt_trinhDo";
             this.txt_trinhDo.Size = new System.Drawing.Size(239, 26);
             this.txt_trinhDo.TabIndex = 3;
@@ -276,6 +277,7 @@
             // 
             this.txt_tenGiangVien.Location = new System.Drawing.Point(148, 109);
             this.txt_tenGiangVien.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_tenGiangVien.MaxLength = 15;
             this.txt_tenGiangVien.Name = "txt_tenGiangVien";
             this.txt_tenGiangVien.Size = new System.Drawing.Size(239, 26);
             this.txt_tenGiangVien.TabIndex = 2;
@@ -296,6 +298,7 @@
             // 
             this.txt_hoLot.Location = new System.Drawing.Point(148, 73);
             this.txt_hoLot.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_hoLot.MaxLength = 50;
             this.txt_hoLot.Name = "txt_hoLot";
             this.txt_hoLot.Size = new System.Drawing.Size(239, 26);
             this.txt_hoLot.TabIndex = 1;
@@ -316,6 +319,7 @@
             // 
             this.txt_maGiangVien.Location = new System.Drawing.Point(148, 42);
             this.txt_maGiangVien.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_maGiangVien.MaxLength = 10;
             this.txt_maGiangVien.Name = "txt_maGiangVien";
             this.txt_maGiangVien.Size = new System.Drawing.Size(239, 26);
             this.txt_maGiangVien.TabIndex = 0;
@@ -514,6 +518,7 @@
             // 
             this.txt_maSinhVien.Location = new System.Drawing.Point(156, 215);
             this.txt_maSinhVien.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_maSinhVien.MaxLength = 13;
             this.txt_maSinhVien.Name = "txt_maSinhVien";
             this.txt_maSinhVien.Size = new System.Drawing.Size(239, 26);
             this.txt_maSinhVien.TabIndex = 6;
@@ -556,6 +561,7 @@
             // 
             this.txt_kinhPhi.Location = new System.Drawing.Point(155, 109);
             this.txt_kinhPhi.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_kinhPhi.MaxLength = 10;
             this.txt_kinhPhi.Name = "txt_kinhPhi";
             this.txt_kinhPhi.Size = new System.Drawing.Size(239, 26);
             this.txt_kinhPhi.TabIndex = 2;
@@ -576,6 +582,7 @@
             // 
             this.txt_tenDeTai.Location = new System.Drawing.Point(156, 72);
             this.txt_tenDeTai.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_tenDeTai.MaxLength = 50;
             this.txt_tenDeTai.Name = "txt_tenDeTai";
             this.txt_tenDeTai.Size = new System.Drawing.Size(239, 26);
             this.txt_tenDeTai.TabIndex = 1;
@@ -596,6 +603,7 @@
             // 
             this.txt_maDetai.Location = new System.Drawing.Point(156, 39);
             this.txt_maDetai.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_maDetai.MaxLength = 10;
             this.txt_maDetai.Name = "txt_maDetai";
             this.txt_maDetai.Size = new System.Drawing.Size(239, 26);
             this.txt_maDetai.TabIndex = 0;

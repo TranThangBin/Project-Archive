@@ -125,6 +125,7 @@
             // 
             this.txt_namThanhLap.Location = new System.Drawing.Point(159, 113);
             this.txt_namThanhLap.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_namThanhLap.MaxLength = 255;
             this.txt_namThanhLap.Name = "txt_namThanhLap";
             this.txt_namThanhLap.Size = new System.Drawing.Size(225, 26);
             this.txt_namThanhLap.TabIndex = 2;
@@ -227,6 +228,7 @@
             // 
             this.txt_tenKhoa.Location = new System.Drawing.Point(159, 76);
             this.txt_tenKhoa.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_tenKhoa.MaxLength = 50;
             this.txt_tenKhoa.Name = "txt_tenKhoa";
             this.txt_tenKhoa.Size = new System.Drawing.Size(225, 26);
             this.txt_tenKhoa.TabIndex = 1;
@@ -258,6 +260,7 @@
             // 
             this.txt_maKhoa.Location = new System.Drawing.Point(159, 40);
             this.txt_maKhoa.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_maKhoa.MaxLength = 10;
             this.txt_maKhoa.Name = "txt_maKhoa";
             this.txt_maKhoa.Size = new System.Drawing.Size(225, 26);
             this.txt_maKhoa.TabIndex = 0;
@@ -455,6 +458,7 @@
             // 
             this.txt_trinhDoGV.Location = new System.Drawing.Point(161, 129);
             this.txt_trinhDoGV.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_trinhDoGV.MaxLength = 30;
             this.txt_trinhDoGV.Name = "txt_trinhDoGV";
             this.txt_trinhDoGV.Size = new System.Drawing.Size(225, 26);
             this.txt_trinhDoGV.TabIndex = 3;
@@ -475,6 +479,7 @@
             // 
             this.txt_tenGiangVien.Location = new System.Drawing.Point(161, 95);
             this.txt_tenGiangVien.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_tenGiangVien.MaxLength = 5;
             this.txt_tenGiangVien.Name = "txt_tenGiangVien";
             this.txt_tenGiangVien.Size = new System.Drawing.Size(225, 26);
             this.txt_tenGiangVien.TabIndex = 2;
@@ -495,6 +500,7 @@
             // 
             this.txt_hoLotGV.Location = new System.Drawing.Point(161, 61);
             this.txt_hoLotGV.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_hoLotGV.MaxLength = 1;
             this.txt_hoLotGV.Name = "txt_hoLotGV";
             this.txt_hoLotGV.Size = new System.Drawing.Size(225, 26);
             this.txt_hoLotGV.TabIndex = 1;
@@ -515,6 +521,7 @@
             // 
             this.txt_maGiangVien.Location = new System.Drawing.Point(161, 29);
             this.txt_maGiangVien.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_maGiangVien.MaxLength = 10;
             this.txt_maGiangVien.Name = "txt_maGiangVien";
             this.txt_maGiangVien.Size = new System.Drawing.Size(225, 26);
             this.txt_maGiangVien.TabIndex = 0;
@@ -704,6 +711,7 @@
             // 
             this.txt_tenSinhVien.Location = new System.Drawing.Point(160, 97);
             this.txt_tenSinhVien.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_tenSinhVien.MaxLength = 15;
             this.txt_tenSinhVien.Name = "txt_tenSinhVien";
             this.txt_tenSinhVien.Size = new System.Drawing.Size(225, 26);
             this.txt_tenSinhVien.TabIndex = 2;
@@ -724,6 +732,7 @@
             // 
             this.txt_hoLotSV.Location = new System.Drawing.Point(160, 63);
             this.txt_hoLotSV.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_hoLotSV.MaxLength = 50;
             this.txt_hoLotSV.Name = "txt_hoLotSV";
             this.txt_hoLotSV.Size = new System.Drawing.Size(225, 26);
             this.txt_hoLotSV.TabIndex = 1;
@@ -744,6 +753,7 @@
             // 
             this.txt_maSinhVien.Location = new System.Drawing.Point(160, 29);
             this.txt_maSinhVien.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_maSinhVien.MaxLength = 13;
             this.txt_maSinhVien.Name = "txt_maSinhVien";
             this.txt_maSinhVien.Size = new System.Drawing.Size(225, 26);
             this.txt_maSinhVien.TabIndex = 0;

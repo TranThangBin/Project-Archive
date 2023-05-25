@@ -140,6 +140,7 @@
             this.txt_ketQuaTGDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txt_ketQuaTGDT.Location = new System.Drawing.Point(139, 111);
             this.txt_ketQuaTGDT.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_ketQuaTGDT.MaxLength = 30;
             this.txt_ketQuaTGDT.Name = "txt_ketQuaTGDT";
             this.txt_ketQuaTGDT.Size = new System.Drawing.Size(237, 26);
             this.txt_ketQuaTGDT.TabIndex = 3;
@@ -162,6 +163,7 @@
             this.txt_phuCapTGDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txt_phuCapTGDT.Location = new System.Drawing.Point(139, 76);
             this.txt_phuCapTGDT.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_phuCapTGDT.MaxLength = 10;
             this.txt_phuCapTGDT.Name = "txt_phuCapTGDT";
             this.txt_phuCapTGDT.Size = new System.Drawing.Size(237, 26);
             this.txt_phuCapTGDT.TabIndex = 2;
@@ -184,6 +186,7 @@
             this.txt_maSinhVienTGDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txt_maSinhVienTGDT.Location = new System.Drawing.Point(139, 40);
             this.txt_maSinhVienTGDT.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_maSinhVienTGDT.MaxLength = 13;
             this.txt_maSinhVienTGDT.Name = "txt_maSinhVienTGDT";
             this.txt_maSinhVienTGDT.Size = new System.Drawing.Size(237, 26);
             this.txt_maSinhVienTGDT.TabIndex = 1;
@@ -206,6 +209,7 @@
             this.txt_maDeTaiTGDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txt_maDeTaiTGDT.Location = new System.Drawing.Point(139, 6);
             this.txt_maDeTaiTGDT.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_maDeTaiTGDT.MaxLength = 10;
             this.txt_maDeTaiTGDT.Name = "txt_maDeTaiTGDT";
             this.txt_maDeTaiTGDT.Size = new System.Drawing.Size(237, 26);
             this.txt_maDeTaiTGDT.TabIndex = 0;

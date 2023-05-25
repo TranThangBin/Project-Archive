@@ -63,17 +63,19 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 throw new Exception("Vui lòng không để trống mã đề tài!");
             if (txt_tenDetai.Text == "")
                 throw new Exception("Vui lòng không để trống tên đề tài!");
-            if (txt_kinhPhi.Text == "Vui lòng không để trống kinh phí!")
+            if (txt_kinhPhi.Text == "")
                 throw new Exception();
             if (txt_maGiangVien.Text == "")
-                throw new Exception("Vui lòng không để trống giảng viên!");
+                throw new Exception("Vui lòng không để trống mã giảng viên!");
             if (txt_maSinhVien.Text == "")
-                throw new Exception("Vui lòng không để trống sinh viên!");
+                throw new Exception("Vui lòng không để trống mã sinh viên!");
             string maDT = txt_maDetai.Text;
             string tenDT = txt_tenDetai.Text;
             long kinhPhi = long.Parse(txt_kinhPhi.Text);
             DateTime ngayBD = dtP_ngayBatDau.Value;
             DateTime ngayKT = dtP_ngayKetThuc.Value;
+            if (ngayBD > ngayKT)
+                throw new Exception("Ngày bắt đầu không được trễ hơn ngày kết thúc!");
             string maGVHD = txt_maGiangVien.Text;
             string maSVCNDT = txt_maSinhVien.Text;
             return new DeTai(maDT, tenDT, kinhPhi, ngayBD, ngayKT, maGVHD, maSVCNDT);
@@ -98,6 +100,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             string maDT = deTai.MaDT;
             string maSV = deTai.MaSVCNDT;
             long phuCap = long.Parse(txt_phuCapTGDT.Text);
+            if (phuCap > deTai.KinhPhi)
+                throw new Exception("Phụ cấp vượt quá giới hạn kinh phí!");
             string ketQua = txt_ketQuaTGDT.Text;
             return new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
         }
@@ -153,7 +157,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_xoaDeTai_Click(object sender, EventArgs e)
         {
-            lsB_danhSachDeTai.Items.Remove(GetSelectedDeTai());
+            DeTai deTai = GetSelectedDeTai();
+            lsB_danhSachDeTai.Items.Remove(deTai);
             txtDeTaisFullClear();
         }
 
@@ -168,6 +173,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             if (GetDeTaiSelectedIndex() == -1)
             {
                 txtDeTaisFullClear();
+                Forms.TxtClearInput(txtTGDTs);
                 return;
             }
             DeTai selectedDeTai = GetSelectedDeTai();

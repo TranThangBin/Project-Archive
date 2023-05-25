@@ -28,7 +28,7 @@ Click on the "Fork" button in the top-right corner of the repository page to cre
 
 ## 2. Clone the fork repository
 
-Use the `git clone <Your fork link when you you click on the code button>` command to clone the forked repository to your local machine.
+Go to your fork repository click at the code button on the top right you will see a link copy that then go to a random directory in your machine use the `git clone <that link you just copied>` command to clone the forked repository to your local machine.
 
 ## 3. Create a new branch
 

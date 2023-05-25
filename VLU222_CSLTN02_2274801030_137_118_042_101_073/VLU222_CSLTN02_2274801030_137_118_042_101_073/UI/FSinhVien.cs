@@ -117,6 +117,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             long kinhPhi = long.Parse(txt_kinhPhiDT.Text);
             DateTime ngayBD = dtP_ngayBatDauDT.Value;
             DateTime ngayKT = dtP_ngayKetThucDT.Value;
+            if (ngayBD > ngayKT)
+                throw new Exception("Ngày bắt đầu không được trễ hơn ngày kết thúc!");
             string maGV = txt_maGiangVienDT.Text;
             string maSV = sinhVien.MaSV;
             return new DeTai(maDT, tenDT, kinhPhi, ngayBD, ngayKT, maGV, maSV);
@@ -141,6 +143,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             string maDT = deTai.MaDT;
             string maSV = sinhVien.MaSV;
             long phuCap = long.Parse(txt_phuCapTGDT.Text);
+            if (phuCap > deTai.KinhPhi)
+                throw new Exception("Phụ cấp vượt quá giới hạn kinh phí!");
             string ketQua = txt_ketQuaTGDT.Text;
             return new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
         }
@@ -207,7 +211,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_xoaSV_Click(object sender, EventArgs e)
         {
-            lsb_danhSachSinhVien.Items.Remove(GetSelectedSinhVien());
+            SinhVien sinhVien = GetSelectedSinhVien();
+            lsb_danhSachSinhVien.Items.Remove(sinhVien);
             txtSinhViensFullClear();
         }
 
@@ -223,6 +228,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             if (GetSinhVienSelectedIndex() == -1)
             {
                 txtSinhViensFullClear();
+                txtDeTaisFullClear();
+                Forms.TxtClearInput(txtTGDTs);
                 return;
             }
             SinhVien selectedSinhVien = GetSelectedSinhVien();
@@ -298,6 +305,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             if (GetDeTaiSelectedIndex() == -1)
             {
                 txtDeTaisFullClear();
+                Forms.TxtClearInput(txtTGDTs);
                 return;
             }
             DeTai selectedDeTai = GetSelectedDeTai();

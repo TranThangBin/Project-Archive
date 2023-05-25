@@ -82,6 +82,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             string maKhoa = txt_maKhoa.Text;
             string tenKhoa = txt_tenKhoa.Text;
             int namThanhLap = int.Parse(txt_namThanhLap.Text);
+            if (namThanhLap > DateTime.Today.Year)
+                throw new Exception("Năm thành lập của khoa không hợp lệ!");
             return new Khoa(maKhoa, tenKhoa, namThanhLap);
         }
 
@@ -212,6 +214,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             if (GetKhoaSelectedIndex() == -1)
             {
                 Forms.TxtClearInput(txtKhoas);
+                txtGiangViensFullClear();
+                txtSinhViensFullClear();
                 return;
             }
             Khoa selectedKhoa = GetSelectedKhoa();
