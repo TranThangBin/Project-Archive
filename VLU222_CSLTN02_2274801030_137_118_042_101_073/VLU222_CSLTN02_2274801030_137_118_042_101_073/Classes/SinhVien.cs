@@ -35,6 +35,11 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             this.maKhoa = maKhoa;
         }
 
+        public override string ToString()
+        {
+            return $"{maSV}/{maKhoa} {hoLot} {tenSV}";
+        }
+
         public string MaSV { get => maSV; set => maSV = value; }
         public string HoLot { get => hoLot; set => hoLot = value; }
         public string TenSV { get => tenSV; set => tenSV = value; }

@@ -91,6 +91,7 @@
             this.lsB_danhSach.Size = new System.Drawing.Size(355, 304);
             this.lsB_danhSach.TabIndex = 0;
             this.lsB_danhSach.SelectedIndexChanged += new System.EventHandler(this.lsB_danhSach_SelectedIndexChanged);
+            this.lsB_danhSach.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lsB_danhSach_MouseDown);
             // 
             // btn_xoaTGDT
             // 

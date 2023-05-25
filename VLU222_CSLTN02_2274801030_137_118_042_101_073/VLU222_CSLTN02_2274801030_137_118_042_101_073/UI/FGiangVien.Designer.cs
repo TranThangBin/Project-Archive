@@ -227,7 +227,6 @@
             this.txt_maKhoa.Name = "txt_maKhoa";
             this.txt_maKhoa.Size = new System.Drawing.Size(239, 26);
             this.txt_maKhoa.TabIndex = 5;
-            this.txt_maKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_maKhoa_KeyPress);
             // 
             // label6
             // 
@@ -555,6 +554,7 @@
             this.txt_kinhPhi.Name = "txt_kinhPhi";
             this.txt_kinhPhi.Size = new System.Drawing.Size(239, 26);
             this.txt_kinhPhi.TabIndex = 2;
+            this.txt_kinhPhi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_kinhPhi_KeyPress);
             // 
             // label9
             // 

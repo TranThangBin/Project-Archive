@@ -51,37 +51,22 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void btn_themTGDT_Click(object sender, EventArgs e)
         {
             lsB_danhSach.Items.Add(GetThamGiaDeTai());
-            Forms.ClearInput(txtTGDTs);
+            Forms.TxtClearInput(txtTGDTs);
         }
 
         private void btn_suaTGDT_Click(object sender, EventArgs e)
         {
-            int selectedIndex = lsB_danhSach.SelectedIndex;
-            if (selectedIndex == -1)
-            {
-                MessageBox.Show("Vui lòng chọn 1 mục tiêu để chỉnh sửa!");
-                return;
-            }
-            lsB_danhSach.Items.RemoveAt(selectedIndex);
-            lsB_danhSach.Items.Insert(selectedIndex, GetThamGiaDeTai());
-            Forms.ClearInput(txtTGDTs);
+            if (!Forms.LsbHasItemSelected(lsB_danhSach.SelectedIndex, "Vui lòng chọn 1 mục tiêu để chỉnh sửa!")) return;
+            lsB_danhSach.Items.RemoveAt(lsB_danhSach.SelectedIndex);
+            lsB_danhSach.Items.Insert(lsB_danhSach.SelectedIndex, GetThamGiaDeTai());
+            Forms.TxtClearInput(txtTGDTs);
         }
 
         private void btn_xoaTGDT_Click(object sender, EventArgs e)
         {
             ThamGiaDeTai selectedThamGiaDeTai = lsB_danhSach.SelectedItem as ThamGiaDeTai;
             lsB_danhSach.Items.Remove(selectedThamGiaDeTai);
-            Forms.ClearInput(txtTGDTs);
-        }
-
-        private void lsB_danhSach_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lsB_danhSach.SelectedIndex == -1) return;
-            ThamGiaDeTai selectedThamGiaDeTai = lsB_danhSach.SelectedItem as ThamGiaDeTai;
-            txt_maDeTaiTGDT.Text = selectedThamGiaDeTai.MaDT;
-            txt_maSinhVienTGDT.Text = selectedThamGiaDeTai.MaSV;
-            txt_phuCapTGDT.Text = selectedThamGiaDeTai.PhuCap + "";
-            txt_ketQuaTGDT.Text = selectedThamGiaDeTai.KetQua;
+            Forms.TxtClearInput(txtTGDTs);
         }
 
         private void btn_troveTGDT_Click(object sender, EventArgs e)
@@ -89,14 +74,33 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             Close();
         }
 
+        private void lsB_danhSach_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lsB_danhSach.SelectedIndex == -1)
+            {
+                Forms.TxtClearInput(txtTGDTs);
+                return;
+            }
+            ThamGiaDeTai selectedThamGiaDeTai = lsB_danhSach.SelectedItem as ThamGiaDeTai;
+            txt_maDeTaiTGDT.Text = selectedThamGiaDeTai.MaDT;
+            txt_maSinhVienTGDT.Text = selectedThamGiaDeTai.MaSV;
+            txt_phuCapTGDT.Text = selectedThamGiaDeTai.PhuCap + "";
+            txt_ketQuaTGDT.Text = selectedThamGiaDeTai.KetQua;
+        }
+
+        private void lsB_danhSach_MouseDown(object sender, MouseEventArgs e)
+        {
+            Forms.LsbRightClickDeselected(sender as ListBox, e);
+        }
+
         private void txt_maSinhVienTGDT_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.NumberInputHandler(false, sender as TextBox, e);
+            Forms.TxtNumberInputHandler(false, sender as TextBox, e);
         }
 
         private void txt_phuCapTGDT_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.NumberInputHandler(false, sender as TextBox, e);
+            Forms.TxtNumberInputHandler(false, sender as TextBox, e);
         }
     }
 }

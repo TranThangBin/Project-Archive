@@ -68,6 +68,17 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             string maSVCNDT = txt_maSinhVien.Text;
             return new DeTai(maDT, tenDT, kinhPhi, ngayBD, ngayKT, maGVHD, maSVCNDT);
         }
+
+        private DeTai GetSelectedDeTai()
+        {
+            return lsB_danhSachDeTai.SelectedItem as DeTai;
+        }
+
+        private int GetDeTaiSelectedIndex()
+        {
+            return lsB_danhSachDeTai.SelectedIndex;
+        }
+
         private ThamGiaDeTai GetThamGiaDeTai(DeTai deTai)
         {
             string maDT = deTai.MaDT;
@@ -77,16 +88,9 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             return new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
         }
 
-        private void UpdateDeTai(int index, DeTai deTai)
-        {
-            lsB_danhSachDeTai.Items.RemoveAt(index);
-            lsB_danhSachDeTai.Items.Insert(index, deTai);
-            lsB_danhSachDeTai.SelectedIndex = index;
-        }
-
         private void txtDeTaisFullClear()
         {
-            Forms.ClearInput(txtDeTais);
+            Forms.TxtClearInput(txtDeTais);
             dtP_ngayBatDau.Value = DateTime.Today;
             dtP_ngayKetThuc.Value = DateTime.Today;
         }
@@ -99,23 +103,15 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_suaDeTai_Click(object sender, EventArgs e)
         {
-            int DeTaiSelectedIndex = lsB_danhSachDeTai.SelectedIndex;
-            if (DeTaiSelectedIndex == -1)
-            {
-                MessageBox.Show("Vui lòng chọn 1 đề tài để chỉnh sửa!");
-                return;
-            }
-            DeTai selectedDeTai = lsB_danhSachDeTai.SelectedItem as DeTai;
+            if (!Forms.LsbHasItemSelected(GetDeTaiSelectedIndex(), "Vui lòng chọn 1 đề tài để chỉnh sửa!")) return;
             DeTai newDeTai = GetDeTai();
-            newDeTai.ThamGiaDeTais = selectedDeTai.ThamGiaDeTais;
-            UpdateDeTai(DeTaiSelectedIndex, newDeTai);
+            newDeTai.ThamGiaDeTais = GetSelectedDeTai().ThamGiaDeTais;
             txtDeTaisFullClear();
         }
 
         private void btn_xoaDeTai_Click(object sender, EventArgs e)
         {
-            DeTai selectedThamGiaDeTai = lsB_danhSachDeTai.SelectedItem as DeTai;
-            lsB_danhSachDeTai.Items.Remove(selectedThamGiaDeTai);
+            lsB_danhSachDeTai.Items.Remove(GetSelectedDeTai());
             txtDeTaisFullClear();
         }
 
@@ -127,8 +123,12 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void lsB_danhSachDeTai_SelectedIndexChanged(object sender, EventArgs e)
         {
             lsv_danhSachTGDT.Items.Clear();
-            if (lsB_danhSachDeTai.SelectedIndex == -1) return;
-            DeTai selectedDeTai = lsB_danhSachDeTai.SelectedItem as DeTai;
+            if (GetDeTaiSelectedIndex() == -1)
+            {
+                txtDeTaisFullClear();
+                return;
+            }
+            DeTai selectedDeTai = GetSelectedDeTai();
             txt_maDetai.Text = selectedDeTai.MaDT;
             txt_tenDetai.Text = selectedDeTai.TenDT;
             txt_kinhPhi.Text = selectedDeTai.KinhPhi + "";
@@ -152,33 +152,28 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void lsB_danhSachDeTai_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right) lsB_danhSachDeTai.SelectedIndex = -1;
+            Forms.LsbRightClickDeselected(sender as ListBox, e);
         }
 
         private void txt_kinhPhi_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.NumberInputHandler(false, sender as TextBox, e);
+            Forms.TxtNumberInputHandler(false, sender as TextBox, e);
         }
 
         private void txt_maGiangVien_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.NumberInputHandler(false, sender as TextBox, e);
+            Forms.TxtNumberInputHandler(false, sender as TextBox, e);
         }
 
         private void txt_maSinhVien_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.NumberInputHandler(false, sender as TextBox, e);
+            Forms.TxtNumberInputHandler(false, sender as TextBox, e);
         }
 
         private void btn_themTGDT_Click(object sender, EventArgs e)
         {
-            int DeTaiSelectedIndex = lsB_danhSachDeTai.SelectedIndex;
-            if (DeTaiSelectedIndex == -1)
-            {
-                MessageBox.Show("Bạn cần phải chọn 1 đề tài để tham gia!");
-                return;
-            }
-            DeTai selectedDeTai = lsB_danhSachDeTai.SelectedItem as DeTai;
+            if (!Forms.LsbHasItemSelected(GetDeTaiSelectedIndex(), "Bạn cần phải chọn 1 đề tài để tham gia!")) return;
+            DeTai selectedDeTai = GetSelectedDeTai();
             ThamGiaDeTai thamGiaDeTai = GetThamGiaDeTai(selectedDeTai);
             string[] lsviObj = new string[]
             {
@@ -190,8 +185,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             ListViewItem lsvItem = new ListViewItem(lsviObj);
             lsv_danhSachTGDT.Items.Add(lsvItem);
             selectedDeTai.ThamGiaDeTais.Add(thamGiaDeTai);
-            UpdateDeTai(DeTaiSelectedIndex, selectedDeTai);
-            Forms.ClearInput(txtTGDTs);
+            Forms.TxtClearInput(txtTGDTs);
         }
 
         private void btn_suaTGDT_Click(object sender, EventArgs e)
@@ -203,7 +197,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             }
             ListViewItem TGDTSelectedItem = lsv_danhSachTGDT.SelectedItems[0];
             int TGDTSelectedIndex = TGDTSelectedItem.Index;
-            DeTai selectedDeTai = lsB_danhSachDeTai.SelectedItem as DeTai;
+            DeTai selectedDeTai = GetSelectedDeTai();
             ThamGiaDeTai newThamGiaDeTai = GetThamGiaDeTai(selectedDeTai);
             selectedDeTai.ThamGiaDeTais.RemoveAt(TGDTSelectedIndex);
             selectedDeTai.ThamGiaDeTais.Insert(TGDTSelectedIndex, newThamGiaDeTai);
@@ -217,7 +211,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             ListViewItem newLsvItem = new ListViewItem(newLsviObj);
             lsv_danhSachTGDT.Items.RemoveAt(TGDTSelectedIndex);
             lsv_danhSachTGDT.Items.Insert(TGDTSelectedIndex, newLsvItem);
-            Forms.ClearInput(txtTGDTs);
+            Forms.TxtClearInput(txtTGDTs);
         }
 
         private void btn_xoaTGDT_Click(object sender, EventArgs e)
@@ -225,11 +219,9 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             ListViewItem TGDTSelectedItem = lsv_danhSachTGDT.SelectedItems[0];
             int TGDTSelectedIndex = TGDTSelectedItem.Index;
             lsv_danhSachTGDT.Items.Remove(TGDTSelectedItem);
-            int DeTaiSelectedIndex = lsB_danhSachDeTai.SelectedIndex;
-            DeTai selectedDeTai = lsB_danhSachDeTai.SelectedItem as DeTai;
+            DeTai selectedDeTai = GetSelectedDeTai();
             selectedDeTai.ThamGiaDeTais.RemoveAt(TGDTSelectedIndex);
-            UpdateDeTai(DeTaiSelectedIndex, selectedDeTai);
-            Forms.ClearInput(txtTGDTs);
+            Forms.TxtClearInput(txtTGDTs);
         }
 
         private void btn_truyCapTGDT_Click(object sender, EventArgs e)
@@ -241,7 +233,11 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void lsv_danhSachTGDT_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lsv_danhSachTGDT.SelectedItems.Count == 0) return;
+            if (lsv_danhSachTGDT.SelectedItems.Count == 0)
+            {
+                Forms.TxtClearInput(txtTGDTs);
+                return;
+            }
             ListViewItem TGDTSelectedItem = lsv_danhSachTGDT.SelectedItems[0];
             txt_phuCapTGDT.Text = TGDTSelectedItem.SubItems[2].Text;
             txt_ketQuaTGDT.Text = TGDTSelectedItem.SubItems[3].Text;
@@ -249,12 +245,12 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void txt_maSinhVienTGDT_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.NumberInputHandler(false, sender as TextBox, e);
+            Forms.TxtNumberInputHandler(false, sender as TextBox, e);
         }
 
         private void txt_phuCapTGDT_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.NumberInputHandler(false, sender as TextBox, e);
+            Forms.TxtNumberInputHandler(false, sender as TextBox, e);
         }
     }
 }
