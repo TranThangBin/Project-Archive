@@ -35,16 +35,11 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             return command.ExecuteReader();
         }
 
-        public static int ExecuteNonQuery(string query,List<string> parameters,List<SqlDbType> dbTypes)
+        public static int ExecuteNonQuery(string query,List<SqlParameter> parameters)
         {
-            if (parameters.Count != dbTypes.Count) 
-                throw new Exception("Không đủ tham số!");
             SqlCommand command = new SqlCommand(query, connection);
-            for(int i = 0; i < parameters.Count; i++)
-            {
-                SqlParameter parameter = new SqlParameter(parameters[i], dbTypes[i]);
+            foreach(SqlParameter parameter in parameters) 
                 command.Parameters.Add(parameter);
-            }
             return command.ExecuteNonQuery();
         }
     }
