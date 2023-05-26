@@ -167,7 +167,7 @@
             this.txt_phuCapTGDT.Name = "txt_phuCapTGDT";
             this.txt_phuCapTGDT.Size = new System.Drawing.Size(237, 26);
             this.txt_phuCapTGDT.TabIndex = 2;
-            this.txt_phuCapTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumber_KeyPress);
+            this.txt_phuCapTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumId_KeyPress);
             // 
             // label10
             // 
@@ -190,7 +190,7 @@
             this.txt_maSinhVienTGDT.Name = "txt_maSinhVienTGDT";
             this.txt_maSinhVienTGDT.Size = new System.Drawing.Size(237, 26);
             this.txt_maSinhVienTGDT.TabIndex = 1;
-            this.txt_maSinhVienTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumber_KeyPress);
+            this.txt_maSinhVienTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumId_KeyPress);
             // 
             // label9
             // 

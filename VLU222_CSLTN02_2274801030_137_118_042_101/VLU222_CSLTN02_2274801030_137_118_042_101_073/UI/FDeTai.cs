@@ -115,7 +115,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void txtNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.TxtNumberInputHandler(false, false, sender as TextBox, e);
+            Forms.TxtNumIdHandler(sender as TextBox, e);
         }
 
         private void txtInputConstraint_KeyPress(object sender, KeyPressEventArgs e)
@@ -139,14 +139,13 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_suaDeTai_Click(object sender, EventArgs e)
         {
-            int deTaiSelectedIndex = GetDeTaiSelectedIndex();
-            if (!Forms.LsbHasItemSelected(deTaiSelectedIndex, "Vui lòng chọn 1 đề tài để chỉnh sửa!")) return;
+            if (!Forms.LsbHasItemSelected(lsB_danhSachDeTai, "Vui lòng chọn 1 đề tài để chỉnh sửa!")) return;
             DeTai selectedDeTai = GetSelectedDeTai();
             try
             {
                 DeTai newDeTai = GetDeTai();
                 newDeTai.ThamGiaDeTais = selectedDeTai.ThamGiaDeTais;
-                Forms.LsbUpdateItem(lsB_danhSachDeTai, deTaiSelectedIndex, newDeTai);
+                Forms.LsbUpdateItem(lsB_danhSachDeTai, GetDeTaiSelectedIndex(), newDeTai);
                 txtDeTaisFullClear();
             }
             catch (Exception ex)
@@ -211,7 +210,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_themTGDT_Click(object sender, EventArgs e)
         {
-            if (!Forms.LsbHasItemSelected(GetDeTaiSelectedIndex(), "Bạn cần phải chọn 1 đề tài để tham gia!")) return;
+            if (!Forms.LsbHasItemSelected(lsB_danhSachDeTai, "Bạn cần phải chọn 1 đề tài để tham gia!")) return;
             DeTai selectedDeTai = GetSelectedDeTai();
             try
             {

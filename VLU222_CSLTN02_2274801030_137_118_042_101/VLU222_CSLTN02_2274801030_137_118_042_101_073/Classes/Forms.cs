@@ -39,7 +39,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             return true;
         }
 
-        public static void TxtNumberInputHandler(bool allowNegative, bool isDecimal, TextBox textBox, KeyPressEventArgs e)
+        public static void TxtNumIdHandler(TextBox textBox, KeyPressEventArgs e, bool allowNegative = false, bool isDecimal = false)
         {
             if ((Control.ModifierKeys & Keys.Control) == Keys.Control) return;
             if (char.IsDigit(e.KeyChar)) return;
@@ -49,6 +49,13 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             if (isDecimal)
                 if (e.KeyChar == '.' && textBox.Text.Length > 0 && !textBox.Text.Contains(".")) return;
             e.Handled = true;
+        }
+
+        public static void TxtStringNumIdHandler(TextBox textBox, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ' ')
+                e.Handled = true;
+            if (IsSpecialChar(e.KeyChar)) e.Handled = true;
         }
 
         public static void TxtInputConstraint(TextBox textBox, KeyPressEventArgs e)
@@ -71,9 +78,9 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             if (e.Button == MouseButtons.Right) listBox.SelectedIndex = -1;
         }
 
-        public static bool LsbHasItemSelected(int selectedIndex, string message)
+        public static bool LsbHasItemSelected(ListBox listBox, string message)
         {
-            if (selectedIndex == -1)
+            if (listBox.SelectedIndex == -1)
             {
                 MessageBox.Show(message);
                 return false;

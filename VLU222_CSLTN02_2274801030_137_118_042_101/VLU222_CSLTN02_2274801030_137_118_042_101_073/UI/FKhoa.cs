@@ -150,7 +150,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void txtNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.TxtNumberInputHandler(false, false, sender as TextBox, e);
+            Forms.TxtNumIdHandler(sender as TextBox, e);
         }
 
         private void txtInputConstraint_KeyPress(object sender, KeyPressEventArgs e)
@@ -179,15 +179,14 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_suaKhoa_Click(object sender, EventArgs e)
         {
-            int khoaSelectedIndex = GetKhoaSelectedIndex();
-            if (!Forms.LsbHasItemSelected(khoaSelectedIndex, "Vui lòng chọn 1 khoa để chỉnh sửa!")) return;
+            if (!Forms.LsbHasItemSelected(lsB_danhSachKhoa, "Vui lòng chọn 1 khoa để chỉnh sửa!")) return;
             Khoa selectedKhoa = GetSelectedKhoa();
             try
             {
                 Khoa newKhoa = GetKhoa();
                 newKhoa.SinhViens = selectedKhoa.SinhViens;
                 newKhoa.GiangViens = selectedKhoa.GiangViens;
-                Forms.LsbUpdateItem(lsB_danhSachKhoa, khoaSelectedIndex, newKhoa);
+                Forms.LsbUpdateItem(lsB_danhSachKhoa, GetKhoaSelectedIndex(), newKhoa);
                 Forms.TxtClearInput(txtKhoas);
             }
             catch (Exception ex)
@@ -262,7 +261,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_themGV_Click(object sender, EventArgs e)
         {
-            if (!Forms.LsbHasItemSelected(GetKhoaSelectedIndex(), "Bạn cần phải chọn 1 khoa để thêm giảng viên!")) return;
+            if (!Forms.LsbHasItemSelected(lsB_danhSachKhoa, "Bạn cần phải chọn 1 khoa để thêm giảng viên!")) return;
             Khoa selectedKhoa = GetSelectedKhoa();
             try
             {
@@ -356,7 +355,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_themSV_Click(object sender, EventArgs e)
         {
-            if (!Forms.LsbHasItemSelected(GetKhoaSelectedIndex(), "Bạn cần phải chọn 1 khoa để thêm sinh viên!")) return;
+            if (!Forms.LsbHasItemSelected(lsB_danhSachKhoa, "Bạn cần phải chọn 1 khoa để thêm sinh viên!")) return;
             Khoa selectedKhoa = GetSelectedKhoa();
             try
             {

@@ -130,7 +130,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void txtNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.TxtNumberInputHandler(false, false, sender as TextBox, e);
+            Forms.TxtNumIdHandler(sender as TextBox, e);
         }
 
         private void txtInputConstraint_KeyPress(object sender, KeyPressEventArgs e)
@@ -154,14 +154,13 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_suaGV_Click(object sender, EventArgs e)
         {
-            int giangVienSelectedIndex = GetGiangVienSelectedIndex();
-            if (!Forms.LsbHasItemSelected(giangVienSelectedIndex, "Vui lòng chọn 1 giảng viên để chỉnh sửa!")) return;
+            if (!Forms.LsbHasItemSelected(lsB_danhSachGiangVien, "Vui lòng chọn 1 giảng viên để chỉnh sửa!")) return;
             GiangVien selectedGiangVien = GetSelectedGiangVien();
             try
             {
                 GiangVien newGiangVien = GetGiangVien();
                 newGiangVien.Detais = selectedGiangVien.Detais;
-                Forms.LsbUpdateItem(lsB_danhSachGiangVien, giangVienSelectedIndex, newGiangVien);
+                Forms.LsbUpdateItem(lsB_danhSachGiangVien, GetGiangVienSelectedIndex(), newGiangVien);
                 txtGiangViensFullClear();
             }
             catch (Exception ex)
@@ -231,7 +230,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_themDT_Click(object sender, EventArgs e)
         {
-            if (!Forms.LsbHasItemSelected(GetGiangVienSelectedIndex(), "Bạn cần phải chọn 1 giảng viên để thêm đề tài!")) return;
+            if (!Forms.LsbHasItemSelected(lsB_danhSachGiangVien, "Bạn cần phải chọn 1 giảng viên để thêm đề tài!")) return;
             GiangVien selectedGiangVien = GetSelectedGiangVien();
             try
             {

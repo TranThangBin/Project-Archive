@@ -56,10 +56,9 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             return new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
         }
 
-
-        private void txtNumber_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtNumId_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.TxtNumberInputHandler(false, false, sender as TextBox, e);
+            Forms.TxtNumIdHandler(sender as TextBox, e);
         }
 
         private void txtInputConstraint_KeyPress(object sender, KeyPressEventArgs e)
@@ -83,12 +82,11 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_suaTGDT_Click(object sender, EventArgs e)
         {
-            int danhSachSelectedIndex = lsB_danhSach.SelectedIndex;
-            if (!Forms.LsbHasItemSelected(danhSachSelectedIndex, "Vui lòng chọn 1 mục tiêu để chỉnh sửa!")) return;
+            if (!Forms.LsbHasItemSelected(lsB_danhSach, "Vui lòng chọn 1 mục tiêu để chỉnh sửa!")) return;
             try
             {
                 ThamGiaDeTai thamGiaDeTai = GetThamGiaDeTai();
-                Forms.LsbUpdateItem(lsB_danhSach, danhSachSelectedIndex, thamGiaDeTai);
+                Forms.LsbUpdateItem(lsB_danhSach, lsB_danhSach.SelectedIndex, thamGiaDeTai);
                 Forms.TxtClearInput(txtTGDTs);
             }
             catch (Exception ex)

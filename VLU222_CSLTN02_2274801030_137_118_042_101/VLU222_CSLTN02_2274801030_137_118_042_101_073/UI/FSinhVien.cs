@@ -164,7 +164,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void txtNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.TxtNumberInputHandler(false, false, sender as TextBox, e);
+            Forms.TxtNumIdHandler(sender as TextBox, e);
         }
 
         private void txtInputConstraint_KeyPress(object sender, KeyPressEventArgs e)
@@ -193,14 +193,13 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_suaSV_Click(object sender, EventArgs e)
         {
-            int sinhVienSelectedIndex = GetSinhVienSelectedIndex();
-            if (!Forms.LsbHasItemSelected(sinhVienSelectedIndex, "Vui lòng chọn 1 sinh viên để chỉnh sửa!")) return;
+            if (!Forms.LsbHasItemSelected(lsb_danhSachSinhVien, "Vui lòng chọn 1 sinh viên để chỉnh sửa!")) return;
             SinhVien selectedSinhVien = GetSelectedSinhVien();
             try
             {
                 SinhVien newSinhVien = GetSinhVien();
                 newSinhVien.Detais = selectedSinhVien.Detais;
-                Forms.LsbUpdateItem(lsb_danhSachSinhVien, sinhVienSelectedIndex, newSinhVien);
+                Forms.LsbUpdateItem(lsb_danhSachSinhVien, GetSinhVienSelectedIndex(), newSinhVien);
                 txtSinhViensFullClear();
             }
             catch (Exception ex)
@@ -255,7 +254,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_themDeTai_Click(object sender, EventArgs e)
         {
-            if (!Forms.LsbHasItemSelected(GetSinhVienSelectedIndex(), "Bạn cần phải chọn 1 sinh viên để thêm đề tài!")) return;
+            if (!Forms.LsbHasItemSelected(lsb_danhSachSinhVien, "Bạn cần phải chọn 1 sinh viên để thêm đề tài!")) return;
             SinhVien selectedSinhVien = GetSelectedSinhVien();
             try
             {
@@ -272,11 +271,11 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_suaDeTai_Click(object sender, EventArgs e)
         {
-            int deTaiSelectedIndex = GetDeTaiSelectedIndex();
-            if (!Forms.LsbHasItemSelected(deTaiSelectedIndex, "Vui lòng chọn 1 đề tài để chỉnh sửa!")) return;
+            if (!Forms.LsbHasItemSelected(lsb_danhSachDeTai, "Vui lòng chọn 1 đề tài để chỉnh sửa!")) return;
             SinhVien selectedSinhVien = GetSelectedSinhVien();
             try
             {
+                int deTaiSelectedIndex = GetDeTaiSelectedIndex();
                 DeTai newDeTai = GetDeTai(selectedSinhVien);
                 selectedSinhVien.Detais.RemoveAt(deTaiSelectedIndex);
                 selectedSinhVien.Detais.Insert(deTaiSelectedIndex, newDeTai);
@@ -341,7 +340,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_themTGDT_Click(object sender, EventArgs e)
         {
-            if (!Forms.LsbHasItemSelected(GetDeTaiSelectedIndex(), "Bạn cần phải chọn 1 đề tài để tham gia!")) return;
+            if (!Forms.LsbHasItemSelected(lsb_danhSachDeTai, "Bạn cần phải chọn 1 đề tài để tham gia!")) return;
             SinhVien selectedSinhVien = GetSelectedSinhVien();
             DeTai selectedDeTai = GetSelectedDeTai();
             try
