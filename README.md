@@ -6,8 +6,6 @@ Nguyễn Kim Bảo Nguyên
 
 Châu Gia Hào
 
-Đào Văn Khoa
-
 Trần Quang Thắng
 
 # Working on GitHub
