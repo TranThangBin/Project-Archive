@@ -26,8 +26,22 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         public static FKhoa Khoa { get => khoa; set => khoa = value; }
         public static FThanhVien ThanhVien { get => thanhVien; set => thanhVien = value; }
 
+        private static bool IsSpecialChar(char ch)
+        {
+            if (char.IsLetter(ch))
+                return false;
+            else if (char.IsDigit(ch))
+                return false;
+            else if (ch == ' ')
+                return false;
+            else if ((Control.ModifierKeys & Keys.Control) == Keys.Control)
+                return false;
+            return true;
+        }
+
         public static void TxtNumberInputHandler(bool allowNegative, bool isDecimal, TextBox textBox, KeyPressEventArgs e)
         {
+            if ((Control.ModifierKeys & Keys.Control) == Keys.Control) return;
             if (char.IsDigit(e.KeyChar)) return;
             if (e.KeyChar == (char)Keys.Back) return;
             if (allowNegative)
@@ -42,6 +56,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             if (e.KeyChar == ' ')
                 if (textBox.Text.EndsWith(" ") || textBox.Text.Length == 0)
                     e.Handled = true;
+            if (IsSpecialChar(e.KeyChar)) e.Handled = true;
         }
 
         public static void TxtClearInput(List<TextBox> textBoxes)
