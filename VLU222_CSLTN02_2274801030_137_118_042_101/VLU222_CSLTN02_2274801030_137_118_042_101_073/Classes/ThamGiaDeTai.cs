@@ -31,7 +31,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
 
         public override string ToString()
         {
-            return $"Mã đề tài: {maDT}/Mã sinh viên:{maSV}/Phụ cấp: {phuCap}/Kết quả: {ketQua}";
+            return $"Mã đề tài: {maDT}/Mã sinh viên: {maSV}";
         }
 
         public string MaDT { get => maDT; set => maDT = value; }
