@@ -129,7 +129,7 @@
             this.txt_namThanhLap.Name = "txt_namThanhLap";
             this.txt_namThanhLap.Size = new System.Drawing.Size(225, 26);
             this.txt_namThanhLap.TabIndex = 2;
-            this.txt_namThanhLap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumber_KeyPress);
+            this.txt_namThanhLap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumId_KeyPress);
             // 
             // groupBox5
             // 
@@ -232,7 +232,7 @@
             this.txt_tenKhoa.Name = "txt_tenKhoa";
             this.txt_tenKhoa.Size = new System.Drawing.Size(225, 26);
             this.txt_tenKhoa.TabIndex = 1;
-            this.txt_tenKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInputConstraint_KeyPress);
+            this.txt_tenKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIStringOnly_KeyPress);
             // 
             // label3
             // 
@@ -264,7 +264,7 @@
             this.txt_maKhoa.Name = "txt_maKhoa";
             this.txt_maKhoa.Size = new System.Drawing.Size(225, 26);
             this.txt_maKhoa.TabIndex = 0;
-            this.txt_maKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInputConstraint_KeyPress);
+            this.txt_maKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_maKhoa_KeyPress);
             // 
             // label1
             // 
@@ -315,6 +315,7 @@
             this.cmB_gioiTinhGV.Name = "cmB_gioiTinhGV";
             this.cmB_gioiTinhGV.Size = new System.Drawing.Size(225, 28);
             this.cmB_gioiTinhGV.TabIndex = 4;
+            this.cmB_gioiTinhGV.Enter += new System.EventHandler(this.cmB_Enter);
             this.cmB_gioiTinhGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmB_KeyPressed);
             // 
             // groupBox7
@@ -462,7 +463,7 @@
             this.txt_trinhDoGV.Name = "txt_trinhDoGV";
             this.txt_trinhDoGV.Size = new System.Drawing.Size(225, 26);
             this.txt_trinhDoGV.TabIndex = 3;
-            this.txt_trinhDoGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInputConstraint_KeyPress);
+            this.txt_trinhDoGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIStringOnly_KeyPress);
             // 
             // label7
             // 
@@ -483,7 +484,7 @@
             this.txt_tenGiangVien.Name = "txt_tenGiangVien";
             this.txt_tenGiangVien.Size = new System.Drawing.Size(225, 26);
             this.txt_tenGiangVien.TabIndex = 2;
-            this.txt_tenGiangVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInputConstraint_KeyPress);
+            this.txt_tenGiangVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIStringOnly_KeyPress);
             // 
             // label6
             // 
@@ -504,7 +505,7 @@
             this.txt_hoLotGV.Name = "txt_hoLotGV";
             this.txt_hoLotGV.Size = new System.Drawing.Size(225, 26);
             this.txt_hoLotGV.TabIndex = 1;
-            this.txt_hoLotGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInputConstraint_KeyPress);
+            this.txt_hoLotGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIStringOnly_KeyPress);
             // 
             // label5
             // 
@@ -525,7 +526,7 @@
             this.txt_maGiangVien.Name = "txt_maGiangVien";
             this.txt_maGiangVien.Size = new System.Drawing.Size(225, 26);
             this.txt_maGiangVien.TabIndex = 0;
-            this.txt_maGiangVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumber_KeyPress);
+            this.txt_maGiangVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumId_KeyPress);
             // 
             // label4
             // 
@@ -694,6 +695,7 @@
             this.cmb_gioiTinhSV.Name = "cmb_gioiTinhSV";
             this.cmb_gioiTinhSV.Size = new System.Drawing.Size(225, 28);
             this.cmb_gioiTinhSV.TabIndex = 3;
+            this.cmb_gioiTinhSV.Enter += new System.EventHandler(this.cmB_Enter);
             this.cmb_gioiTinhSV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmB_KeyPressed);
             // 
             // label13
@@ -715,7 +717,7 @@
             this.txt_tenSinhVien.Name = "txt_tenSinhVien";
             this.txt_tenSinhVien.Size = new System.Drawing.Size(225, 26);
             this.txt_tenSinhVien.TabIndex = 2;
-            this.txt_tenSinhVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInputConstraint_KeyPress);
+            this.txt_tenSinhVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIStringOnly_KeyPress);
             // 
             // label12
             // 
@@ -736,7 +738,7 @@
             this.txt_hoLotSV.Name = "txt_hoLotSV";
             this.txt_hoLotSV.Size = new System.Drawing.Size(225, 26);
             this.txt_hoLotSV.TabIndex = 1;
-            this.txt_hoLotSV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInputConstraint_KeyPress);
+            this.txt_hoLotSV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIStringOnly_KeyPress);
             // 
             // label11
             // 
@@ -757,7 +759,7 @@
             this.txt_maSinhVien.Name = "txt_maSinhVien";
             this.txt_maSinhVien.Size = new System.Drawing.Size(225, 26);
             this.txt_maSinhVien.TabIndex = 0;
-            this.txt_maSinhVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumber_KeyPress);
+            this.txt_maSinhVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumId_KeyPress);
             // 
             // label10
             // 

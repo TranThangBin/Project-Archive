@@ -144,7 +144,7 @@
             this.txt_ketQuaTGDT.Name = "txt_ketQuaTGDT";
             this.txt_ketQuaTGDT.Size = new System.Drawing.Size(237, 26);
             this.txt_ketQuaTGDT.TabIndex = 3;
-            this.txt_ketQuaTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInputConstraint_KeyPress);
+            this.txt_ketQuaTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_ketQuaTGDT_KeyPress);
             // 
             // label11
             // 
@@ -213,7 +213,7 @@
             this.txt_maDeTaiTGDT.Name = "txt_maDeTaiTGDT";
             this.txt_maDeTaiTGDT.Size = new System.Drawing.Size(237, 26);
             this.txt_maDeTaiTGDT.TabIndex = 0;
-            this.txt_maDeTaiTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInputConstraint_KeyPress);
+            this.txt_maDeTaiTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_maDeTaiTGDT_KeyPress);
             // 
             // label8
             // 

@@ -61,6 +61,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             if (txt_maDetai.Text == "")
                 throw new Exception("Vui lòng không để trống mã đề tài!");
+            if (txt_maDetai.TextLength < txt_maDetai.MaxLength)
+                throw new Exception("Mã đề tài chưa thỏa yêu cầu!");
             if (txt_tenDetai.Text == "")
                 throw new Exception("Vui lòng không để trống tên đề tài!");
             if (txt_kinhPhi.Text == "")
@@ -69,8 +71,12 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 throw new Exception("Vui lòng không để trống mã giảng viên!");
             if (txt_maSinhVien.Text == "")
                 throw new Exception("Vui lòng không để trống mã sinh viên!");
+            if (txt_maGiangVien.TextLength < txt_maGiangVien.MaxLength)
+                throw new Exception("Mã giảng viên chưa thỏa yêu cầu!");
+            if (txt_maSinhVien.TextLength < txt_maSinhVien.MaxLength)
+                throw new Exception("Mã sinh viên chưa thỏa yêu cầu!"); ;
             string maDT = txt_maDetai.Text;
-            string tenDT = txt_tenDetai.Text;
+            string tenDT = txt_tenDetai.Text.TrimEnd();
             long kinhPhi = long.Parse(txt_kinhPhi.Text);
             DateTime ngayBD = dtP_ngayBatDau.Value;
             DateTime ngayKT = dtP_ngayKetThuc.Value;
@@ -102,7 +108,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             long phuCap = long.Parse(txt_phuCapTGDT.Text);
             if (phuCap > deTai.KinhPhi)
                 throw new Exception("Phụ cấp vượt quá giới hạn kinh phí!");
-            string ketQua = txt_ketQuaTGDT.Text;
+            string ketQua = txt_ketQuaTGDT.Text.TrimEnd();
             return new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
         }
 
@@ -113,14 +119,14 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             dtP_ngayKetThuc.Value = DateTime.Today;
         }
 
-        private void txtNumber_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtNumId_KeyPress(object sender, KeyPressEventArgs e)
         {
             Forms.TxtNumIdHandler(sender as TextBox, e);
         }
 
-        private void txtInputConstraint_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtIStringOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.TxtInputConstraint(sender as TextBox, e);
+            Forms.TxtStringOnlyHandler(sender as TextBox, e);
         }
 
         private void btn_themDeTai_Click(object sender, EventArgs e)
@@ -206,6 +212,11 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void lsB_danhSachDeTai_MouseDown(object sender, MouseEventArgs e)
         {
             Forms.LsbRightClickDeselected(sender as ListBox, e);
+        }
+
+        private void txt_maDetai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Forms.TxtStringNumIdHandler(e);
         }
 
         private void btn_themTGDT_Click(object sender, EventArgs e)

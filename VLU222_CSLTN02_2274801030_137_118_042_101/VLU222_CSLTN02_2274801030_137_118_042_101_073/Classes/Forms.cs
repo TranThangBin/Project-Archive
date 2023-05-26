@@ -34,6 +34,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                 return false;
             else if (ch == ' ')
                 return false;
+            else if (ch == (char)Keys.Back)
+                return false;
             else if ((Control.ModifierKeys & Keys.Control) == Keys.Control)
                 return false;
             return true;
@@ -45,25 +47,36 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             if (char.IsDigit(e.KeyChar)) return;
             if (e.KeyChar == (char)Keys.Back) return;
             if (allowNegative)
-                if (e.KeyChar == '-' && textBox.Text.Length == 0) return;
+                if (e.KeyChar == '-' && textBox.TextLength == 0) return;
             if (isDecimal)
-                if (e.KeyChar == '.' && textBox.Text.Length > 0 && !textBox.Text.Contains(".")) return;
+                if (e.KeyChar == '.' && textBox.TextLength > 0 && !textBox.Text.Contains(".")) return;
             e.Handled = true;
         }
 
-        public static void TxtStringNumIdHandler(TextBox textBox, KeyPressEventArgs e)
+        public static void TxtStringNumIdHandler(KeyPressEventArgs e)
         {
             if (e.KeyChar == ' ')
                 e.Handled = true;
-            if (IsSpecialChar(e.KeyChar)) e.Handled = true;
+            else if (IsSpecialChar(e.KeyChar)) e.Handled = true;
         }
 
-        public static void TxtInputConstraint(TextBox textBox, KeyPressEventArgs e)
+        public static void TxtStringOnlyHandler(TextBox textBox, KeyPressEventArgs e)
         {
             if (e.KeyChar == ' ')
-                if (textBox.Text.EndsWith(" ") || textBox.Text.Length == 0)
+            {
+                if (textBox.Text.EndsWith(" ") || textBox.TextLength == 0)
                     e.Handled = true;
-            if (IsSpecialChar(e.KeyChar)) e.Handled = true;
+            }
+            else if (IsSpecialChar(e.KeyChar)) e.Handled = true;
+            else if (char.IsDigit(e.KeyChar)) e.Handled = true;
+        }
+
+        public static void TxtOneWordOnlyHandler(KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ' ')
+                e.Handled = true;
+            else if (IsSpecialChar(e.KeyChar)) e.Handled = true;
+            else if (char.IsDigit(e.KeyChar)) e.Handled = true;
         }
 
         public static void TxtClearInput(List<TextBox> textBoxes)

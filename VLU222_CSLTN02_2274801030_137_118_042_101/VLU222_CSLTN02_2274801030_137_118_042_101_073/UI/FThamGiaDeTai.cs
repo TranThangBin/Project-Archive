@@ -49,21 +49,20 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 throw new Exception("Vui lòng không để trống tiền phụ cấp!");
             if (txt_ketQuaTGDT.Text == "")
                 throw new Exception("Vui lòng không để trống kết quả!");
+            if (txt_maDeTaiTGDT.TextLength < txt_maDeTaiTGDT.MaxLength)
+                throw new Exception("Mã đề tài chưa thỏa yêu cầu!");
+            if (txt_maSinhVienTGDT.TextLength < txt_maSinhVienTGDT.MaxLength)
+                throw new Exception("Mã sinh viên chưa thỏa yêu cầu!");
             string maDT = txt_maDeTaiTGDT.Text;
             string maSV = txt_maSinhVienTGDT.Text;
             long phuCap = long.Parse(txt_phuCapTGDT.Text);
-            string ketQua = txt_ketQuaTGDT.Text;
+            string ketQua = txt_ketQuaTGDT.Text.TrimEnd();
             return new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
         }
 
         private void txtNumId_KeyPress(object sender, KeyPressEventArgs e)
         {
             Forms.TxtNumIdHandler(sender as TextBox, e);
-        }
-
-        private void txtInputConstraint_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Forms.TxtInputConstraint(sender as TextBox, e);
         }
 
         private void btn_themTGDT_Click(object sender, EventArgs e)
@@ -130,6 +129,16 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void lsB_danhSach_MouseDown(object sender, MouseEventArgs e)
         {
             Forms.LsbRightClickDeselected(sender as ListBox, e);
+        }
+
+        private void txt_maDeTaiTGDT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Forms.TxtStringNumIdHandler(e);
+        }
+
+        private void txt_ketQuaTGDT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Forms.TxtStringOnlyHandler(sender as TextBox, e);
         }
     }
 }

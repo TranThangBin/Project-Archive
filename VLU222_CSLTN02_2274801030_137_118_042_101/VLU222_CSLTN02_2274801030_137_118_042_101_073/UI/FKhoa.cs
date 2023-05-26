@@ -79,8 +79,10 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 throw new Exception("Vui lòng không để trống tên khoa!");
             if (txt_namThanhLap.Text == "")
                 throw new Exception("Vui lòng không để trống năm thành lập!");
+            if (txt_maKhoa.TextLength < txt_maKhoa.MaxLength)
+                throw new Exception("Mã khoa chưa thỏa yêu cầu!");
             string maKhoa = txt_maKhoa.Text;
-            string tenKhoa = txt_tenKhoa.Text;
+            string tenKhoa = txt_tenKhoa.Text.TrimEnd();
             int namThanhLap = int.Parse(txt_namThanhLap.Text);
             if (namThanhLap > DateTime.Today.Year)
                 throw new Exception("Năm thành lập của khoa không hợp lệ!");
@@ -109,10 +111,12 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 throw new Exception("Vui lòng không để trống trình độ giảng viên!");
             if (cmB_gioiTinhGV.Text == "")
                 throw new Exception("Vui lòng không để trống mã khoa giới tính giảng viên!");
+            if (txt_maGiangVien.TextLength < txt_maGiangVien.MaxLength)
+                throw new Exception("Mã giảng viên chưa thỏa yêu cầu!");
             string maGV = txt_maGiangVien.Text;
-            string hoLot = txt_hoLotGV.Text;
+            string hoLot = txt_hoLotGV.Text.TrimEnd();
             string tenGV = txt_tenGiangVien.Text;
-            string trinhDo = txt_trinhDoGV.Text;
+            string trinhDo = txt_trinhDoGV.Text.TrimEnd();
             string gioiTinh = cmB_gioiTinhGV.Text;
             string maKhoa = khoa.MaKhoa;
             return new GiangVien(maGV, hoLot, tenGV, gioiTinh, trinhDo, maKhoa);
@@ -128,8 +132,10 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 throw new Exception("Vui lòng không để trống tên sinh viên!");
             if (cmb_gioiTinhSV.Text == "")
                 throw new Exception("Vui lòng không để trống mã khoa giới tính sinh viên!");
+            if (txt_maSinhVien.TextLength < txt_maSinhVien.MaxLength)
+                throw new Exception("Mã sinh viên chưa thỏa yêu cầu!");
             string maSV = txt_maSinhVien.Text;
-            string hoLot = txt_hoLotSV.Text;
+            string hoLot = txt_hoLotSV.Text.TrimEnd();
             string tenSV = txt_tenSinhVien.Text;
             string gioiTinh = cmb_gioiTinhSV.Text;
             string maKhoa = khoa.MaKhoa;
@@ -148,19 +154,25 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             cmb_gioiTinhSV.Text = "";
         }
 
-        private void txtNumber_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtNumId_KeyPress(object sender, KeyPressEventArgs e)
         {
             Forms.TxtNumIdHandler(sender as TextBox, e);
         }
 
-        private void txtInputConstraint_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtIStringOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.TxtInputConstraint(sender as TextBox, e);
+            Forms.TxtStringOnlyHandler(sender as TextBox, e);
         }
 
         private void cmB_KeyPressed(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void cmB_Enter(object sender, EventArgs e)
+        {
+            ComboBox cmb = sender as ComboBox;
+            cmb.DroppedDown = true;
         }
 
         private void btn_themKhoa_Click(object sender, EventArgs e)
@@ -257,6 +269,11 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void lsB_danhSachKhoa_MouseDown(object sender, MouseEventArgs e)
         {
             Forms.LsbRightClickDeselected(sender as ListBox, e);
+        }
+
+        private void txt_maKhoa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Forms.TxtStringNumIdHandler(e);
         }
 
         private void btn_themGV_Click(object sender, EventArgs e)

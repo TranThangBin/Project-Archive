@@ -84,8 +84,10 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 throw new Exception("Vui lòng không để trống giới tính!");
             if (txt_maKhoaSV.Text == "")
                 throw new Exception("Vui lòng không để trống mã khoa!");
+            if (txt_tenSinhVien.TextLength < txt_tenSinhVien.MaxLength)
+                throw new Exception("Mã sinh viên chưa thỏa yêu cầu!");
             string maSV = txt_maSinhVien.Text;
-            string hoLot = txt_hoLotSV.Text;
+            string hoLot = txt_hoLotSV.Text.TrimEnd();
             string tenSV = txt_tenSinhVien.Text;
             string gioiTinh = cmb_gioiTinhSV.Text;
             string maKhoa = txt_maKhoaSV.Text;
@@ -112,8 +114,12 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 throw new Exception("Vui lòng không để trống kinh phí!");
             if (txt_maGiangVienDT.Text == "")
                 throw new Exception("Vui lòng không để trống mã giảng viên!");
+            if (txt_maDetai.TextLength < txt_maDetai.MaxLength)
+                throw new Exception("Mã đề tài chưa thỏa yêu cầu!");
+            if (txt_maGiangVienDT.TextLength < txt_maGiangVienDT.MaxLength)
+                throw new Exception("Mã giảng viên chưa thỏa yêu cầu!");
             string maDT = txt_maDetai.Text;
-            string tenDT = txt_tenDetai.Text;
+            string tenDT = txt_tenDetai.Text.TrimEnd();
             long kinhPhi = long.Parse(txt_kinhPhiDT.Text);
             DateTime ngayBD = dtP_ngayBatDauDT.Value;
             DateTime ngayKT = dtP_ngayKetThucDT.Value;
@@ -145,7 +151,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             long phuCap = long.Parse(txt_phuCapTGDT.Text);
             if (phuCap > deTai.KinhPhi)
                 throw new Exception("Phụ cấp vượt quá giới hạn kinh phí!");
-            string ketQua = txt_ketQuaTGDT.Text;
+            string ketQua = txt_ketQuaTGDT.Text.TrimEnd();
             return new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
         }
 
@@ -162,14 +168,19 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             dtP_ngayKetThucDT.Value = DateTime.Today;
         }
 
-        private void txtNumber_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtNumId_KeyPress(object sender, KeyPressEventArgs e)
         {
             Forms.TxtNumIdHandler(sender as TextBox, e);
         }
 
-        private void txtInputConstraint_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtStringNumId_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.TxtInputConstraint(sender as TextBox, e);
+            Forms.TxtStringNumIdHandler(e);
+        }
+
+        private void txtIStringOnly_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Forms.TxtStringOnlyHandler(sender as TextBox, e);
         }
 
         private void lsbDeselected_MouseDown(object sender, MouseEventArgs e)
@@ -247,9 +258,19 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             btn_themSV.Enabled = false;
         }
 
+        private void txt_tenSinhVien_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Forms.TxtOneWordOnlyHandler(e);
+        }
+
         private void cmb_gioiTinhSV_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void cmb_gioiTinhSV_Enter(object sender, EventArgs e)
+        {
+            cmb_gioiTinhSV.DroppedDown = true;
         }
 
         private void btn_themDeTai_Click(object sender, EventArgs e)
