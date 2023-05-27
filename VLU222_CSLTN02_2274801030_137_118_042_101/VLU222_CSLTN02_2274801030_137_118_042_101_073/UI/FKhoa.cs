@@ -114,6 +114,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             try
             {
+                //Insert data into KHOA table
                 Khoa khoa = Forms.GetKhoa(inpKhoas);
                 lsB_danhSachKhoa.Items.Add(khoa);
                 Forms.CleanInput(inpKhoas);
@@ -130,6 +131,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             Khoa selectedKhoa = GetSelectedKhoa();
             try
             {
+                //Update data for KHOA table
                 Khoa newKhoa = Forms.GetKhoa(inpKhoas);
                 newKhoa.SinhViens = selectedKhoa.SinhViens;
                 newKhoa.GiangViens = selectedKhoa.GiangViens;
@@ -144,6 +146,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_xoaKhoa_Click(object sender, EventArgs e)
         {
+            //Delete data from KHOA table
             lsB_danhSachKhoa.Items.Remove(GetSelectedKhoa());
             Forms.CleanInput(inpKhoas);
         }
@@ -217,6 +220,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             Khoa selectedKhoa = GetSelectedKhoa();
             try
             {
+                //Insert data into GIANGVIEN table
                 GiangVien giangVien = Forms.GetGiangVien(inpGiangViens, selectedKhoa);
                 selectedKhoa.GiangViens.Add(giangVien);
                 string[] lsviObj = new string[]
@@ -245,6 +249,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 MessageBox.Show("Vui lòng chọn 1 giảng viên để chỉnh sửa!");
                 return;
             }
+            //Update data for GIANGVIEN table
             ListViewItem giangVienSelectedItem = lsV_danhSachGV.SelectedItems[0];
             int giangVienSelectedIndex = giangVienSelectedItem.Index;
             Khoa selectedKhoa = GetSelectedKhoa();
@@ -275,6 +280,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_xoaGV_Click(object sender, EventArgs e)
         {
+            //Delete data from GIANGVIEN table
             ListViewItem giangVienSelectedItem = lsV_danhSachGV.SelectedItems[0];
             int giangVienSelectedIndex = giangVienSelectedItem.Index;
             lsV_danhSachGV.Items.RemoveAt(giangVienSelectedIndex);
@@ -311,6 +317,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             Khoa selectedKhoa = GetSelectedKhoa();
             try
             {
+                //Insert data into SINHVIEN table
                 SinhVien sinhVien = Forms.GetSinhVien(inpSinhViens, selectedKhoa);
                 selectedKhoa.SinhViens.Add(sinhVien);
                 string[] lsviObj = new string[]
@@ -338,6 +345,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 MessageBox.Show("Vui lòng chọn 1 sinh viên để chỉnh sửa!");
                 return;
             }
+            //Update data for SINHVIEN table
             ListViewItem sinhVienSelectedItem = lsV_danhSachSV.SelectedItems[0];
             int sinhVienSelectedIndex = sinhVienSelectedItem.Index;
             Khoa selectedKhoa = GetSelectedKhoa();
@@ -367,6 +375,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_xoaSV_Click(object sender, EventArgs e)
         {
+            //Delete data from SINHVIEN table
             ListViewItem sinhVienSelectedItem = lsV_danhSachSV.SelectedItems[0];
             int sinhVienSelectedIndex = sinhVienSelectedItem.Index;
             lsV_danhSachSV.Items.RemoveAt(sinhVienSelectedIndex);

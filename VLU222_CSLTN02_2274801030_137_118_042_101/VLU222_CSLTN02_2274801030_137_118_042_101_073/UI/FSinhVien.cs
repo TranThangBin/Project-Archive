@@ -120,6 +120,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             try
             {
+                //Insert data into SINHVIEN table
                 SinhVien sinhVien = Forms.GetSinhVien(inpSinhViens);
                 lsb_danhSachSinhVien.Items.Add(sinhVien);
                 Forms.CleanInput(inpSinhViens);
@@ -136,6 +137,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             SinhVien selectedSinhVien = GetSelectedSinhVien();
             try
             {
+                //Update data for SINHVIEN table
                 SinhVien newSinhVien = Forms.GetSinhVien(inpSinhViens);
                 newSinhVien.Detais = selectedSinhVien.Detais;
                 Forms.LsbUpdateItem(lsb_danhSachSinhVien, GetSinhVienSelectedIndex(), newSinhVien);
@@ -149,6 +151,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_xoaSV_Click(object sender, EventArgs e)
         {
+            //Delete data from SINHVIEN table
             SinhVien sinhVien = GetSelectedSinhVien();
             lsb_danhSachSinhVien.Items.Remove(sinhVien);
             Forms.CleanInput(inpSinhViens);
@@ -207,6 +210,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             SinhVien selectedSinhVien = GetSelectedSinhVien();
             try
             {
+                //Insert data into DETAI table
                 DeTai deTai = Forms.GetDeTai(inpDeTais, null, selectedSinhVien);
                 selectedSinhVien.Detais.Add(deTai);
                 lsb_danhSachDeTai.Items.Add(deTai);
@@ -221,6 +225,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void btn_suaDeTai_Click(object sender, EventArgs e)
         {
             if (!Forms.LsbHasItemSelected(lsb_danhSachDeTai, "Vui lòng chọn 1 đề tài để chỉnh sửa!")) return;
+            //Update data for DETAI table
             SinhVien selectedSinhVien = GetSelectedSinhVien();
             DeTai selectedDeTai = GetSelectedDeTai();
             try
@@ -241,6 +246,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_xoaDeTai_Click(object sender, EventArgs e)
         {
+            //Delete data from DETAI table
             int deTaiSelectedIndex = GetDeTaiSelectedIndex();
             SinhVien selectedSinhVien = GetSelectedSinhVien();
             selectedSinhVien.Detais.RemoveAt(deTaiSelectedIndex);
@@ -292,18 +298,18 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void btn_themTGDT_Click(object sender, EventArgs e)
         {
             if (!Forms.LsbHasItemSelected(lsb_danhSachDeTai, "Bạn cần phải chọn 1 đề tài để tham gia!")) return;
-            SinhVien selectedSinhVien = GetSelectedSinhVien();
             DeTai selectedDeTai = GetSelectedDeTai();
+            //Insert data into TGDT table
             try
             {
                 ThamGiaDeTai thamGiaDeTai = Forms.GetThamGiaDeTai(inpTGDTs, selectedDeTai);
                 selectedDeTai.ThamGiaDeTais.Add(thamGiaDeTai);
                 string[] lsviObj = new string[]
                 {
-                thamGiaDeTai.MaDT,
-                thamGiaDeTai.MaSV,
-                thamGiaDeTai.PhuCap+"",
-                thamGiaDeTai.KetQua
+                    thamGiaDeTai.MaDT,
+                    thamGiaDeTai.MaSV,
+                    thamGiaDeTai.PhuCap+"",
+                    thamGiaDeTai.KetQua
                 };
                 ListViewItem lsvItem = new ListViewItem(lsviObj);
                 lsv_danhSachTGDT.Items.Add(lsvItem);
@@ -322,6 +328,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 MessageBox.Show("Vui lòng chọn 1 tham gia đề tài để chỉnh sửa!");
                 return;
             }
+            //Update data for TGDT table
             ListViewItem TGDTSelectedItem = lsv_danhSachTGDT.SelectedItems[0];
             int TGDTSelectedIndex = TGDTSelectedItem.Index;
             DeTai selectedDeTai = GetSelectedDeTai();
@@ -332,10 +339,10 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 selectedDeTai.ThamGiaDeTais.Insert(TGDTSelectedIndex, newTGDT);
                 string[] newLsviObj = new string[]
                 {
-                newTGDT.MaDT,
-                newTGDT.MaSV,
-                newTGDT.PhuCap+"",
-                newTGDT.KetQua
+                    newTGDT.MaDT,
+                    newTGDT.MaSV,
+                    newTGDT.PhuCap+"",
+                    newTGDT.KetQua
                 };
                 ListViewItem newLsvItem = new ListViewItem(newLsviObj);
                 lsv_danhSachTGDT.Items.RemoveAt(TGDTSelectedIndex);
@@ -350,6 +357,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_xoaTGDT_Click(object sender, EventArgs e)
         {
+            //Delete data from TGDT table
             ListViewItem TGDTSelectedItem = lsv_danhSachTGDT.SelectedItems[0];
             int TGDTSelectedIndex = TGDTSelectedItem.Index;
             lsv_danhSachTGDT.Items.RemoveAt(TGDTSelectedIndex);

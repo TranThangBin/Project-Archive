@@ -49,6 +49,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             try
             {
+                //Insert data into TGDT table
                 ThamGiaDeTai thamGiaDeTai = Forms.GetThamGiaDeTai(inpTGDTs);
                 lsB_danhSach.Items.Add(thamGiaDeTai);
                 Forms.CleanInput(inpTGDTs);
@@ -64,6 +65,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             if (!Forms.LsbHasItemSelected(lsB_danhSach, "Vui lòng chọn 1 mục tiêu để chỉnh sửa!")) return;
             try
             {
+                //Update data for TGDT table
                 ThamGiaDeTai thamGiaDeTai = Forms.GetThamGiaDeTai(inpTGDTs);
                 Forms.LsbUpdateItem(lsB_danhSach, lsB_danhSach.SelectedIndex, thamGiaDeTai);
                 Forms.CleanInput(inpTGDTs);
@@ -76,6 +78,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_xoaTGDT_Click(object sender, EventArgs e)
         {
+            //Delete data from TGDT table
             ThamGiaDeTai selectedThamGiaDeTai = lsB_danhSach.SelectedItem as ThamGiaDeTai;
             lsB_danhSach.Items.Remove(selectedThamGiaDeTai);
             Forms.CleanInput(inpTGDTs);

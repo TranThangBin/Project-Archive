@@ -93,6 +93,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             try
             {
+                //Insert data into GIANGVIEN table
                 GiangVien giangVien = Forms.GetGiangVien(inpGiangViens);
                 lsB_danhSachGiangVien.Items.Add(giangVien);
                 Forms.CleanInput(inpGiangViens);
@@ -109,6 +110,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             GiangVien selectedGiangVien = GetSelectedGiangVien();
             try
             {
+                //Update data for GIANGVIEN table
                 GiangVien newGiangVien = Forms.GetGiangVien(inpGiangViens);
                 newGiangVien.Detais = selectedGiangVien.Detais;
                 Forms.LsbUpdateItem(lsB_danhSachGiangVien, GetGiangVienSelectedIndex(), newGiangVien);
@@ -122,6 +124,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_xoaGV_Click(object sender, EventArgs e)
         {
+            //Delete data from GIANGVIEN table
             GiangVien giangVien = GetSelectedGiangVien();
             lsB_danhSachGiangVien.Items.Remove(giangVien);
             Forms.CleanInput(inpGiangViens);
@@ -195,6 +198,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             GiangVien selectedGiangVien = GetSelectedGiangVien();
             try
             {
+                //Insert data into DETAI table
                 DeTai deTai = Forms.GetDeTai(inpDeTais, selectedGiangVien);
                 string[] lsviObj = new string[]
                 {
@@ -224,6 +228,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 MessageBox.Show("Vui lòng chọn 1 tham gia đề tài để chỉnh sửa!");
                 return;
             }
+            //Update data for DETAI table
             ListViewItem deTaiSelectedItem = lsV_giangVienGuongdanVeDT.SelectedItems[0];
             int deTaiSelectedIndex = deTaiSelectedItem.Index;
             GiangVien selectedGiangVien = GetSelectedGiangVien();
@@ -255,6 +260,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_xoaDT_Click(object sender, EventArgs e)
         {
+            //Delete data from DETAI table
             ListViewItem deTaiSelectedItem = lsV_giangVienGuongdanVeDT.SelectedItems[0];
             int deTaiSelectedIndex = deTaiSelectedItem.Index;
             lsV_giangVienGuongdanVeDT.Items.RemoveAt(deTaiSelectedIndex);

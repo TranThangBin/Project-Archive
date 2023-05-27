@@ -30,6 +30,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073
 
         private void QLDETAINCKHSINHVIEN_Load(object sender, EventArgs e)
         {
+            //WHAT IS THIS?
+            //CHECKOUT DATABASE CLASS
             Database.Connect(connectionString);
         }
 

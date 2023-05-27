@@ -84,6 +84,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             try
             {
+                //Insert data into DETAI table
                 DeTai deTai = Forms.GetDeTai(inpDeTais);
                 lsB_danhSachDeTai.Items.Add(deTai);
                 Forms.CleanInput(inpDeTais);
@@ -100,6 +101,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             DeTai selectedDeTai = GetSelectedDeTai();
             try
             {
+                //Update data for DETAI table
                 DeTai newDeTai = Forms.GetDeTai(inpDeTais);
                 newDeTai.ThamGiaDeTais = selectedDeTai.ThamGiaDeTais;
                 Forms.LsbUpdateItem(lsB_danhSachDeTai, GetDeTaiSelectedIndex(), newDeTai);
@@ -113,6 +115,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_xoaDeTai_Click(object sender, EventArgs e)
         {
+            //Delete data for DeTai table
             DeTai deTai = GetSelectedDeTai();
             lsB_danhSachDeTai.Items.Remove(deTai);
             Forms.CleanInput(inpDeTais);
@@ -176,6 +179,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             DeTai selectedDeTai = GetSelectedDeTai();
             try
             {
+                //Insert data into TGDT table
                 ThamGiaDeTai thamGiaDeTai = Forms.GetThamGiaDeTai(inpTGDTs, selectedDeTai);
                 string[] lsviObj = new string[]
                 {
@@ -207,6 +211,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             DeTai selectedDeTai = GetSelectedDeTai();
             try
             {
+                //Update data for TGDT table
                 ThamGiaDeTai newThamGiaDeTai = Forms.GetThamGiaDeTai(inpTGDTs, selectedDeTai);
                 selectedDeTai.ThamGiaDeTais.RemoveAt(TGDTSelectedIndex);
                 selectedDeTai.ThamGiaDeTais.Insert(TGDTSelectedIndex, newThamGiaDeTai);
@@ -230,6 +235,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_xoaTGDT_Click(object sender, EventArgs e)
         {
+            //Delete data from TGDT table
             ListViewItem TGDTSelectedItem = lsv_danhSachTGDT.SelectedItems[0];
             int TGDTSelectedIndex = TGDTSelectedItem.Index;
             lsv_danhSachTGDT.Items.Remove(TGDTSelectedItem);
