@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VLU222_CSLTN02_2274801030_137_118_042_101_073.UI;
 
 namespace VLU222_CSLTN02_2274801030_137_118_042_101_073
 {
@@ -16,7 +17,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new QLDETAINCKHSINHVIEN());
+            Application.Run(new FThamGiaDT());
         }
     }
 }
