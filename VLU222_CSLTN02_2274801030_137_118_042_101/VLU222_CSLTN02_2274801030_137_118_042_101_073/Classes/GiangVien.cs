@@ -14,19 +14,20 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         private string gioiTinh;
         private string trinhDo;
         private string maKhoa;
+        private Khoa khoa;
         private List<DeTai> detais = new List<DeTai>();
 
         public GiangVien()
         {
             maGV = "00000000";
-            hoLot = "";
-            tenGV = "";
+            hoLot = "unknown";
+            tenGV = "unknown";
             gioiTinh = "";
             trinhDo = "";
             maKhoa = "";
         }
 
-        public GiangVien(string maGV, string hoLot, string tenGV, string gioiTinh, string trinhDo, string maKhoa)
+        public GiangVien(string maGV, string hoLot, string tenGV, string gioiTinh, string trinhDo, string maKhoa, Khoa khoa = null)
         {
             this.maGV = maGV;
             this.hoLot = hoLot;
@@ -34,6 +35,10 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             this.gioiTinh = gioiTinh;
             this.trinhDo = trinhDo;
             this.maKhoa = maKhoa;
+            this.khoa = khoa ?? new Khoa()
+            {
+                MaKhoa = this.maKhoa,
+            };
         }
 
         public override string ToString()
@@ -48,5 +53,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         public string TrinhDo { get => trinhDo; set => trinhDo = value; }
         public string MaKhoa { get => maKhoa; set => maKhoa = value; }
         public List<DeTai> Detais { get => detais; set => detais = value; }
+        public Khoa Khoa { get => khoa; set => khoa = value; }
     }
 }

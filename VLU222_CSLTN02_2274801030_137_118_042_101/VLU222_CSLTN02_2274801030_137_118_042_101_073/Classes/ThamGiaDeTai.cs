@@ -12,21 +12,27 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         private string maSV;
         private long phuCap;
         private string ketQua;
+        private DeTai deTai;
 
         public ThamGiaDeTai()
         {
             maDT = "00000000000";
             maSV = "00000000";
             phuCap = 0;
-            ketQua = "";
+            ketQua = "unknown";
         }
 
-        public ThamGiaDeTai(string maDT, string maSV, long phuCap, string ketQua)
+        public ThamGiaDeTai(string maDT, string maSV, long phuCap, string ketQua, DeTai deTai = null)
         {
             this.maDT = maDT;
             this.maSV = maSV;
             this.phuCap = phuCap;
             this.ketQua = ketQua;
+            this.deTai = deTai ?? new DeTai()
+            {
+                MaDT = this.maDT,
+                MaSVCNDT = this.maSV
+            };
         }
 
         public override string ToString()
@@ -38,5 +44,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         public string MaSV { get => maSV; set => maSV = value; }
         public long PhuCap { get => phuCap; set => phuCap = value; }
         public string KetQua { get => ketQua; set => ketQua = value; }
+        public DeTai DeTai { get => deTai; set => deTai = value; }
     }
 }

@@ -17,7 +17,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         public Khoa()
         {
             maKhoa = "";
-            tenKhoa = "";
+            tenKhoa = "unknown";
             namThanhLap = 0;
         }
 

@@ -31,18 +31,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void FThamGiaDT_Load(object sender, EventArgs e)
         {
             //render Database data in this event
-            string sql = "SELECT MADT, MASV, PHUCAP, KETQUA FROM THAMGIADETAI";
-            SqlDataReader reader = Database.ExecuteQuery(sql);
-            while(reader.Read())
-            {
-                string maDT = reader.GetString(0);
-                string maSV = reader.GetString(1);
-                long phuCap = reader.GetInt32(2);
-                string ketQua = reader.GetString(3);
-                ThamGiaDeTai thamGiaDeTai = new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
-                lsB_danhSach.Items.Add(thamGiaDeTai);
-            }
-            reader.Close();
+            Database.RenderThamGiaDeTai(lsB_danhSach);
         }
 
         private void FThamGiaDT_FormClosing(object sender, FormClosingEventArgs e)
@@ -66,15 +55,13 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 ThamGiaDeTai thamGiaDeTai = Forms.GetThamGiaDeTai(inpTGDTs);
                 lsB_danhSach.Items.Add(thamGiaDeTai);
                 Forms.CleanInput(inpTGDTs);
-                //string sql = "INSERT INTO THAMGIADETAI VALUES (@MADT, @MASV, PHUCAP, KETQUA)";
-                //SqlParameter prMaDT = new SqlParameter("@MADT", SqlDbType.Char);
-                //SqlParameter prMaSV = new SqlParameter("@MASV", SqlDbType.Char);
-                //SqlParameter prPhuCap = new SqlParameter("@PHUCAP", SqlDbType.Int);
-                //SqlParameter prKetQua = new SqlParameter("@KETQUA", SqlDbType.NVarChar);
-                //prMaDT.Value = txt_maDeTaiTGDT;
-                //prMaSV.Value = txt_maSinhVienTGDT;
-                //prPhuCap.Value = txt_phuCapTGDT;
-                //prKetQua.Value = txt_ketQuaTGDT;
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 2627)
+                    MessageBox.Show("Mã đề tài hoặc mã sinh viên " +
+                                    "bạn vừa nhập bị trùng với 1 trong " +
+                                    "các dữ liệu trước đó!");
             }
             catch (Exception ex)
             {
