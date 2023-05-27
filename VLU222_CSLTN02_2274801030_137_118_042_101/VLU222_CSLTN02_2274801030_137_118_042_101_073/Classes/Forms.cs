@@ -27,6 +27,21 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         public static FKhoa Khoa { get => khoa; set => khoa = value; }
         public static FThanhVien ThanhVien { get => thanhVien; set => thanhVien = value; }
 
+        private static bool IsSpecialChar(char ch)
+        {
+            if (char.IsLetter(ch))
+                return false;
+            else if (char.IsDigit(ch))
+                return false;
+            else if (ch == ' ')
+                return false;
+            else if (ch == (char)Keys.Back)
+                return false;
+            else if ((Control.ModifierKeys & Keys.Control) == Keys.Control)
+                return false;
+            return true;
+        }
+
         public static ThamGiaDeTai GetThamGiaDeTai(ArrayList inps, DeTai deTai = null)
         {
             int lastIndex = inps.Count - 1;
@@ -61,8 +76,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             if (txtKetQua.Text == "")
                 throw new Exception("Vui lòng không để trống kết quả!");
             long phuCap = long.Parse(txtPhuCap.Text);
-            if (deTai != null && phuCap > deTai.KinhPhi)
-                throw new Exception("Phụ cấp vượt quá giới hạn kinh phí!");
             string ketQua = txtKetQua.Text.TrimEnd();
             return new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
         }
@@ -135,19 +148,44 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             return new DeTai(maDT, tenDT, kinhPhi, ngayBD, ngayKT, maGVHD, maSVCNDT);
         }
 
-        private static bool IsSpecialChar(char ch)
+        public static GiangVien GetGiangVien(ArrayList inps, Khoa khoa = null)
         {
-            if (char.IsLetter(ch))
-                return false;
-            else if (char.IsDigit(ch))
-                return false;
-            else if (ch == ' ')
-                return false;
-            else if (ch == (char)Keys.Back)
-                return false;
-            else if ((Control.ModifierKeys & Keys.Control) == Keys.Control)
-                return false;
-            return true;
+            int lastIndex = inps.Count - 1;
+            TextBox txtMaGV = inps[0] as TextBox;
+            TextBox txtHoLot = inps[1] as TextBox;
+            TextBox txtTenGV = inps[2] as TextBox;
+            TextBox txtTrinhDo = inps[3] as TextBox;
+            ComboBox cmBGioiTinh = inps[4] as ComboBox;
+            TextBox txtMaKhoa;
+            string maKhoa;
+            if (txtMaGV.Text == "")
+                throw new Exception("Vui lòng không để trống mã giảng viên!");
+            if (txtHoLot.Text == "")
+                throw new Exception("Vui lòng không để trống họ lót!");
+            if (txtTenGV.Text == "")
+                throw new Exception("Vui lòng không để trống tên giảng viên!");
+            if (txtTrinhDo.Text == "")
+                throw new Exception("Vui lòng không để trống trình độ!");
+            if (cmBGioiTinh.Text == "")
+                throw new Exception("Vui lòng không để trống giới tính!");
+            if (txtMaGV.TextLength < txtMaGV.MaxLength)
+                throw new Exception("Mã giảng viên chưa thỏa yêu cầu!");
+            if (khoa == null)
+            {
+                txtMaKhoa = inps[lastIndex] as TextBox;
+                if (txtMaKhoa.Text == "")
+                    throw new Exception("Vui lòng không để trống mã khoa!");
+                if (txtMaKhoa.TextLength < txtMaKhoa.MaxLength)
+                    throw new Exception("Mã khoa chưa thỏa yêu cầu!");
+                maKhoa = txtMaKhoa.Text;
+            }
+            else maKhoa = khoa.MaKhoa;
+            string maGV = txtMaGV.Text;
+            string hoLot = txtHoLot.Text.TrimEnd();
+            string tenGV = txtTenGV.Text;
+            string trinhDo = txtTrinhDo.Text.TrimEnd();
+            string gioiTinh = cmBGioiTinh.Text;
+            return new GiangVien(maGV, hoLot, tenGV, gioiTinh, trinhDo, maKhoa);
         }
 
         public static void CleanInput(ArrayList inpObjs)

@@ -64,33 +64,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             }
         }
 
-        private GiangVien GetGiangVien()
-        {
-            if (txt_maGiangVien.Text == "")
-                throw new Exception("Vui lòng không để trống mã giảng viên!");
-            if (txt_hoLot.Text == "")
-                throw new Exception("Vui lòng không để trống họ lót!");
-            if (txt_tenGiangVien.Text == "")
-                throw new Exception("Vui lòng không để trống tên giảng viên!");
-            if (txt_trinhDo.Text == "")
-                throw new Exception("Vui lòng không để trống trình độ!");
-            if (cmB_gioiTinh.Text == "")
-                throw new Exception("Vui lòng không để trống giới tính!");
-            if (txt_maKhoa.Text == "")
-                throw new Exception("Vui lòng không để trống mã khoa!");
-            if (txt_maGiangVien.TextLength < txt_maGiangVien.MaxLength)
-                throw new Exception("Mã giảng viên chưa thỏa yêu cầu!");
-            if (txt_maKhoa.TextLength < txt_maKhoa.MaxLength)
-                throw new Exception("Mã khoa chưa thỏa yêu cầu!");
-            string maGV = txt_maGiangVien.Text;
-            string hoLot = txt_hoLot.Text.TrimEnd();
-            string tenGV = txt_tenGiangVien.Text;
-            string trinhDo = txt_trinhDo.Text.TrimEnd();
-            string gioiTinh = cmB_gioiTinh.Text;
-            string maKhoa = txt_maKhoa.Text;
-            return new GiangVien(maGV, hoLot, tenGV, gioiTinh, trinhDo, maKhoa);
-        }
-
         private GiangVien GetSelectedGiangVien()
         {
             return lsB_danhSachGiangVien.SelectedItem as GiangVien;
@@ -120,7 +93,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             try
             {
-                GiangVien giangVien = GetGiangVien();
+                GiangVien giangVien = Forms.GetGiangVien(inpGiangViens);
                 lsB_danhSachGiangVien.Items.Add(giangVien);
                 Forms.CleanInput(inpGiangViens);
             }
@@ -136,7 +109,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             GiangVien selectedGiangVien = GetSelectedGiangVien();
             try
             {
-                GiangVien newGiangVien = GetGiangVien();
+                GiangVien newGiangVien = Forms.GetGiangVien(inpGiangViens);
                 newGiangVien.Detais = selectedGiangVien.Detais;
                 Forms.LsbUpdateItem(lsB_danhSachGiangVien, GetGiangVienSelectedIndex(), newGiangVien);
                 Forms.CleanInput(inpGiangViens);

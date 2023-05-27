@@ -251,9 +251,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             {
                 int deTaiSelectedIndex = GetDeTaiSelectedIndex();
                 DeTai newDeTai = Forms.GetDeTai(inpDeTais, null, selectedSinhVien);
-                foreach (ThamGiaDeTai thamGiaDeTai in selectedDeTai.ThamGiaDeTais)
-                    if (newDeTai.KinhPhi < thamGiaDeTai.PhuCap)
-                        throw new Exception("Kinh phí đề tài không được bé tiền phụ cấp tham gia đề tài!");
                 newDeTai.ThamGiaDeTais = selectedDeTai.ThamGiaDeTais;
                 selectedSinhVien.Detais.RemoveAt(deTaiSelectedIndex);
                 selectedSinhVien.Detais.Insert(deTaiSelectedIndex, newDeTai);

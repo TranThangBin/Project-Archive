@@ -102,29 +102,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             return lsB_danhSachKhoa.SelectedIndex;
         }
 
-        private GiangVien GetGiangVien(Khoa khoa)
-        {
-            if (txt_maGiangVien.Text == "")
-                throw new Exception("Vui lòng không để trống mã giảng viên!");
-            if (txt_hoLotGV.Text == "")
-                throw new Exception("Vui lòng không để trống họ lót giảng viên!");
-            if (txt_tenGiangVien.Text == "")
-                throw new Exception("Vui lòng không để trống tên giảng viên!");
-            if (txt_trinhDoGV.Text == "")
-                throw new Exception("Vui lòng không để trống trình độ giảng viên!");
-            if (cmB_gioiTinhGV.Text == "")
-                throw new Exception("Vui lòng không để trống mã khoa giới tính giảng viên!");
-            if (txt_maGiangVien.TextLength < txt_maGiangVien.MaxLength)
-                throw new Exception("Mã giảng viên chưa thỏa yêu cầu!");
-            string maGV = txt_maGiangVien.Text;
-            string hoLot = txt_hoLotGV.Text.TrimEnd();
-            string tenGV = txt_tenGiangVien.Text;
-            string trinhDo = txt_trinhDoGV.Text.TrimEnd();
-            string gioiTinh = cmB_gioiTinhGV.Text;
-            string maKhoa = khoa.MaKhoa;
-            return new GiangVien(maGV, hoLot, tenGV, gioiTinh, trinhDo, maKhoa);
-        }
-
         private SinhVien GetSinhVien(Khoa khoa)
         {
             if (txt_maSinhVien.Text == "")
@@ -273,16 +250,16 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             Khoa selectedKhoa = GetSelectedKhoa();
             try
             {
-                GiangVien giangVien = GetGiangVien(selectedKhoa);
+                GiangVien giangVien = Forms.GetGiangVien(inpGiangViens, selectedKhoa);
                 selectedKhoa.GiangViens.Add(giangVien);
                 string[] lsviObj = new string[]
                 {
-                giangVien.MaGV,
-                giangVien.HoLot,
-                giangVien.TenGV,
-                giangVien.GioiTinh,
-                giangVien.TrinhDo,
-                giangVien.MaKhoa
+                    giangVien.MaGV,
+                    giangVien.HoLot,
+                    giangVien.TenGV,
+                    giangVien.GioiTinh,
+                    giangVien.TrinhDo,
+                    giangVien.MaKhoa
                 };
                 ListViewItem lsvItem = new ListViewItem(lsviObj);
                 lsV_danhSachGV.Items.Add(lsvItem);
@@ -306,17 +283,17 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             Khoa selectedKhoa = GetSelectedKhoa();
             try
             {
-                GiangVien newGiangVien = GetGiangVien(selectedKhoa);
+                GiangVien newGiangVien = Forms.GetGiangVien(inpGiangViens, selectedKhoa);
                 selectedKhoa.GiangViens.RemoveAt(giangVienSelectedIndex);
                 selectedKhoa.GiangViens.Insert(giangVienSelectedIndex, newGiangVien);
                 string[] newLsviObj = new string[]
                 {
-                newGiangVien.MaGV,
-                newGiangVien.HoLot,
-                newGiangVien.TenGV,
-                newGiangVien.GioiTinh,
-                newGiangVien.TrinhDo,
-                newGiangVien.MaKhoa
+                    newGiangVien.MaGV,
+                    newGiangVien.HoLot,
+                    newGiangVien.TenGV,
+                    newGiangVien.GioiTinh,
+                    newGiangVien.TrinhDo,
+                    newGiangVien.MaKhoa
                 };
                 ListViewItem newLsvItem = new ListViewItem(newLsviObj);
                 lsV_danhSachGV.Items.RemoveAt(giangVienSelectedIndex);
