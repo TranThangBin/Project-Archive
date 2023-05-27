@@ -41,6 +41,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void FDeTai_Load(object sender, EventArgs e)
         {
             //render Database data in this event
+            string sql = "select * from detai";
         }
 
         private void FDeTai_FormClosing(object sender, FormClosingEventArgs e)
