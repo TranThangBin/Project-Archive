@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,11 +14,11 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 {
     public partial class FThamGiaDT : Form
     {
-        private List<TextBox> txtTGDTs;
+        private ArrayList inpTGDTs;
         public FThamGiaDT()
         {
             InitializeComponent();
-            txtTGDTs = new List<TextBox>()
+            inpTGDTs = new ArrayList()
             {
                 txt_maDeTaiTGDT,
                 txt_maSinhVienTGDT,
@@ -71,7 +72,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             {
                 ThamGiaDeTai thamGiaDeTai = GetThamGiaDeTai();
                 lsB_danhSach.Items.Add(thamGiaDeTai);
-                Forms.TxtClearInput(txtTGDTs);
+                Forms.CleanInput(inpTGDTs);
             }
             catch (Exception ex)
             {
@@ -86,7 +87,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             {
                 ThamGiaDeTai thamGiaDeTai = GetThamGiaDeTai();
                 Forms.LsbUpdateItem(lsB_danhSach, lsB_danhSach.SelectedIndex, thamGiaDeTai);
-                Forms.TxtClearInput(txtTGDTs);
+                Forms.CleanInput(inpTGDTs);
             }
             catch (Exception ex)
             {
@@ -98,7 +99,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             ThamGiaDeTai selectedThamGiaDeTai = lsB_danhSach.SelectedItem as ThamGiaDeTai;
             lsB_danhSach.Items.Remove(selectedThamGiaDeTai);
-            Forms.TxtClearInput(txtTGDTs);
+            Forms.CleanInput(inpTGDTs);
         }
 
         private void btn_troveTGDT_Click(object sender, EventArgs e)
@@ -110,7 +111,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             if (lsB_danhSach.SelectedIndex == -1)
             {
-                Forms.TxtClearInput(txtTGDTs);
+                Forms.CleanInput(inpTGDTs);
                 txt_maDeTaiTGDT.Enabled = true;
                 txt_maSinhVienTGDT.Enabled = true;
                 btn_themTGDT.Enabled = true;

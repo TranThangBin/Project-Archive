@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,6 +42,29 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             return true;
         }
 
+        public static void CleanInput(ArrayList inpObjs)
+        {
+            for (int i = 0; i < inpObjs.Count; i++)
+            {
+                if (inpObjs[i] is TextBox)
+                {
+                    TextBox textBox = inpObjs[i] as TextBox;
+                    textBox.Clear();
+                    if (i == 0) textBox.Focus();
+                }
+                if (inpObjs[i] is ComboBox)
+                {
+                    ComboBox comboBox = inpObjs[i] as ComboBox;
+                    comboBox.Text = "";
+                }
+                if (inpObjs[i] is DateTimePicker)
+                {
+                    DateTimePicker dateTimePicker = inpObjs[i] as DateTimePicker;
+                    dateTimePicker.Value = DateTime.Today;
+                }
+            }
+        }
+
         public static void TxtNumIdHandler(TextBox textBox, KeyPressEventArgs e, bool allowNegative = false, bool isDecimal = false)
         {
             if ((Control.ModifierKeys & Keys.Control) == Keys.Control) return;
@@ -77,13 +101,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                 e.Handled = true;
             else if (IsSpecialChar(e.KeyChar)) e.Handled = true;
             else if (char.IsDigit(e.KeyChar)) e.Handled = true;
-        }
-
-        public static void TxtClearInput(List<TextBox> textBoxes)
-        {
-            foreach (TextBox textBox in textBoxes)
-                textBox.Clear();
-            textBoxes[0].Focus();
         }
 
         public static void LsbRightClickDeselected(ListBox listBox, MouseEventArgs e)

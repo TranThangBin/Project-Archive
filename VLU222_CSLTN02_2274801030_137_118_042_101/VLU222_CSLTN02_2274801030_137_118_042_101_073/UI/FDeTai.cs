@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,20 +16,22 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
     {
         private bool toMenu = true;
         private bool toTGDT = false;
-        private List<TextBox> txtDeTais;
-        private List<TextBox> txtTGDTs;
+        private ArrayList inpDeTais;
+        private ArrayList inpTGDTs;
         public FDeTai()
         {
             InitializeComponent();
-            txtDeTais = new List<TextBox>()
+            inpDeTais = new ArrayList()
             {
                 txt_maDetai,
                 txt_tenDetai,
                 txt_kinhPhi,
+                dtP_ngayBatDau,
+                dtP_ngayKetThuc,
                 txt_maGiangVien,
                 txt_maSinhVien
             };
-            txtTGDTs = new List<TextBox>()
+            inpTGDTs = new ArrayList()
             {
                 txt_phuCapTGDT,
                 txt_ketQuaTGDT
@@ -112,13 +115,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             return new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
         }
 
-        private void txtDeTaisFullClear()
-        {
-            Forms.TxtClearInput(txtDeTais);
-            dtP_ngayBatDau.Value = DateTime.Today;
-            dtP_ngayKetThuc.Value = DateTime.Today;
-        }
-
         private void txtNumId_KeyPress(object sender, KeyPressEventArgs e)
         {
             Forms.TxtNumIdHandler(sender as TextBox, e);
@@ -135,7 +131,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             {
                 DeTai deTai = GetDeTai();
                 lsB_danhSachDeTai.Items.Add(deTai);
-                txtDeTaisFullClear();
+                Forms.CleanInput(inpDeTais);
             }
             catch (Exception ex)
             {
@@ -152,7 +148,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 DeTai newDeTai = GetDeTai();
                 newDeTai.ThamGiaDeTais = selectedDeTai.ThamGiaDeTais;
                 Forms.LsbUpdateItem(lsB_danhSachDeTai, GetDeTaiSelectedIndex(), newDeTai);
-                txtDeTaisFullClear();
+                Forms.CleanInput(inpDeTais);
             }
             catch (Exception ex)
             {
@@ -164,7 +160,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             DeTai deTai = GetSelectedDeTai();
             lsB_danhSachDeTai.Items.Remove(deTai);
-            txtDeTaisFullClear();
+            Forms.CleanInput(inpDeTais);
         }
 
         private void btn_troVeDeTai_Click(object sender, EventArgs e)
@@ -177,8 +173,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             lsv_danhSachTGDT.Items.Clear();
             if (GetDeTaiSelectedIndex() == -1)
             {
-                txtDeTaisFullClear();
-                Forms.TxtClearInput(txtTGDTs);
+                Forms.CleanInput(inpDeTais);
+                Forms.CleanInput(inpTGDTs);
                 txt_maDetai.Enabled = true;
                 txt_maSinhVien.Enabled = true;
                 btn_themDeTai.Enabled = true;
@@ -236,7 +232,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 ListViewItem lsvItem = new ListViewItem(lsviObj);
                 lsv_danhSachTGDT.Items.Add(lsvItem);
                 selectedDeTai.ThamGiaDeTais.Add(thamGiaDeTai);
-                Forms.TxtClearInput(txtTGDTs);
+                Forms.CleanInput(inpTGDTs);
             }
             catch (Exception ex)
             {
@@ -269,7 +265,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 ListViewItem newLsvItem = new ListViewItem(newLsviObj);
                 lsv_danhSachTGDT.Items.RemoveAt(TGDTSelectedIndex);
                 lsv_danhSachTGDT.Items.Insert(TGDTSelectedIndex, newLsvItem);
-                Forms.TxtClearInput(txtTGDTs);
+                Forms.CleanInput(inpTGDTs);
             }
             catch (Exception ex)
             {
@@ -284,7 +280,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             lsv_danhSachTGDT.Items.Remove(TGDTSelectedItem);
             DeTai selectedDeTai = GetSelectedDeTai();
             selectedDeTai.ThamGiaDeTais.RemoveAt(TGDTSelectedIndex);
-            Forms.TxtClearInput(txtTGDTs);
+            Forms.CleanInput(inpTGDTs);
         }
 
         private void btn_truyCapTGDT_Click(object sender, EventArgs e)
@@ -298,7 +294,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             if (lsv_danhSachTGDT.SelectedItems.Count == 0)
             {
-                Forms.TxtClearInput(txtTGDTs);
+                Forms.CleanInput(inpTGDTs);
                 return;
             }
             ListViewItem TGDTSelectedItem = lsv_danhSachTGDT.SelectedItems[0];

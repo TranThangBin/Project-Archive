@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,30 +17,32 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private bool toMenu = true;
         private bool toGiangVien = false;
         private bool toSinhVien = false;
-        private List<TextBox> txtKhoas;
-        private List<TextBox> txtGiangViens;
-        private List<TextBox> txtSinhViens;
+        private ArrayList inpKhoas;
+        private ArrayList inpGiangViens;
+        private ArrayList inpSinhViens;
         public FKhoa()
         {
             InitializeComponent();
-            txtKhoas = new List<TextBox>()
+            inpKhoas = new ArrayList()
             {
                 txt_maKhoa,
                 txt_tenKhoa,
                 txt_namThanhLap
             };
-            txtGiangViens = new List<TextBox>()
+            inpGiangViens = new ArrayList()
             {
                 txt_maGiangVien,
                 txt_hoLotGV,
                 txt_tenGiangVien,
-                txt_trinhDoGV
+                txt_trinhDoGV,
+                cmB_gioiTinhGV
             };
-            txtSinhViens = new List<TextBox>()
+            inpSinhViens = new ArrayList()
             {
                 txt_maSinhVien,
                 txt_hoLotSV,
-                txt_tenSinhVien
+                txt_tenSinhVien,
+                cmb_gioiTinhSV
             };
         }
 
@@ -142,18 +145,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             return new SinhVien(maSV, hoLot, tenSV, gioiTinh, maKhoa);
         }
 
-        private void txtGiangViensFullClear()
-        {
-            Forms.TxtClearInput(txtGiangViens);
-            cmB_gioiTinhGV.Text = "";
-        }
-
-        private void txtSinhViensFullClear()
-        {
-            Forms.TxtClearInput(txtSinhViens);
-            cmb_gioiTinhSV.Text = "";
-        }
-
         private void txtNumId_KeyPress(object sender, KeyPressEventArgs e)
         {
             Forms.TxtNumIdHandler(sender as TextBox, e);
@@ -181,7 +172,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             {
                 Khoa khoa = GetKhoa();
                 lsB_danhSachKhoa.Items.Add(khoa);
-                Forms.TxtClearInput(txtKhoas);
+                Forms.CleanInput(inpKhoas);
             }
             catch (Exception ex)
             {
@@ -199,7 +190,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 newKhoa.SinhViens = selectedKhoa.SinhViens;
                 newKhoa.GiangViens = selectedKhoa.GiangViens;
                 Forms.LsbUpdateItem(lsB_danhSachKhoa, GetKhoaSelectedIndex(), newKhoa);
-                Forms.TxtClearInput(txtKhoas);
+                Forms.CleanInput(inpKhoas);
             }
             catch (Exception ex)
             {
@@ -210,7 +201,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void btn_xoaKhoa_Click(object sender, EventArgs e)
         {
             lsB_danhSachKhoa.Items.Remove(GetSelectedKhoa());
-            Forms.TxtClearInput(txtKhoas);
+            Forms.CleanInput(inpKhoas);
         }
 
         private void btn_troVeKhoa_Click(object sender, EventArgs e)
@@ -224,9 +215,9 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             lsV_danhSachSV.Items.Clear();
             if (GetKhoaSelectedIndex() == -1)
             {
-                Forms.TxtClearInput(txtKhoas);
-                txtGiangViensFullClear();
-                txtSinhViensFullClear();
+                Forms.CleanInput(inpKhoas);
+                Forms.CleanInput(inpGiangViens);
+                Forms.CleanInput(inpSinhViens);
                 txt_maKhoa.Enabled = true;
                 btn_themKhoa.Enabled = true;
                 return;
@@ -295,7 +286,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 };
                 ListViewItem lsvItem = new ListViewItem(lsviObj);
                 lsV_danhSachGV.Items.Add(lsvItem);
-                txtGiangViensFullClear();
+                Forms.CleanInput(inpGiangViens);
             }
             catch (Exception ex)
             {
@@ -330,7 +321,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 ListViewItem newLsvItem = new ListViewItem(newLsviObj);
                 lsV_danhSachGV.Items.RemoveAt(giangVienSelectedIndex);
                 lsV_danhSachGV.Items.Insert(giangVienSelectedIndex, newLsvItem);
-                txtGiangViensFullClear();
+                Forms.CleanInput(inpGiangViens);
             }
             catch (Exception ex)
             {
@@ -345,7 +336,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             lsV_danhSachGV.Items.RemoveAt(giangVienSelectedIndex);
             Khoa selectedKhoa = GetSelectedKhoa();
             selectedKhoa.GiangViens.RemoveAt(giangVienSelectedIndex);
-            txtGiangViensFullClear();
+            Forms.CleanInput(inpGiangViens);
         }
 
         private void btn_truyCapGV_Click(object sender, EventArgs e)
@@ -359,7 +350,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             if (lsV_danhSachGV.SelectedItems.Count == 0)
             {
-                txtGiangViensFullClear();
+                Forms.CleanInput(inpGiangViens);
                 return;
             }
             ListViewItem giangVienSelectedItem = lsV_danhSachGV.SelectedItems[0];
@@ -388,7 +379,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 };
                 ListViewItem lsvItem = new ListViewItem(lsviObj);
                 lsV_danhSachSV.Items.Add(lsvItem);
-                txtSinhViensFullClear();
+                Forms.CleanInput(inpSinhViens);
             }
             catch (Exception ex)
             {
@@ -422,7 +413,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 ListViewItem newLsvItem = new ListViewItem(newLsviObj);
                 lsV_danhSachGV.Items.RemoveAt(sinhVienSelectedIndex);
                 lsV_danhSachGV.Items.Insert(sinhVienSelectedIndex, newLsvItem);
-                txtSinhViensFullClear();
+                Forms.CleanInput(inpSinhViens);
             }
             catch (Exception ex)
             {
@@ -437,7 +428,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             lsV_danhSachSV.Items.RemoveAt(sinhVienSelectedIndex);
             Khoa selectedKhoa = GetSelectedKhoa();
             selectedKhoa.SinhViens.RemoveAt(sinhVienSelectedIndex);
-            txtSinhViensFullClear();
+            Forms.CleanInput(inpSinhViens);
         }
 
         private void btn_truyCapSV_Click(object sender, EventArgs e)
@@ -451,7 +442,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             if (lsV_danhSachSV.SelectedItems.Count == 0)
             {
-                txtSinhViensFullClear();
+                Forms.CleanInput(inpSinhViens);
                 return;
             }
             ListViewItem sinhVienSelectedItem = lsV_danhSachSV.SelectedItems[0];

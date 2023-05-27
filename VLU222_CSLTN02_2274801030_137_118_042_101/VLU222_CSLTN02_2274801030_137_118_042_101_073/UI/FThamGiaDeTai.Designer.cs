@@ -81,14 +81,15 @@
             // 
             // lsB_danhSach
             // 
+            this.lsB_danhSach.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lsB_danhSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.lsB_danhSach.FormattingEnabled = true;
             this.lsB_danhSach.HorizontalScrollbar = true;
             this.lsB_danhSach.ItemHeight = 20;
-            this.lsB_danhSach.Location = new System.Drawing.Point(15, 24);
+            this.lsB_danhSach.Location = new System.Drawing.Point(2, 21);
             this.lsB_danhSach.Margin = new System.Windows.Forms.Padding(2);
             this.lsB_danhSach.Name = "lsB_danhSach";
-            this.lsB_danhSach.Size = new System.Drawing.Size(355, 304);
+            this.lsB_danhSach.Size = new System.Drawing.Size(381, 322);
             this.lsB_danhSach.TabIndex = 0;
             this.lsB_danhSach.SelectedIndexChanged += new System.EventHandler(this.lsB_danhSach_SelectedIndexChanged);
             this.lsB_danhSach.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lsB_danhSach_MouseDown);
