@@ -224,6 +224,27 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             return new SinhVien(maSV, hoLot, tenSV, gioiTinh, maKhoa);
         }
 
+        public static Khoa GetKhoa(ArrayList inps)
+        {
+            TextBox txtMaKhoa = inps[0] as TextBox;
+            TextBox txtTenKhoa = inps[1] as TextBox;
+            TextBox txtNamThanhLap = inps[2] as TextBox;
+            if (txtMaKhoa.Text == "")
+                throw new Exception("Vui lòng không để trống mã khoa!");
+            if (txtTenKhoa.Text == "")
+                throw new Exception("Vui lòng không để trống tên khoa!");
+            if (txtNamThanhLap.Text == "")
+                throw new Exception("Vui lòng không để trống năm thành lập!");
+            if (txtMaKhoa.TextLength < txtMaKhoa.MaxLength)
+                throw new Exception("Mã khoa chưa thỏa yêu cầu!");
+            string maKhoa = txtMaKhoa.Text;
+            string tenKhoa = txtTenKhoa.Text.TrimEnd();
+            int namThanhLap = int.Parse(txtNamThanhLap.Text);
+            if (namThanhLap > DateTime.Today.Year)
+                throw new Exception("Năm thành lập của khoa không hợp lệ!");
+            return new Khoa(maKhoa, tenKhoa, namThanhLap);
+        }
+
         public static void CleanInput(ArrayList inpObjs)
         {
             bool hasFocus = false;
@@ -270,6 +291,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
 
         public static void TxtStringNumIdHandler(KeyPressEventArgs e)
         {
+            e.KeyChar = char.ToUpper(e.KeyChar);
             if (e.KeyChar == ' ')
                 e.Handled = true;
             else if (IsSpecialChar(e.KeyChar)) e.Handled = true;

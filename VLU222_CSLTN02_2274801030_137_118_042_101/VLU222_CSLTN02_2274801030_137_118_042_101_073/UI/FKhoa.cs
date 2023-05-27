@@ -74,24 +74,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             }
         }
 
-        private Khoa GetKhoa()
-        {
-            if (txt_maKhoa.Text == "")
-                throw new Exception("Vui lòng không để trống mã khoa!");
-            if (txt_tenKhoa.Text == "")
-                throw new Exception("Vui lòng không để trống tên khoa!");
-            if (txt_namThanhLap.Text == "")
-                throw new Exception("Vui lòng không để trống năm thành lập!");
-            if (txt_maKhoa.TextLength < txt_maKhoa.MaxLength)
-                throw new Exception("Mã khoa chưa thỏa yêu cầu!");
-            string maKhoa = txt_maKhoa.Text;
-            string tenKhoa = txt_tenKhoa.Text.TrimEnd();
-            int namThanhLap = int.Parse(txt_namThanhLap.Text);
-            if (namThanhLap > DateTime.Today.Year)
-                throw new Exception("Năm thành lập của khoa không hợp lệ!");
-            return new Khoa(maKhoa, tenKhoa, namThanhLap);
-        }
-
         private Khoa GetSelectedKhoa()
         {
             return lsB_danhSachKhoa.SelectedItem as Khoa;
@@ -132,7 +114,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             try
             {
-                Khoa khoa = GetKhoa();
+                Khoa khoa = Forms.GetKhoa(inpKhoas);
                 lsB_danhSachKhoa.Items.Add(khoa);
                 Forms.CleanInput(inpKhoas);
             }
@@ -148,7 +130,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             Khoa selectedKhoa = GetSelectedKhoa();
             try
             {
-                Khoa newKhoa = GetKhoa();
+                Khoa newKhoa = Forms.GetKhoa(inpKhoas);
                 newKhoa.SinhViens = selectedKhoa.SinhViens;
                 newKhoa.GiangViens = selectedKhoa.GiangViens;
                 Forms.LsbUpdateItem(lsB_danhSachKhoa, GetKhoaSelectedIndex(), newKhoa);
