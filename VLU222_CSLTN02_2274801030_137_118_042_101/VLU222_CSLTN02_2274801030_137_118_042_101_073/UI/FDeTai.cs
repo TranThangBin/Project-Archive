@@ -75,7 +75,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             Forms.TxtNumIdHandler(sender as TextBox, e);
         }
 
-        private void txtIStringOnly_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtStringOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
             Forms.TxtStringOnlyHandler(sender as TextBox, e);
         }

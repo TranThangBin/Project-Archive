@@ -261,7 +261,7 @@
             this.txt_trinhDo.Name = "txt_trinhDo";
             this.txt_trinhDo.Size = new System.Drawing.Size(239, 26);
             this.txt_trinhDo.TabIndex = 3;
-            this.txt_trinhDo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIStringOnly_KeyPress);
+            this.txt_trinhDo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStringOnly_KeyPress);
             // 
             // label4
             // 
@@ -303,7 +303,7 @@
             this.txt_hoLot.Name = "txt_hoLot";
             this.txt_hoLot.Size = new System.Drawing.Size(239, 26);
             this.txt_hoLot.TabIndex = 1;
-            this.txt_hoLot.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIStringOnly_KeyPress);
+            this.txt_hoLot.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStringOnly_KeyPress);
             // 
             // label2
             // 
@@ -587,7 +587,7 @@
             this.txt_tenDeTai.Name = "txt_tenDeTai";
             this.txt_tenDeTai.Size = new System.Drawing.Size(239, 26);
             this.txt_tenDeTai.TabIndex = 1;
-            this.txt_tenDeTai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIStringOnly_KeyPress);
+            this.txt_tenDeTai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStringOnly_KeyPress);
             // 
             // label8
             // 

@@ -288,7 +288,7 @@
             this.txt_hoLotSV.Name = "txt_hoLotSV";
             this.txt_hoLotSV.Size = new System.Drawing.Size(225, 26);
             this.txt_hoLotSV.TabIndex = 1;
-            this.txt_hoLotSV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIStringOnly_KeyPress);
+            this.txt_hoLotSV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStringOnly_KeyPress);
             // 
             // label11
             // 
@@ -528,7 +528,7 @@
             this.txt_tenDetai.Name = "txt_tenDetai";
             this.txt_tenDetai.Size = new System.Drawing.Size(229, 26);
             this.txt_tenDetai.TabIndex = 1;
-            this.txt_tenDetai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIStringOnly_KeyPress);
+            this.txt_tenDetai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStringOnly_KeyPress);
             // 
             // label2
             // 
@@ -704,7 +704,7 @@
             this.txt_ketQuaTGDT.Name = "txt_ketQuaTGDT";
             this.txt_ketQuaTGDT.Size = new System.Drawing.Size(237, 26);
             this.txt_ketQuaTGDT.TabIndex = 3;
-            this.txt_ketQuaTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIStringOnly_KeyPress);
+            this.txt_ketQuaTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStringOnly_KeyPress);
             // 
             // label8
             // 

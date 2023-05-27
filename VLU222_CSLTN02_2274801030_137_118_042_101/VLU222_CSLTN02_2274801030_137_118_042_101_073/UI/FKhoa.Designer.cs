@@ -232,7 +232,7 @@
             this.txt_tenKhoa.Name = "txt_tenKhoa";
             this.txt_tenKhoa.Size = new System.Drawing.Size(225, 26);
             this.txt_tenKhoa.TabIndex = 1;
-            this.txt_tenKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIStringOnly_KeyPress);
+            this.txt_tenKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStringOnly_KeyPress);
             // 
             // label3
             // 
@@ -307,7 +307,6 @@
             // 
             this.cmB_gioiTinhGV.FormattingEnabled = true;
             this.cmB_gioiTinhGV.Items.AddRange(new object[] {
-            "Khác",
             "Nam",
             "Nữ"});
             this.cmB_gioiTinhGV.Location = new System.Drawing.Point(161, 162);
@@ -463,7 +462,7 @@
             this.txt_trinhDoGV.Name = "txt_trinhDoGV";
             this.txt_trinhDoGV.Size = new System.Drawing.Size(225, 26);
             this.txt_trinhDoGV.TabIndex = 3;
-            this.txt_trinhDoGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIStringOnly_KeyPress);
+            this.txt_trinhDoGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStringOnly_KeyPress);
             // 
             // label7
             // 
@@ -480,11 +479,11 @@
             // 
             this.txt_tenGiangVien.Location = new System.Drawing.Point(161, 95);
             this.txt_tenGiangVien.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_tenGiangVien.MaxLength = 5;
+            this.txt_tenGiangVien.MaxLength = 15;
             this.txt_tenGiangVien.Name = "txt_tenGiangVien";
             this.txt_tenGiangVien.Size = new System.Drawing.Size(225, 26);
             this.txt_tenGiangVien.TabIndex = 2;
-            this.txt_tenGiangVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIStringOnly_KeyPress);
+            this.txt_tenGiangVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOneWord_KeyPress);
             // 
             // label6
             // 
@@ -501,11 +500,11 @@
             // 
             this.txt_hoLotGV.Location = new System.Drawing.Point(161, 61);
             this.txt_hoLotGV.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_hoLotGV.MaxLength = 1;
+            this.txt_hoLotGV.MaxLength = 50;
             this.txt_hoLotGV.Name = "txt_hoLotGV";
             this.txt_hoLotGV.Size = new System.Drawing.Size(225, 26);
             this.txt_hoLotGV.TabIndex = 1;
-            this.txt_hoLotGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIStringOnly_KeyPress);
+            this.txt_hoLotGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStringOnly_KeyPress);
             // 
             // label5
             // 
@@ -687,7 +686,6 @@
             // 
             this.cmb_gioiTinhSV.FormattingEnabled = true;
             this.cmb_gioiTinhSV.Items.AddRange(new object[] {
-            "Khác",
             "Nam ",
             "Nữ"});
             this.cmb_gioiTinhSV.Location = new System.Drawing.Point(160, 131);
@@ -717,7 +715,7 @@
             this.txt_tenSinhVien.Name = "txt_tenSinhVien";
             this.txt_tenSinhVien.Size = new System.Drawing.Size(225, 26);
             this.txt_tenSinhVien.TabIndex = 2;
-            this.txt_tenSinhVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIStringOnly_KeyPress);
+            this.txt_tenSinhVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOneWord_KeyPress);
             // 
             // label12
             // 
@@ -738,7 +736,7 @@
             this.txt_hoLotSV.Name = "txt_hoLotSV";
             this.txt_hoLotSV.Size = new System.Drawing.Size(225, 26);
             this.txt_hoLotSV.TabIndex = 1;
-            this.txt_hoLotSV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIStringOnly_KeyPress);
+            this.txt_hoLotSV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStringOnly_KeyPress);
             // 
             // label11
             // 

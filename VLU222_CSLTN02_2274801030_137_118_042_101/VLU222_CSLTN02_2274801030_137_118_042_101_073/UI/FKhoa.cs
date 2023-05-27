@@ -102,34 +102,19 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             return lsB_danhSachKhoa.SelectedIndex;
         }
 
-        private SinhVien GetSinhVien(Khoa khoa)
-        {
-            if (txt_maSinhVien.Text == "")
-                throw new Exception("Vui lòng không để trống mã sinh viên!");
-            if (txt_hoLotSV.Text == "")
-                throw new Exception("Vui lòng không để trống họ lót sinh viên!");
-            if (txt_tenSinhVien.Text == "")
-                throw new Exception("Vui lòng không để trống tên sinh viên!");
-            if (cmb_gioiTinhSV.Text == "")
-                throw new Exception("Vui lòng không để trống mã khoa giới tính sinh viên!");
-            if (txt_maSinhVien.TextLength < txt_maSinhVien.MaxLength)
-                throw new Exception("Mã sinh viên chưa thỏa yêu cầu!");
-            string maSV = txt_maSinhVien.Text;
-            string hoLot = txt_hoLotSV.Text.TrimEnd();
-            string tenSV = txt_tenSinhVien.Text;
-            string gioiTinh = cmb_gioiTinhSV.Text;
-            string maKhoa = khoa.MaKhoa;
-            return new SinhVien(maSV, hoLot, tenSV, gioiTinh, maKhoa);
-        }
-
         private void txtNumId_KeyPress(object sender, KeyPressEventArgs e)
         {
             Forms.TxtNumIdHandler(sender as TextBox, e);
         }
 
-        private void txtIStringOnly_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtStringOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
             Forms.TxtStringOnlyHandler(sender as TextBox, e);
+        }
+
+        private void txtOneWord_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Forms.TxtOneWordOnlyHandler(e);
         }
 
         private void cmB_KeyPressed(object sender, KeyPressEventArgs e)
@@ -344,7 +329,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             Khoa selectedKhoa = GetSelectedKhoa();
             try
             {
-                SinhVien sinhVien = GetSinhVien(selectedKhoa);
+                SinhVien sinhVien = Forms.GetSinhVien(inpSinhViens, selectedKhoa);
                 selectedKhoa.SinhViens.Add(sinhVien);
                 string[] lsviObj = new string[]
                 {
@@ -376,7 +361,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             Khoa selectedKhoa = GetSelectedKhoa();
             try
             {
-                SinhVien newSinhVien = GetSinhVien(selectedKhoa);
+                SinhVien newSinhVien = Forms.GetSinhVien(inpSinhViens, selectedKhoa);
                 selectedKhoa.SinhViens.RemoveAt(sinhVienSelectedIndex);
                 selectedKhoa.SinhViens.Insert(sinhVienSelectedIndex, newSinhVien);
                 string[] newLsviObj = new string[]

@@ -161,13 +161,13 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             if (txtMaGV.Text == "")
                 throw new Exception("Vui lòng không để trống mã giảng viên!");
             if (txtHoLot.Text == "")
-                throw new Exception("Vui lòng không để trống họ lót!");
+                throw new Exception("Vui lòng không để trống họ lót! giảng viên");
             if (txtTenGV.Text == "")
                 throw new Exception("Vui lòng không để trống tên giảng viên!");
             if (txtTrinhDo.Text == "")
-                throw new Exception("Vui lòng không để trống trình độ!");
+                throw new Exception("Vui lòng không để trống trình độ viên!");
             if (cmBGioiTinh.Text == "")
-                throw new Exception("Vui lòng không để trống giới tính!");
+                throw new Exception("Vui lòng không để trống giới tính giảng viên!");
             if (txtMaGV.TextLength < txtMaGV.MaxLength)
                 throw new Exception("Mã giảng viên chưa thỏa yêu cầu!");
             if (khoa == null)
@@ -186,6 +186,42 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             string trinhDo = txtTrinhDo.Text.TrimEnd();
             string gioiTinh = cmBGioiTinh.Text;
             return new GiangVien(maGV, hoLot, tenGV, gioiTinh, trinhDo, maKhoa);
+        }
+
+        public static SinhVien GetSinhVien(ArrayList inps, Khoa khoa = null)
+        {
+            int lastIndex = inps.Count - 1;
+            TextBox txtMaSV = inps[0] as TextBox;
+            TextBox txtHoLot = inps[1] as TextBox;
+            TextBox txtTenSV = inps[2] as TextBox;
+            ComboBox cmBGioiTinh = inps[3] as ComboBox;
+            TextBox txtMaKhoa;
+            string maKhoa;
+            if (txtMaSV.Text == "")
+                throw new Exception("Vui lòng không để trống mã sinh viên!");
+            if (txtHoLot.Text == "")
+                throw new Exception("Vui lòng không để trống họ lót sinh viên!");
+            if (txtTenSV.Text == "")
+                throw new Exception("Vui lòng không để trống tên sinh viên!");
+            if (cmBGioiTinh.Text == "")
+                throw new Exception("Vui lòng không để trống giới tính sinh viên!");
+            if (txtMaSV.TextLength < txtMaSV.MaxLength)
+                throw new Exception("Mã sinh viên chưa thỏa yêu cầu!");
+            if (khoa == null)
+            {
+                txtMaKhoa = inps[lastIndex] as TextBox;
+                if (txtMaKhoa.Text == "")
+                    throw new Exception("Vui lòng không để trống mã khoa!");
+                if (txtMaKhoa.TextLength < txtMaKhoa.MaxLength)
+                    throw new Exception("Mã khoa chưa thỏa yêu cầu!");
+                maKhoa = txtMaKhoa.Text;
+            }
+            else maKhoa = khoa.MaKhoa;
+            string maSV = txtMaSV.Text;
+            string hoLot = txtHoLot.Text.TrimEnd();
+            string tenSV = txtTenSV.Text;
+            string gioiTinh = cmBGioiTinh.Text;
+            return new SinhVien(maSV, hoLot, tenSV, gioiTinh, maKhoa);
         }
 
         public static void CleanInput(ArrayList inpObjs)
