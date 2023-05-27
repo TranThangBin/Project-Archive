@@ -12,20 +12,60 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
     internal static class Forms
     {
         private static QLDETAINCKHSINHVIEN mainMenu;
-        private static FDeTai deTai;
         private static FThamGiaDT thamGiaDT;
+        private static FDeTai deTai;
         private static FGiangVien giangVien;
         private static FSinhVien sinhVien;
         private static FKhoa khoa;
         private static FThanhVien thanhVien;
 
         public static QLDETAINCKHSINHVIEN MainMenu { get => mainMenu; set => mainMenu = value; }
-        public static FDeTai DeTai { get => deTai; set => deTai = value; }
         public static FThamGiaDT ThamGiaDT { get => thamGiaDT; set => thamGiaDT = value; }
+        public static FDeTai DeTai { get => deTai; set => deTai = value; }
         public static FGiangVien GiangVien { get => giangVien; set => giangVien = value; }
         public static FSinhVien SinhVien { get => sinhVien; set => sinhVien = value; }
         public static FKhoa Khoa { get => khoa; set => khoa = value; }
         public static FThanhVien ThanhVien { get => thanhVien; set => thanhVien = value; }
+
+        public static ThamGiaDeTai GetThamGiaDeTai(ArrayList inps, DeTai deTai = null)
+        {
+            int lastIndex = inps.Count - 1;
+            TextBox txtMaDT;
+            TextBox txtMaSV;
+            TextBox txtPhuCap = inps[lastIndex - 1] as TextBox;
+            TextBox txtKetQua = inps[lastIndex] as TextBox;
+            string maDT;
+            string maSV;
+            if (deTai == null)
+            {
+                txtMaDT = inps[lastIndex - 3] as TextBox;
+                txtMaSV = inps[lastIndex - 2] as TextBox;
+                if (txtMaDT.Text == "")
+                    throw new Exception("Vui lòng không để trống mã đề tài!");
+                if (txtMaDT.TextLength < txtMaDT.MaxLength)
+                    throw new Exception("Mã đề tài chưa thỏa yêu cầu!");
+                if (txtMaSV.Text == "")
+                    throw new Exception("Vui lòng không để trống mã sinh viên!");
+                if (txtMaSV.TextLength < txtMaSV.MaxLength)
+                    throw new Exception("Mã sinh viên chưa thỏa yêu cầu!");
+                maDT = txtMaDT.Text;
+                maSV = txtMaSV.Text;
+            }
+            else
+            {
+                maDT = deTai.MaDT;
+                maSV = deTai.MaSVCNDT;
+            }
+            if (txtPhuCap.Text == "")
+                throw new Exception("Vui lòng không để trống tiền phụ cấp!");
+            if (txtKetQua.Text == "")
+                throw new Exception("Vui lòng không để trống kết quả!");
+            long phuCap = long.Parse(txtPhuCap.Text);
+            if (deTai != null && phuCap > deTai.KinhPhi)
+                throw new Exception("Phụ cấp vượt quá giới hạn kinh phí!");
+            string ketQua = txtKetQua.Text.TrimEnd();
+            return new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
+        }
 
         private static bool IsSpecialChar(char ch)
         {
@@ -44,23 +84,32 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
 
         public static void CleanInput(ArrayList inpObjs)
         {
+            bool hasFocus = false;
             for (int i = 0; i < inpObjs.Count; i++)
             {
                 if (inpObjs[i] is TextBox)
                 {
                     TextBox textBox = inpObjs[i] as TextBox;
                     textBox.Clear();
-                    if (i == 0) textBox.Focus();
+                    if (hasFocus) continue;
+                    textBox.Focus();
+                    hasFocus = true;
                 }
                 if (inpObjs[i] is ComboBox)
                 {
                     ComboBox comboBox = inpObjs[i] as ComboBox;
                     comboBox.Text = "";
+                    if (hasFocus) continue;
+                    comboBox.Focus();
+                    hasFocus = true;
                 }
                 if (inpObjs[i] is DateTimePicker)
                 {
                     DateTimePicker dateTimePicker = inpObjs[i] as DateTimePicker;
                     dateTimePicker.Value = DateTime.Today;
+                    if (hasFocus) continue;
+                    dateTimePicker.Focus();
+                    hasFocus = true;
                 }
             }
         }

@@ -40,27 +40,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 e.Cancel = true;
         }
 
-        private ThamGiaDeTai GetThamGiaDeTai()
-        {
-            if (txt_maDeTaiTGDT.Text == "")
-                throw new Exception("Vui lòng không để trống mã đề tài!");
-            if (txt_maSinhVienTGDT.Text == "")
-                throw new Exception("Vui lòng không để trống mã sinh viên!");
-            if (txt_phuCapTGDT.Text == "")
-                throw new Exception("Vui lòng không để trống tiền phụ cấp!");
-            if (txt_ketQuaTGDT.Text == "")
-                throw new Exception("Vui lòng không để trống kết quả!");
-            if (txt_maDeTaiTGDT.TextLength < txt_maDeTaiTGDT.MaxLength)
-                throw new Exception("Mã đề tài chưa thỏa yêu cầu!");
-            if (txt_maSinhVienTGDT.TextLength < txt_maSinhVienTGDT.MaxLength)
-                throw new Exception("Mã sinh viên chưa thỏa yêu cầu!");
-            string maDT = txt_maDeTaiTGDT.Text;
-            string maSV = txt_maSinhVienTGDT.Text;
-            long phuCap = long.Parse(txt_phuCapTGDT.Text);
-            string ketQua = txt_ketQuaTGDT.Text.TrimEnd();
-            return new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
-        }
-
         private void txtNumId_KeyPress(object sender, KeyPressEventArgs e)
         {
             Forms.TxtNumIdHandler(sender as TextBox, e);
@@ -70,7 +49,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             try
             {
-                ThamGiaDeTai thamGiaDeTai = GetThamGiaDeTai();
+                ThamGiaDeTai thamGiaDeTai = Forms.GetThamGiaDeTai(inpTGDTs);
                 lsB_danhSach.Items.Add(thamGiaDeTai);
                 Forms.CleanInput(inpTGDTs);
             }
@@ -85,7 +64,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             if (!Forms.LsbHasItemSelected(lsB_danhSach, "Vui lòng chọn 1 mục tiêu để chỉnh sửa!")) return;
             try
             {
-                ThamGiaDeTai thamGiaDeTai = GetThamGiaDeTai();
+                ThamGiaDeTai thamGiaDeTai = Forms.GetThamGiaDeTai(inpTGDTs);
                 Forms.LsbUpdateItem(lsB_danhSach, lsB_danhSach.SelectedIndex, thamGiaDeTai);
                 Forms.CleanInput(inpTGDTs);
             }

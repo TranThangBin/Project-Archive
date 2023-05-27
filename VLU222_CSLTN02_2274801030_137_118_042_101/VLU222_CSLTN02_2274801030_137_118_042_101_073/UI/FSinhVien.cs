@@ -88,8 +88,10 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 throw new Exception("Vui lòng không để trống giới tính!");
             if (txt_maKhoaSV.Text == "")
                 throw new Exception("Vui lòng không để trống mã khoa!");
-            if (txt_tenSinhVien.TextLength < txt_tenSinhVien.MaxLength)
+            if (txt_maSinhVien.TextLength < txt_maSinhVien.MaxLength)
                 throw new Exception("Mã sinh viên chưa thỏa yêu cầu!");
+            if (txt_maKhoaSV.TextLength < txt_maKhoaSV.MaxLength)
+                throw new Exception("Mã khoa chưa thỏa yêu cầu!");
             string maSV = txt_maSinhVien.Text;
             string hoLot = txt_hoLotSV.Text.TrimEnd();
             string tenSV = txt_tenSinhVien.Text;
@@ -142,21 +144,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private int GetDeTaiSelectedIndex()
         {
             return lsb_danhSachDeTai.SelectedIndex;
-        }
-
-        private ThamGiaDeTai GetThamGiaDeTai(SinhVien sinhVien, DeTai deTai)
-        {
-            if (txt_phuCapTGDT.Text == "")
-                throw new Exception("Vui lòng không để trống tiền phụ cấp!");
-            if (txt_ketQuaTGDT.Text == "")
-                throw new Exception("Vui lòng không để trống kết quả!");
-            string maDT = deTai.MaDT;
-            string maSV = sinhVien.MaSV;
-            long phuCap = long.Parse(txt_phuCapTGDT.Text);
-            if (phuCap > deTai.KinhPhi)
-                throw new Exception("Phụ cấp vượt quá giới hạn kinh phí!");
-            string ketQua = txt_ketQuaTGDT.Text.TrimEnd();
-            return new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
         }
 
         private void txtNumId_KeyPress(object sender, KeyPressEventArgs e)
@@ -357,7 +344,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             DeTai selectedDeTai = GetSelectedDeTai();
             try
             {
-                ThamGiaDeTai thamGiaDeTai = GetThamGiaDeTai(selectedSinhVien, selectedDeTai);
+                ThamGiaDeTai thamGiaDeTai = Forms.GetThamGiaDeTai(inpTGDTs, selectedDeTai);
                 selectedDeTai.ThamGiaDeTais.Add(thamGiaDeTai);
                 string[] lsviObj = new string[]
                 {
@@ -388,7 +375,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             DeTai selectedDeTai = GetSelectedDeTai();
             try
             {
-                ThamGiaDeTai newTGDT = GetThamGiaDeTai(GetSelectedSinhVien(), selectedDeTai);
+                ThamGiaDeTai newTGDT = Forms.GetThamGiaDeTai(inpTGDTs, selectedDeTai);
                 selectedDeTai.ThamGiaDeTais.RemoveAt(TGDTSelectedIndex);
                 selectedDeTai.ThamGiaDeTais.Insert(TGDTSelectedIndex, newTGDT);
                 string[] newLsviObj = new string[]

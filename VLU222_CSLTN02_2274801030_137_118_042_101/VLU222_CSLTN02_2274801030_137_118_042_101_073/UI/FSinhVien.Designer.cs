@@ -124,7 +124,7 @@
             // 
             this.groupBox9.Controls.Add(this.lsb_danhSachSinhVien);
             this.groupBox9.ForeColor = System.Drawing.Color.Red;
-            this.groupBox9.Location = new System.Drawing.Point(4, 264);
+            this.groupBox9.Location = new System.Drawing.Point(6, 262);
             this.groupBox9.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Padding = new System.Windows.Forms.Padding(2);
@@ -354,11 +354,11 @@
             // 
             this.groupBox3.Controls.Add(this.lsb_danhSachDeTai);
             this.groupBox3.ForeColor = System.Drawing.Color.Red;
-            this.groupBox3.Location = new System.Drawing.Point(11, 286);
+            this.groupBox3.Location = new System.Drawing.Point(15, 285);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox3.Size = new System.Drawing.Size(386, 350);
+            this.groupBox3.Size = new System.Drawing.Size(386, 354);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Đề tài sinh viên phụ trách";
@@ -371,7 +371,7 @@
             this.lsb_danhSachDeTai.ItemHeight = 20;
             this.lsb_danhSachDeTai.Location = new System.Drawing.Point(2, 21);
             this.lsb_danhSachDeTai.Name = "lsb_danhSachDeTai";
-            this.lsb_danhSachDeTai.Size = new System.Drawing.Size(382, 327);
+            this.lsb_danhSachDeTai.Size = new System.Drawing.Size(382, 331);
             this.lsb_danhSachDeTai.TabIndex = 0;
             this.lsb_danhSachDeTai.SelectedIndexChanged += new System.EventHandler(this.lsb_danhSachDeTai_SelectedIndexChanged);
             this.lsb_danhSachDeTai.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lsbDeselected_MouseDown);
