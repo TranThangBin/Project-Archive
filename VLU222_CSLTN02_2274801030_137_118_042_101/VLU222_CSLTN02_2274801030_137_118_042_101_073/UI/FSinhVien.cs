@@ -110,32 +110,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             return lsb_danhSachSinhVien.SelectedIndex;
         }
 
-        private DeTai GetDeTai(SinhVien sinhVien)
-        {
-            if (txt_maDetai.Text == "")
-                throw new Exception("Vui lòng không để trống mã đề tài!");
-            if (txt_tenDetai.Text == "")
-                throw new Exception("Vui lòng không để trống tên đề tài!");
-            if (txt_kinhPhiDT.Text == "")
-                throw new Exception("Vui lòng không để trống kinh phí!");
-            if (txt_maGiangVienDT.Text == "")
-                throw new Exception("Vui lòng không để trống mã giảng viên!");
-            if (txt_maDetai.TextLength < txt_maDetai.MaxLength)
-                throw new Exception("Mã đề tài chưa thỏa yêu cầu!");
-            if (txt_maGiangVienDT.TextLength < txt_maGiangVienDT.MaxLength)
-                throw new Exception("Mã giảng viên chưa thỏa yêu cầu!");
-            string maDT = txt_maDetai.Text;
-            string tenDT = txt_tenDetai.Text.TrimEnd();
-            long kinhPhi = long.Parse(txt_kinhPhiDT.Text);
-            DateTime ngayBD = dtP_ngayBatDauDT.Value;
-            DateTime ngayKT = dtP_ngayKetThucDT.Value;
-            if (ngayBD > ngayKT)
-                throw new Exception("Ngày bắt đầu không được trễ hơn ngày kết thúc!");
-            string maGV = txt_maGiangVienDT.Text;
-            string maSV = sinhVien.MaSV;
-            return new DeTai(maDT, tenDT, kinhPhi, ngayBD, ngayKT, maGV, maSV);
-        }
-
         private DeTai GetSelectedDeTai()
         {
             return lsb_danhSachDeTai.SelectedItem as DeTai;
@@ -257,7 +231,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             SinhVien selectedSinhVien = GetSelectedSinhVien();
             try
             {
-                DeTai deTai = GetDeTai(selectedSinhVien);
+                DeTai deTai = Forms.GetDeTai(inpDeTais, null, selectedSinhVien);
                 selectedSinhVien.Detais.Add(deTai);
                 lsb_danhSachDeTai.Items.Add(deTai);
                 Forms.CleanInput(inpDeTais);
@@ -272,10 +246,15 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             if (!Forms.LsbHasItemSelected(lsb_danhSachDeTai, "Vui lòng chọn 1 đề tài để chỉnh sửa!")) return;
             SinhVien selectedSinhVien = GetSelectedSinhVien();
+            DeTai selectedDeTai = GetSelectedDeTai();
             try
             {
                 int deTaiSelectedIndex = GetDeTaiSelectedIndex();
-                DeTai newDeTai = GetDeTai(selectedSinhVien);
+                DeTai newDeTai = Forms.GetDeTai(inpDeTais, null, selectedSinhVien);
+                foreach (ThamGiaDeTai thamGiaDeTai in selectedDeTai.ThamGiaDeTais)
+                    if (newDeTai.KinhPhi < thamGiaDeTai.PhuCap)
+                        throw new Exception("Kinh phí đề tài không được bé tiền phụ cấp tham gia đề tài!");
+                newDeTai.ThamGiaDeTais = selectedDeTai.ThamGiaDeTais;
                 selectedSinhVien.Detais.RemoveAt(deTaiSelectedIndex);
                 selectedSinhVien.Detais.Insert(deTaiSelectedIndex, newDeTai);
                 Forms.LsbUpdateItem(lsb_danhSachDeTai, deTaiSelectedIndex, newDeTai);

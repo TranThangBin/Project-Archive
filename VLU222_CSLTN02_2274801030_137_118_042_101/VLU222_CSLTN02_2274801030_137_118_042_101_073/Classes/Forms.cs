@@ -67,6 +67,74 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             return new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
         }
 
+        public static DeTai GetDeTai(ArrayList inps, GiangVien giangVien = null, SinhVien sinhVien = null)
+        {
+            int lastIndex = inps.Count - 1;
+            TextBox txtMaDT = inps[0] as TextBox;
+            TextBox txtTenDT = inps[1] as TextBox;
+            TextBox txtKinhPhi = inps[2] as TextBox;
+            DateTimePicker dtPNgayBD = inps[3] as DateTimePicker;
+            DateTimePicker dtPNgayKT = inps[4] as DateTimePicker;
+            TextBox txtMaGV;
+            TextBox txtMaSV;
+            string maGVHD;
+            string maSVCNDT;
+            if (txtMaDT.Text == "")
+                throw new Exception("Vui lòng không để trống mã đề tài!");
+            if (txtMaDT.TextLength < txtMaDT.MaxLength)
+                throw new Exception("Mã đề tài chưa thỏa yêu cầu!");
+            if (txtTenDT.Text == "")
+                throw new Exception("Vui lòng không để trống tên đề tài!");
+            if (txtKinhPhi.Text == "")
+                throw new Exception("Vui lòng không để trống kinh phí!");
+            if (giangVien == null && sinhVien == null)
+            {
+                txtMaGV = inps[lastIndex - 1] as TextBox;
+                txtMaSV = inps[lastIndex] as TextBox;
+                if (txtMaGV.Text == "")
+                    throw new Exception("Vui lòng không để trống mã giảng viên!");
+                if (txtMaGV.TextLength < txtMaGV.MaxLength)
+                    throw new Exception("Mã giảng viên chưa thỏa yêu cầu!");
+                if (txtMaSV.Text == "")
+                    throw new Exception("Vui lòng không để trống mã sinh viên!");
+                if (txtMaSV.TextLength < txtMaSV.MaxLength)
+                    throw new Exception("Mã sinh viên chưa thỏa yêu cầu!");
+                maGVHD = txtMaGV.Text;
+                maSVCNDT = txtMaSV.Text;
+            }
+            else
+            {
+                if (giangVien == null)
+                {
+                    txtMaGV = inps[lastIndex] as TextBox;
+                    if (txtMaGV.Text == "")
+                        throw new Exception("Vui lòng không để trống mã giảng viên!");
+                    if (txtMaGV.TextLength < txtMaGV.MaxLength)
+                        throw new Exception("Mã giảng viên chưa thỏa yêu cầu!");
+                    maGVHD = txtMaGV.Text;
+                }
+                else maGVHD = giangVien.MaGV;
+                if (sinhVien == null)
+                {
+                    txtMaSV = inps[lastIndex] as TextBox;
+                    if (txtMaSV.Text == "")
+                        throw new Exception("Vui lòng không để trống mã sinh viên!");
+                    if (txtMaSV.TextLength < txtMaSV.MaxLength)
+                        throw new Exception("Mã sinh viên chưa thỏa yêu cầu!");
+                    maSVCNDT = txtMaSV.Text;
+                }
+                else maSVCNDT = sinhVien.MaSV;
+            }
+            string maDT = txtMaDT.Text;
+            string tenDT = txtTenDT.Text.TrimEnd();
+            long kinhPhi = long.Parse(txtKinhPhi.Text);
+            DateTime ngayBD = dtPNgayBD.Value;
+            DateTime ngayKT = dtPNgayKT.Value;
+            if (ngayBD >= ngayKT)
+                throw new Exception("Ngày bắt đầu không được trùng hoặc trễ hơn ngày kết thúc!");
+            return new DeTai(maDT, tenDT, kinhPhi, ngayBD, ngayKT, maGVHD, maSVCNDT);
+        }
+
         private static bool IsSpecialChar(char ch)
         {
             if (char.IsLetter(ch))

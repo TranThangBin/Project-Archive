@@ -60,36 +60,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             }
         }
 
-        private DeTai GetDeTai()
-        {
-            if (txt_maDetai.Text == "")
-                throw new Exception("Vui lòng không để trống mã đề tài!");
-            if (txt_maDetai.TextLength < txt_maDetai.MaxLength)
-                throw new Exception("Mã đề tài chưa thỏa yêu cầu!");
-            if (txt_tenDetai.Text == "")
-                throw new Exception("Vui lòng không để trống tên đề tài!");
-            if (txt_kinhPhi.Text == "")
-                throw new Exception();
-            if (txt_maGiangVien.Text == "")
-                throw new Exception("Vui lòng không để trống mã giảng viên!");
-            if (txt_maSinhVien.Text == "")
-                throw new Exception("Vui lòng không để trống mã sinh viên!");
-            if (txt_maGiangVien.TextLength < txt_maGiangVien.MaxLength)
-                throw new Exception("Mã giảng viên chưa thỏa yêu cầu!");
-            if (txt_maSinhVien.TextLength < txt_maSinhVien.MaxLength)
-                throw new Exception("Mã sinh viên chưa thỏa yêu cầu!"); ;
-            string maDT = txt_maDetai.Text;
-            string tenDT = txt_tenDetai.Text.TrimEnd();
-            long kinhPhi = long.Parse(txt_kinhPhi.Text);
-            DateTime ngayBD = dtP_ngayBatDau.Value;
-            DateTime ngayKT = dtP_ngayKetThuc.Value;
-            if (ngayBD > ngayKT)
-                throw new Exception("Ngày bắt đầu không được trễ hơn ngày kết thúc!");
-            string maGVHD = txt_maGiangVien.Text;
-            string maSVCNDT = txt_maSinhVien.Text;
-            return new DeTai(maDT, tenDT, kinhPhi, ngayBD, ngayKT, maGVHD, maSVCNDT);
-        }
-
         private DeTai GetSelectedDeTai()
         {
             return lsB_danhSachDeTai.SelectedItem as DeTai;
@@ -114,7 +84,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             try
             {
-                DeTai deTai = GetDeTai();
+                DeTai deTai = Forms.GetDeTai(inpDeTais);
                 lsB_danhSachDeTai.Items.Add(deTai);
                 Forms.CleanInput(inpDeTais);
             }
@@ -130,7 +100,10 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             DeTai selectedDeTai = GetSelectedDeTai();
             try
             {
-                DeTai newDeTai = GetDeTai();
+                DeTai newDeTai = Forms.GetDeTai(inpDeTais);
+                foreach (ThamGiaDeTai thamGiaDeTai in selectedDeTai.ThamGiaDeTais)
+                    if (newDeTai.KinhPhi < thamGiaDeTai.PhuCap)
+                        throw new Exception("Kinh phí đề tài không được bé tiền phụ cấp tham gia đề tài!");
                 newDeTai.ThamGiaDeTais = selectedDeTai.ThamGiaDeTais;
                 Forms.LsbUpdateItem(lsB_danhSachDeTai, GetDeTaiSelectedIndex(), newDeTai);
                 Forms.CleanInput(inpDeTais);

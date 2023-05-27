@@ -101,37 +101,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             return lsB_danhSachGiangVien.SelectedIndex;
         }
 
-        private DeTai GetDeTai(GiangVien giangVien)
-        {
-            if (txt_maDetai.Text == "")
-                throw new Exception("Vui lòng không để trống mã đề tài!");
-            if (txt_tenDeTai.Text == "")
-                throw new Exception("Vui lòng không để trống tên đề tài!");
-            if (txt_kinhPhi.Text == "")
-                throw new Exception("Vui lòng không để trống kinh phí!");
-            if (txt_maSinhVien.Text == "")
-                throw new Exception("Vui lòng không để trống mã sinh viên!");
-            if (txt_maDetai.TextLength < txt_maDetai.MaxLength)
-                throw new Exception("Mã đề tài chưa thỏa yêu cầu!");
-            string maDT = txt_maDetai.Text;
-            string tenDT = txt_tenDeTai.Text.TrimEnd();
-            long kinhPhi = long.Parse(txt_kinhPhi.Text);
-            DateTime ngayBD = dtP_ngayBatDau.Value;
-            DateTime ngayKT = dtP_ngayKetThuc.Value;
-            if (ngayBD > ngayKT)
-                throw new Exception("Ngày bắt đầu không được trễ hơn ngày kết thúc!");
-            string maGVHD = giangVien.MaGV;
-            string maSVCNDT = txt_maSinhVien.Text;
-            return new DeTai(maDT, tenDT, kinhPhi, ngayBD, ngayKT, maGVHD, maSVCNDT);
-        }
-
-        private void inpDeTaisFullClear()
-        {
-            Forms.CleanInput(inpDeTais);
-            dtP_ngayBatDau.Value = DateTime.Today;
-            dtP_ngayKetThuc.Value = DateTime.Today;
-        }
-
         private void txtNumId_KeyPress(object sender, KeyPressEventArgs e)
         {
             Forms.TxtNumIdHandler(sender as TextBox, e);
@@ -196,7 +165,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             if (GetGiangVienSelectedIndex() == -1)
             {
                 Forms.CleanInput(inpGiangViens);
-                inpDeTaisFullClear();
+                Forms.CleanInput(inpDeTais);
                 txt_maGiangVien.Enabled = true;
                 btn_themGV.Enabled = true;
                 return;
@@ -222,9 +191,9 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 };
                 ListViewItem lsvItem = new ListViewItem(lsviObj);
                 lsV_giangVienGuongdanVeDT.Items.Add(lsvItem);
-                txt_maGiangVien.Enabled = false;
-                btn_themGV.Enabled = false;
             }
+            txt_maGiangVien.Enabled = false;
+            btn_themGV.Enabled = false;
         }
 
         private void lsB_danhSachGiangVien_MouseDown(object sender, MouseEventArgs e)
@@ -253,7 +222,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             GiangVien selectedGiangVien = GetSelectedGiangVien();
             try
             {
-                DeTai deTai = GetDeTai(selectedGiangVien);
+                DeTai deTai = Forms.GetDeTai(inpDeTais, selectedGiangVien);
                 string[] lsviObj = new string[]
                 {
                     deTai.MaDT,
@@ -267,7 +236,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 ListViewItem lsvItem = new ListViewItem(lsviObj);
                 lsV_giangVienGuongdanVeDT.Items.Add(lsvItem);
                 selectedGiangVien.Detais.Add(deTai);
-                inpDeTaisFullClear();
+                Forms.CleanInput(inpDeTais);
             }
             catch (Exception ex)
             {
@@ -287,23 +256,23 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             GiangVien selectedGiangVien = GetSelectedGiangVien();
             try
             {
-                DeTai newDeTai = GetDeTai(selectedGiangVien);
+                DeTai newDeTai = Forms.GetDeTai(inpDeTais, selectedGiangVien);
                 selectedGiangVien.Detais.RemoveAt(deTaiSelectedIndex);
                 selectedGiangVien.Detais.Insert(deTaiSelectedIndex, newDeTai);
                 string[] newLsviObj = new string[]
                 {
-                newDeTai.MaDT,
-                newDeTai.TenDT,
-                newDeTai.KinhPhi + "",
-                newDeTai.NgayBD + "",
-                newDeTai.NgayKT + "",
-                newDeTai.MaGVHD,
-                newDeTai.MaSVCNDT
+                    newDeTai.MaDT,
+                    newDeTai.TenDT,
+                    newDeTai.KinhPhi + "",
+                    newDeTai.NgayBD + "",
+                    newDeTai.NgayKT + "",
+                    newDeTai.MaGVHD,
+                    newDeTai.MaSVCNDT
                 };
                 ListViewItem newLsvItem = new ListViewItem(newLsviObj);
                 lsV_giangVienGuongdanVeDT.Items.RemoveAt(deTaiSelectedIndex);
                 lsV_giangVienGuongdanVeDT.Items.Insert(deTaiSelectedIndex, newLsvItem);
-                inpDeTaisFullClear();
+                Forms.CleanInput(inpDeTais);
             }
             catch (Exception ex)
             {
@@ -318,7 +287,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             lsV_giangVienGuongdanVeDT.Items.RemoveAt(deTaiSelectedIndex);
             GiangVien selectedGiangVien = GetSelectedGiangVien();
             selectedGiangVien.Detais.RemoveAt(deTaiSelectedIndex);
-            inpDeTaisFullClear();
+            Forms.CleanInput(inpDeTais);
         }
 
         private void btn_truyCapDT_Click(object sender, EventArgs e)
@@ -332,7 +301,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             if (lsV_giangVienGuongdanVeDT.SelectedItems.Count == 0)
             {
-                inpDeTaisFullClear();
+                Forms.CleanInput(inpDeTais);
                 return;
             }
             ListViewItem deTaiSelectedItem = lsV_giangVienGuongdanVeDT.SelectedItems[0];
