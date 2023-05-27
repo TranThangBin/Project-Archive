@@ -58,11 +58,11 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                 if (txtMaDT.Text == "")
                     throw new Exception("Vui lòng không để trống mã đề tài!");
                 if (txtMaDT.TextLength < txtMaDT.MaxLength)
-                    throw new Exception("Mã đề tài chưa thỏa yêu cầu!");
+                    throw new Exception($"Mã đề tài chưa thỏa yêu cầu! ({txtMaDT.MaxLength} ký tự)");
                 if (txtMaSV.Text == "")
                     throw new Exception("Vui lòng không để trống mã sinh viên!");
                 if (txtMaSV.TextLength < txtMaSV.MaxLength)
-                    throw new Exception("Mã sinh viên chưa thỏa yêu cầu!");
+                    throw new Exception($"Mã sinh viên chưa thỏa yêu cầu! ({txtMaSV.MaxLength} ký tự)");
                 maDT = txtMaDT.Text;
                 maSV = txtMaSV.Text;
             }
@@ -95,7 +95,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             if (txtMaDT.Text == "")
                 throw new Exception("Vui lòng không để trống mã đề tài!");
             if (txtMaDT.TextLength < txtMaDT.MaxLength)
-                throw new Exception("Mã đề tài chưa thỏa yêu cầu!");
+                throw new Exception($"Mã đề tài chưa thỏa yêu cầu! ({txtMaDT.MaxLength} ký tự)");
             if (txtTenDT.Text == "")
                 throw new Exception("Vui lòng không để trống tên đề tài!");
             if (txtKinhPhi.Text == "")
@@ -107,11 +107,11 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                 if (txtMaGV.Text == "")
                     throw new Exception("Vui lòng không để trống mã giảng viên!");
                 if (txtMaGV.TextLength < txtMaGV.MaxLength)
-                    throw new Exception("Mã giảng viên chưa thỏa yêu cầu!");
+                    throw new Exception($"Mã giảng viên chưa thỏa yêu cầu! ({txtMaGV.MaxLength} ký tự)");
                 if (txtMaSV.Text == "")
                     throw new Exception("Vui lòng không để trống mã sinh viên!");
                 if (txtMaSV.TextLength < txtMaSV.MaxLength)
-                    throw new Exception("Mã sinh viên chưa thỏa yêu cầu!");
+                    throw new Exception($"Mã sinh viên chưa thỏa yêu cầu! ({txtMaSV.MaxLength} ký tự)");
                 maGVHD = txtMaGV.Text;
                 maSVCNDT = txtMaSV.Text;
             }
@@ -123,7 +123,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                     if (txtMaGV.Text == "")
                         throw new Exception("Vui lòng không để trống mã giảng viên!");
                     if (txtMaGV.TextLength < txtMaGV.MaxLength)
-                        throw new Exception("Mã giảng viên chưa thỏa yêu cầu!");
+                        throw new Exception($"Mã giảng viên chưa thỏa yêu cầu! ({txtMaGV.MaxLength} ký tự)");
                     maGVHD = txtMaGV.Text;
                 }
                 else maGVHD = giangVien.MaGV;
@@ -133,7 +133,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                     if (txtMaSV.Text == "")
                         throw new Exception("Vui lòng không để trống mã sinh viên!");
                     if (txtMaSV.TextLength < txtMaSV.MaxLength)
-                        throw new Exception("Mã sinh viên chưa thỏa yêu cầu!");
+                        throw new Exception($"Mã sinh viên chưa thỏa yêu cầu! ({txtMaSV.MaxLength} ký tự)");
                     maSVCNDT = txtMaSV.Text;
                 }
                 else maSVCNDT = sinhVien.MaSV;
@@ -169,14 +169,14 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             if (cmBGioiTinh.Text == "")
                 throw new Exception("Vui lòng không để trống giới tính giảng viên!");
             if (txtMaGV.TextLength < txtMaGV.MaxLength)
-                throw new Exception("Mã giảng viên chưa thỏa yêu cầu!");
+                throw new Exception($"Mã giảng viên chưa thỏa yêu cầu! ({txtMaGV.MaxLength} ký tự)");
             if (khoa == null)
             {
                 txtMaKhoa = inps[lastIndex] as TextBox;
                 if (txtMaKhoa.Text == "")
                     throw new Exception("Vui lòng không để trống mã khoa!");
                 if (txtMaKhoa.TextLength < txtMaKhoa.MaxLength)
-                    throw new Exception("Mã khoa chưa thỏa yêu cầu!");
+                    throw new Exception($"Mã khoa chưa thỏa yêu cầu! ({txtMaKhoa.MaxLength} ký tự)");
                 maKhoa = txtMaKhoa.Text;
             }
             else maKhoa = khoa.MaKhoa;
@@ -206,14 +206,14 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             if (cmBGioiTinh.Text == "")
                 throw new Exception("Vui lòng không để trống giới tính sinh viên!");
             if (txtMaSV.TextLength < txtMaSV.MaxLength)
-                throw new Exception("Mã sinh viên chưa thỏa yêu cầu!");
+                throw new Exception($"Mã sinh viên chưa thỏa yêu cầu! ({txtMaSV.MaxLength} ký tự)");
             if (khoa == null)
             {
                 txtMaKhoa = inps[lastIndex] as TextBox;
                 if (txtMaKhoa.Text == "")
                     throw new Exception("Vui lòng không để trống mã khoa!");
                 if (txtMaKhoa.TextLength < txtMaKhoa.MaxLength)
-                    throw new Exception("Mã khoa chưa thỏa yêu cầu!");
+                    throw new Exception($"Mã khoa chưa thỏa yêu cầu! ({txtMaKhoa.MaxLength} ký tự)");
                 maKhoa = txtMaKhoa.Text;
             }
             else maKhoa = khoa.MaKhoa;
@@ -236,7 +236,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             if (txtNamThanhLap.Text == "")
                 throw new Exception("Vui lòng không để trống năm thành lập!");
             if (txtMaKhoa.TextLength < txtMaKhoa.MaxLength)
-                throw new Exception("Mã khoa chưa thỏa yêu cầu!");
+                throw new Exception($"Mã khoa chưa thỏa yêu cầu! ({txtMaKhoa.MaxLength} ký tự)");
             string maKhoa = txtMaKhoa.Text;
             string tenKhoa = txtTenKhoa.Text.TrimEnd();
             int namThanhLap = int.Parse(txtNamThanhLap.Text);
