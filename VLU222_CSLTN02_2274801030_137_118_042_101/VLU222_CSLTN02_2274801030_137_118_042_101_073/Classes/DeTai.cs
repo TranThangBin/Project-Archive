@@ -29,7 +29,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             maSVCNDT = "";
         }
 
-        public DeTai(string maDT, string tenDT, long kinhPhi, DateTime ngayBD, DateTime ngayKT, string maGVHD, string maSVCNDT, SinhVien sinhVien = null)
+        public DeTai(string maDT, string tenDT, long kinhPhi, DateTime ngayBD, DateTime ngayKT, string maGVHD, string maSVCNDT)
         {
             this.maDT = maDT;
             this.tenDT = tenDT;
@@ -38,7 +38,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             this.ngayKT = ngayKT;
             this.maGVHD = maGVHD;
             this.maSVCNDT = maSVCNDT;
-            this.sinhVien = sinhVien ?? new SinhVien()
+            this.sinhVien = new SinhVien()
             {
                 MaSV = this.maSVCNDT
             };

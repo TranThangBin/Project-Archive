@@ -25,14 +25,14 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             maKhoa = "";
         }
 
-        public SinhVien(string maSV, string hoLot, string tenSV, string gioiTinh, string maKhoa, Khoa khoa = null)
+        public SinhVien(string maSV, string hoLot, string tenSV, string gioiTinh, string maKhoa)
         {
             this.maSV = maSV;
             this.hoLot = hoLot;
             this.tenSV = tenSV;
             this.gioiTinh = gioiTinh;
             this.maKhoa = maKhoa;
-            this.khoa = khoa ?? new Khoa()
+            this.khoa = new Khoa()
             {
                 MaKhoa = this.maKhoa
             };

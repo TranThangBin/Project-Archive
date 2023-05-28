@@ -22,13 +22,13 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             ketQua = "unknown";
         }
 
-        public ThamGiaDeTai(string maDT, string maSV, long phuCap, string ketQua, DeTai deTai = null)
+        public ThamGiaDeTai(string maDT, string maSV, long phuCap, string ketQua)
         {
             this.maDT = maDT;
             this.maSV = maSV;
             this.phuCap = phuCap;
             this.ketQua = ketQua;
-            this.deTai = deTai ?? new DeTai()
+            this.deTai = new DeTai()
             {
                 MaDT = this.maDT,
                 MaSVCNDT = this.maSV
