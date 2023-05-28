@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FGiangVien));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmB_maKhoa = new System.Windows.Forms.ComboBox();
             this.cmB_gioiTinh = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.lsB_danhSachGiangVien = new System.Windows.Forms.ListBox();
@@ -38,7 +39,6 @@
             this.btn_suaGV = new System.Windows.Forms.Button();
             this.btn_xoaGV = new System.Windows.Forms.Button();
             this.btn_themGV = new System.Windows.Forms.Button();
-            this.txt_maKhoa = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txt_trinhDo = new System.Windows.Forms.TextBox();
@@ -51,6 +51,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmB_maSinhVien = new System.Windows.Forms.ComboBox();
             this.dtP_ngayKetThuc = new System.Windows.Forms.DateTimePicker();
             this.dtP_ngayBatDau = new System.Windows.Forms.DateTimePicker();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -67,7 +68,6 @@
             this.btn_xoaDT = new System.Windows.Forms.Button();
             this.btn_suaDT = new System.Windows.Forms.Button();
             this.btn_themDT = new System.Windows.Forms.Button();
-            this.txt_maSinhVien = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -88,10 +88,10 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.cmB_maKhoa);
             this.groupBox1.Controls.Add(this.cmB_gioiTinh);
             this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.txt_maKhoa);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txt_trinhDo);
@@ -113,6 +113,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Giảng viên";
             // 
+            // cmB_maKhoa
+            // 
+            this.cmB_maKhoa.FormattingEnabled = true;
+            this.cmB_maKhoa.Location = new System.Drawing.Point(148, 220);
+            this.cmB_maKhoa.Name = "cmB_maKhoa";
+            this.cmB_maKhoa.Size = new System.Drawing.Size(239, 28);
+            this.cmB_maKhoa.TabIndex = 5;
+            this.cmB_maKhoa.Enter += new System.EventHandler(this.cmB_Enter);
+            this.cmB_maKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmB_KeyPress);
+            // 
             // cmB_gioiTinh
             // 
             this.cmB_gioiTinh.FormattingEnabled = true;
@@ -124,8 +134,8 @@
             this.cmB_gioiTinh.Name = "cmB_gioiTinh";
             this.cmB_gioiTinh.Size = new System.Drawing.Size(239, 28);
             this.cmB_gioiTinh.TabIndex = 4;
-            this.cmB_gioiTinh.Enter += new System.EventHandler(this.cmB_gioiTinh_Enter);
-            this.cmB_gioiTinh.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmB_gioiTinh_KeyPress);
+            this.cmB_gioiTinh.Enter += new System.EventHandler(this.cmB_Enter);
+            this.cmB_gioiTinh.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmB_KeyPress);
             // 
             // groupBox5
             // 
@@ -150,6 +160,7 @@
             this.lsB_danhSachGiangVien.Margin = new System.Windows.Forms.Padding(2);
             this.lsB_danhSachGiangVien.Name = "lsB_danhSachGiangVien";
             this.lsB_danhSachGiangVien.Size = new System.Drawing.Size(372, 309);
+            this.lsB_danhSachGiangVien.Sorted = true;
             this.lsB_danhSachGiangVien.TabIndex = 0;
             this.lsB_danhSachGiangVien.SelectedIndexChanged += new System.EventHandler(this.lsB_danhSachGiangVien_SelectedIndexChanged);
             this.lsB_danhSachGiangVien.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lsB_danhSachGiangVien_MouseDown);
@@ -219,16 +230,6 @@
             this.btn_themGV.Text = "Thêm";
             this.btn_themGV.UseVisualStyleBackColor = false;
             this.btn_themGV.Click += new System.EventHandler(this.btn_themGV_Click);
-            // 
-            // txt_maKhoa
-            // 
-            this.txt_maKhoa.Location = new System.Drawing.Point(148, 220);
-            this.txt_maKhoa.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_maKhoa.MaxLength = 10;
-            this.txt_maKhoa.Name = "txt_maKhoa";
-            this.txt_maKhoa.Size = new System.Drawing.Size(239, 26);
-            this.txt_maKhoa.TabIndex = 5;
-            this.txt_maKhoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStringNumId_KeyPress);
             // 
             // label6
             // 
@@ -340,11 +341,11 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.cmB_maSinhVien);
             this.groupBox2.Controls.Add(this.dtP_ngayKetThuc);
             this.groupBox2.Controls.Add(this.dtP_ngayBatDau);
             this.groupBox2.Controls.Add(this.groupBox6);
             this.groupBox2.Controls.Add(this.groupBox4);
-            this.groupBox2.Controls.Add(this.txt_maSinhVien);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label10);
@@ -364,6 +365,16 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Đề tài";
+            // 
+            // cmB_maSinhVien
+            // 
+            this.cmB_maSinhVien.FormattingEnabled = true;
+            this.cmB_maSinhVien.Location = new System.Drawing.Point(155, 216);
+            this.cmB_maSinhVien.Name = "cmB_maSinhVien";
+            this.cmB_maSinhVien.Size = new System.Drawing.Size(239, 28);
+            this.cmB_maSinhVien.TabIndex = 5;
+            this.cmB_maSinhVien.Enter += new System.EventHandler(this.cmB_Enter);
+            this.cmB_maSinhVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmB_KeyPress);
             // 
             // dtP_ngayKetThuc
             // 
@@ -413,6 +424,7 @@
             this.lsV_giangVienGuongdanVeDT.Margin = new System.Windows.Forms.Padding(2);
             this.lsV_giangVienGuongdanVeDT.Name = "lsV_giangVienGuongdanVeDT";
             this.lsV_giangVienGuongdanVeDT.Size = new System.Drawing.Size(381, 342);
+            this.lsV_giangVienGuongdanVeDT.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lsV_giangVienGuongdanVeDT.TabIndex = 0;
             this.lsV_giangVienGuongdanVeDT.UseCompatibleStateImageBehavior = false;
             this.lsV_giangVienGuongdanVeDT.View = System.Windows.Forms.View.Details;
@@ -514,16 +526,6 @@
             this.btn_themDT.Text = "Thêm";
             this.btn_themDT.UseVisualStyleBackColor = true;
             this.btn_themDT.Click += new System.EventHandler(this.btn_themDT_Click);
-            // 
-            // txt_maSinhVien
-            // 
-            this.txt_maSinhVien.Location = new System.Drawing.Point(156, 215);
-            this.txt_maSinhVien.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_maSinhVien.MaxLength = 13;
-            this.txt_maSinhVien.Name = "txt_maSinhVien";
-            this.txt_maSinhVien.Size = new System.Drawing.Size(239, 26);
-            this.txt_maSinhVien.TabIndex = 6;
-            this.txt_maSinhVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumId_KeyPress);
             // 
             // label13
             // 
@@ -656,7 +658,6 @@
         private System.Windows.Forms.ListBox lsB_danhSachGiangVien;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btn_themGV;
-        private System.Windows.Forms.TextBox txt_maKhoa;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txt_trinhDo;
@@ -673,7 +674,6 @@
         private System.Windows.Forms.ListView lsV_giangVienGuongdanVeDT;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btn_themDT;
-        private System.Windows.Forms.TextBox txt_maSinhVien;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
@@ -698,5 +698,7 @@
         private System.Windows.Forms.ColumnHeader colNgayKT;
         private System.Windows.Forms.ColumnHeader colMaGV;
         private System.Windows.Forms.ColumnHeader colMaSV;
+        private System.Windows.Forms.ComboBox cmB_maKhoa;
+        private System.Windows.Forms.ComboBox cmB_maSinhVien;
     }
 }

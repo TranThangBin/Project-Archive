@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FDeTai));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmB_maSinhVien = new System.Windows.Forms.ComboBox();
+            this.cmB_maGiangVien = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lsB_danhSachDeTai = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -39,9 +41,7 @@
             this.btn_themDeTai = new System.Windows.Forms.Button();
             this.dtP_ngayKetThuc = new System.Windows.Forms.DateTimePicker();
             this.dtP_ngayBatDau = new System.Windows.Forms.DateTimePicker();
-            this.txt_maSinhVien = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txt_maGiangVien = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -78,13 +78,13 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.cmB_maSinhVien);
+            this.groupBox1.Controls.Add(this.cmB_maGiangVien);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.dtP_ngayKetThuc);
             this.groupBox1.Controls.Add(this.dtP_ngayBatDau);
-            this.groupBox1.Controls.Add(this.txt_maSinhVien);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.txt_maGiangVien);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
@@ -104,6 +104,28 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Đề tài ";
+            // 
+            // cmB_maSinhVien
+            // 
+            this.cmB_maSinhVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmB_maSinhVien.FormattingEnabled = true;
+            this.cmB_maSinhVien.Location = new System.Drawing.Point(149, 243);
+            this.cmB_maSinhVien.Name = "cmB_maSinhVien";
+            this.cmB_maSinhVien.Size = new System.Drawing.Size(229, 28);
+            this.cmB_maSinhVien.TabIndex = 6;
+            this.cmB_maSinhVien.Enter += new System.EventHandler(this.cmB_Enter);
+            this.cmB_maSinhVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmB_KeyPress);
+            // 
+            // cmB_maGiangVien
+            // 
+            this.cmB_maGiangVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmB_maGiangVien.FormattingEnabled = true;
+            this.cmB_maGiangVien.Location = new System.Drawing.Point(149, 207);
+            this.cmB_maGiangVien.Name = "cmB_maGiangVien";
+            this.cmB_maGiangVien.Size = new System.Drawing.Size(229, 28);
+            this.cmB_maGiangVien.TabIndex = 5;
+            this.cmB_maGiangVien.Enter += new System.EventHandler(this.cmB_Enter);
+            this.cmB_maGiangVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmB_KeyPress);
             // 
             // groupBox3
             // 
@@ -128,6 +150,7 @@
             this.lsB_danhSachDeTai.Margin = new System.Windows.Forms.Padding(2);
             this.lsB_danhSachDeTai.Name = "lsB_danhSachDeTai";
             this.lsB_danhSachDeTai.Size = new System.Drawing.Size(382, 268);
+            this.lsB_danhSachDeTai.Sorted = true;
             this.lsB_danhSachDeTai.TabIndex = 0;
             this.lsB_danhSachDeTai.SelectedIndexChanged += new System.EventHandler(this.lsB_danhSachDeTai_SelectedIndexChanged);
             this.lsB_danhSachDeTai.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lsB_danhSachDeTai_MouseDown);
@@ -201,7 +224,7 @@
             // dtP_ngayKetThuc
             // 
             this.dtP_ngayKetThuc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtP_ngayKetThuc.Location = new System.Drawing.Point(149, 168);
+            this.dtP_ngayKetThuc.Location = new System.Drawing.Point(149, 172);
             this.dtP_ngayKetThuc.Margin = new System.Windows.Forms.Padding(2);
             this.dtP_ngayKetThuc.Name = "dtP_ngayKetThuc";
             this.dtP_ngayKetThuc.Size = new System.Drawing.Size(227, 26);
@@ -210,21 +233,11 @@
             // dtP_ngayBatDau
             // 
             this.dtP_ngayBatDau.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtP_ngayBatDau.Location = new System.Drawing.Point(149, 132);
+            this.dtP_ngayBatDau.Location = new System.Drawing.Point(149, 134);
             this.dtP_ngayBatDau.Margin = new System.Windows.Forms.Padding(2);
             this.dtP_ngayBatDau.Name = "dtP_ngayBatDau";
             this.dtP_ngayBatDau.Size = new System.Drawing.Size(227, 26);
             this.dtP_ngayBatDau.TabIndex = 3;
-            // 
-            // txt_maSinhVien
-            // 
-            this.txt_maSinhVien.Location = new System.Drawing.Point(149, 242);
-            this.txt_maSinhVien.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_maSinhVien.MaxLength = 13;
-            this.txt_maSinhVien.Name = "txt_maSinhVien";
-            this.txt_maSinhVien.Size = new System.Drawing.Size(229, 26);
-            this.txt_maSinhVien.TabIndex = 6;
-            this.txt_maSinhVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumId_KeyPress);
             // 
             // label7
             // 
@@ -236,16 +249,6 @@
             this.label7.Size = new System.Drawing.Size(104, 20);
             this.label7.TabIndex = 0;
             this.label7.Text = "Mã sinh viên :";
-            // 
-            // txt_maGiangVien
-            // 
-            this.txt_maGiangVien.Location = new System.Drawing.Point(149, 207);
-            this.txt_maGiangVien.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_maGiangVien.MaxLength = 10;
-            this.txt_maGiangVien.Name = "txt_maGiangVien";
-            this.txt_maGiangVien.Size = new System.Drawing.Size(229, 26);
-            this.txt_maGiangVien.TabIndex = 5;
-            this.txt_maGiangVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumId_KeyPress);
             // 
             // label6
             // 
@@ -288,7 +291,7 @@
             this.txt_kinhPhi.Name = "txt_kinhPhi";
             this.txt_kinhPhi.Size = new System.Drawing.Size(229, 26);
             this.txt_kinhPhi.TabIndex = 2;
-            this.txt_kinhPhi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumId_KeyPress);
+            this.txt_kinhPhi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumOnly_KeyPress);
             // 
             // label3
             // 
@@ -390,6 +393,7 @@
             this.lsv_danhSachTGDT.Margin = new System.Windows.Forms.Padding(2);
             this.lsv_danhSachTGDT.Name = "lsv_danhSachTGDT";
             this.lsv_danhSachTGDT.Size = new System.Drawing.Size(404, 465);
+            this.lsv_danhSachTGDT.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lsv_danhSachTGDT.TabIndex = 0;
             this.lsv_danhSachTGDT.UseCompatibleStateImageBehavior = false;
             this.lsv_danhSachTGDT.View = System.Windows.Forms.View.Details;
@@ -506,7 +510,7 @@
             this.txt_phuCapTGDT.Name = "txt_phuCapTGDT";
             this.txt_phuCapTGDT.Size = new System.Drawing.Size(250, 26);
             this.txt_phuCapTGDT.TabIndex = 2;
-            this.txt_phuCapTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumId_KeyPress);
+            this.txt_phuCapTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumOnly_KeyPress);
             // 
             // label10
             // 
@@ -558,9 +562,7 @@
         private System.Windows.Forms.Button btn_themDeTai;
         private System.Windows.Forms.DateTimePicker dtP_ngayKetThuc;
         private System.Windows.Forms.DateTimePicker dtP_ngayBatDau;
-        private System.Windows.Forms.TextBox txt_maSinhVien;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txt_maGiangVien;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -586,5 +588,7 @@
         private System.Windows.Forms.ColumnHeader colMaSV;
         private System.Windows.Forms.ColumnHeader colPhuCap;
         private System.Windows.Forms.ColumnHeader colKetQua;
+        private System.Windows.Forms.ComboBox cmB_maGiangVien;
+        private System.Windows.Forms.ComboBox cmB_maSinhVien;
     }
 }

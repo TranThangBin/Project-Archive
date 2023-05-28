@@ -15,7 +15,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         private DateTime ngayKT;
         private string maGVHD;
         private string maSVCNDT;
-        private SinhVien sinhVien;
         private List<ThamGiaDeTai> thamGiaDeTais = new List<ThamGiaDeTai>();
 
         public DeTai()
@@ -38,10 +37,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             this.ngayKT = ngayKT;
             this.maGVHD = maGVHD;
             this.maSVCNDT = maSVCNDT;
-            this.sinhVien = new SinhVien()
-            {
-                MaSV = this.maSVCNDT
-            };
         }
 
         public override string ToString()
@@ -57,6 +52,5 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         public string MaGVHD { get => maGVHD; set => maGVHD = value; }
         public string MaSVCNDT { get => maSVCNDT; set => maSVCNDT = value; }
         public List<ThamGiaDeTai> ThamGiaDeTais { get => thamGiaDeTais; set => thamGiaDeTais = value; }
-        public SinhVien SinhVien { get => sinhVien; set => sinhVien = value; }
     }
 }

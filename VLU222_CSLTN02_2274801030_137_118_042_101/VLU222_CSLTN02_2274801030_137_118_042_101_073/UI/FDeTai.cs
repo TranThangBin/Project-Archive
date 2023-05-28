@@ -28,8 +28,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 txt_kinhPhi,
                 dtP_ngayBatDau,
                 dtP_ngayKetThuc,
-                txt_maGiangVien,
-                txt_maSinhVien
+                cmB_maGiangVien,
+                cmB_maSinhVien
             };
             inpTGDTs = new ArrayList()
             {
@@ -41,7 +41,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void FDeTai_Load(object sender, EventArgs e)
         {
             //render Database data in this event
-            string sql = "select * from detai";
         }
 
         private void FDeTai_FormClosing(object sender, FormClosingEventArgs e)
@@ -71,14 +70,25 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             return lsB_danhSachDeTai.SelectedIndex;
         }
 
-        private void txtNumId_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtNumOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.TxtNumIdHandler(sender as TextBox, e);
+            Forms.TxtNumOnlyHandler(sender as TextBox, e);
         }
 
         private void txtStringOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
             Forms.TxtStringOnlyHandler(sender as TextBox, e);
+        }
+
+        private void cmB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cmB_Enter(object sender, EventArgs e)
+        {
+            ComboBox cmb = sender as ComboBox;
+            cmb.DroppedDown = true;
         }
 
         private void btn_themDeTai_Click(object sender, EventArgs e)
@@ -135,7 +145,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 Forms.CleanInput(inpDeTais);
                 Forms.CleanInput(inpTGDTs);
                 txt_maDetai.Enabled = true;
-                txt_maSinhVien.Enabled = true;
+                cmB_maSinhVien.Enabled = true;
                 btn_themDeTai.Enabled = true;
                 return;
             }
@@ -145,8 +155,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             txt_kinhPhi.Text = selectedDeTai.KinhPhi + "";
             dtP_ngayBatDau.Value = selectedDeTai.NgayBD;
             dtP_ngayKetThuc.Value = selectedDeTai.NgayKT;
-            txt_maGiangVien.Text = selectedDeTai.MaGVHD;
-            txt_maSinhVien.Text = selectedDeTai.MaSVCNDT;
+            cmB_maGiangVien.Text = selectedDeTai.MaGVHD;
+            cmB_maSinhVien.Text = selectedDeTai.MaSVCNDT;
             foreach (ThamGiaDeTai thamGiaDeTai in selectedDeTai.ThamGiaDeTais)
             {
                 string[] lsviObj = new string[]
@@ -160,7 +170,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 lsv_danhSachTGDT.Items.Add(lsvItem);
             }
             txt_maDetai.Enabled = false;
-            txt_maSinhVien.Enabled = false;
+            cmB_maSinhVien.Enabled = false;
             btn_themDeTai.Enabled = false;
         }
 

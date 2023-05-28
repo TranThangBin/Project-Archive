@@ -1,4 +1,6 @@
 -- Insert dummy data into KHOA table
+USE QLNCKH_SV
+GO
 INSERT INTO KHOA (MAKHOA, TENKHOA, NAMTHANHLAP)
 VALUES ('KHDAGVXS01', N'Khoa học máy tính', 1990),
        ('KHVCXFEW02', N'Toán học', 1980),

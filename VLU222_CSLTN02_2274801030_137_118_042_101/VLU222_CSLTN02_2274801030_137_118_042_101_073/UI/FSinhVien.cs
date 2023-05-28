@@ -30,7 +30,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 txt_hoLotSV,
                 txt_tenSinhVien,
                 cmb_gioiTinhSV,
-                txt_maKhoaSV
+                cmB_maKhoaSV
             };
             inpDeTais = new ArrayList()
             {
@@ -39,7 +39,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 txt_kinhPhiDT,
                 dtP_ngayBatDauDT,
                 dtP_ngayKetThucDT,
-                txt_maGiangVienDT
+                cmB_maGiangVienDT
             };
             inpTGDTs = new ArrayList()
             {
@@ -96,9 +96,9 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             return lsb_danhSachDeTai.SelectedIndex;
         }
 
-        private void txtNumId_KeyPress(object sender, KeyPressEventArgs e)
+        private void txt_maSinhVien_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.TxtNumIdHandler(sender as TextBox, e);
+            Forms.TxtNumIdHandler(e);
         }
 
         private void txtStringNumId_KeyPress(object sender, KeyPressEventArgs e)
@@ -106,9 +106,25 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             Forms.TxtStringNumIdHandler(e);
         }
 
+        private void txtNumOnly_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Forms.TxtNumOnlyHandler(sender as TextBox, e);
+        }
+
         private void txtStringOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
             Forms.TxtStringOnlyHandler(sender as TextBox, e);
+        }
+
+        private void cmB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cmB_Enter(object sender, EventArgs e)
+        {
+            ComboBox cmb = sender as ComboBox;
+            cmb.DroppedDown = true;
         }
 
         private void lsbDeselected_MouseDown(object sender, MouseEventArgs e)
@@ -182,7 +198,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             txt_hoLotSV.Text = selectedSinhVien.HoLot;
             txt_tenSinhVien.Text = selectedSinhVien.TenSV;
             cmb_gioiTinhSV.Text = selectedSinhVien.GioiTinh;
-            txt_maKhoaSV.Text = selectedSinhVien.MaKhoa;
+            cmB_maKhoaSV.Text = selectedSinhVien.MaKhoa;
             foreach (DeTai deTai in selectedSinhVien.Detais)
                 lsb_danhSachDeTai.Items.Add(deTai);
             txt_maSinhVien.Enabled = false;
@@ -192,16 +208,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void txt_tenSinhVien_KeyPress(object sender, KeyPressEventArgs e)
         {
             Forms.TxtOneWordOnlyHandler(e);
-        }
-
-        private void cmb_gioiTinhSV_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
-        }
-
-        private void cmb_gioiTinhSV_Enter(object sender, EventArgs e)
-        {
-            cmb_gioiTinhSV.DroppedDown = true;
         }
 
         private void btn_themDeTai_Click(object sender, EventArgs e)
@@ -278,7 +284,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             txt_kinhPhiDT.Text = selectedDeTai.KinhPhi + "";
             dtP_ngayBatDauDT.Value = selectedDeTai.NgayBD;
             dtP_ngayKetThucDT.Value = selectedDeTai.NgayKT;
-            txt_maGiangVienDT.Text = selectedDeTai.MaGVHD;
+            cmB_maGiangVienDT.Text = selectedDeTai.MaGVHD;
             foreach (ThamGiaDeTai thamGiaDeTai in selectedDeTai.ThamGiaDeTais)
             {
                 string[] lsviObj = new string[]

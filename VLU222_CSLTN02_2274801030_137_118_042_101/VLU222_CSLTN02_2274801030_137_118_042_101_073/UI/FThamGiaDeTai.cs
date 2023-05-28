@@ -21,8 +21,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             InitializeComponent();
             inpTGDTs = new ArrayList()
             {
-                txt_maDeTaiTGDT,
-                txt_maSinhVienTGDT,
+                cmB_maDeTaiTGDT,
+                cmB_maSinhVienTGDT,
                 txt_phuCapTGDT,
                 txt_ketQuaTGDT
             };
@@ -31,7 +31,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void FThamGiaDT_Load(object sender, EventArgs e)
         {
             //render Database data in this event
-            Database.RenderThamGiaDeTai(lsB_danhSach);
+            Database.RenderThamGiaDeTai(lsB_danhSach, cmB_maDeTaiTGDT, cmB_maSinhVienTGDT);
         }
 
         private void FThamGiaDT_FormClosing(object sender, FormClosingEventArgs e)
@@ -42,9 +42,15 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 e.Cancel = true;
         }
 
-        private void txtNumId_KeyPress(object sender, KeyPressEventArgs e)
+        private void cmB_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.TxtNumIdHandler(sender as TextBox, e);
+            e.Handled = true;
+        }
+
+        private void cmB_Enter(object sender, EventArgs e)
+        {
+            ComboBox cmb = sender as ComboBox;
+            cmb.DroppedDown = true;
         }
 
         private void btn_themTGDT_Click(object sender, EventArgs e)
@@ -53,15 +59,21 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             {
                 //Insert data into TGDT table
                 ThamGiaDeTai thamGiaDeTai = Forms.GetThamGiaDeTai(inpTGDTs);
-                lsB_danhSach.Items.Add(thamGiaDeTai);
-                Forms.CleanInput(inpTGDTs);
+                int rowAffected = Database.InsertThamGiaDeTai(thamGiaDeTai);
+                if (rowAffected != 0)
+                {
+                    MessageBox.Show("Tham gia đề tài thành công!");
+                    lsB_danhSach.Items.Add(thamGiaDeTai);
+                    lsB_danhSach.Sorted = true;
+                    Forms.CleanInput(inpTGDTs);
+                }
+                else MessageBox.Show("Tham gia đề tài thất bại!");
             }
             catch (SqlException ex)
             {
                 if (ex.Number == 2627)
-                    MessageBox.Show("Mã đề tài hoặc mã sinh viên " +
-                                    "bạn vừa nhập bị trùng với 1 trong " +
-                                    "các dữ liệu trước đó!");
+                    MessageBox.Show("Vui lòng kiểm tra lại dữ liệu gửi của " +
+                                    "bạn vì có sự trùng lặp xảy ra!");
             }
             catch (Exception ex)
             {
@@ -76,8 +88,16 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             {
                 //Update data for TGDT table
                 ThamGiaDeTai thamGiaDeTai = Forms.GetThamGiaDeTai(inpTGDTs);
-                Forms.LsbUpdateItem(lsB_danhSach, lsB_danhSach.SelectedIndex, thamGiaDeTai);
-                Forms.CleanInput(inpTGDTs);
+                int rowAffected = Database.UpdateThamGiaDeTai(
+                    lsB_danhSach.SelectedItem as ThamGiaDeTai, thamGiaDeTai
+                );
+                if (rowAffected != 0)
+                {
+                    MessageBox.Show("Sửa tham gia đề tài thành công!");
+                    Forms.LsbUpdateItem(lsB_danhSach, lsB_danhSach.SelectedIndex, thamGiaDeTai);
+                    Forms.CleanInput(inpTGDTs);
+                }
+                else MessageBox.Show("Sửa tham gia đề tài thất bại!");
             }
             catch (Exception ex)
             {
@@ -89,8 +109,15 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             //Delete data from TGDT table
             ThamGiaDeTai selectedThamGiaDeTai = lsB_danhSach.SelectedItem as ThamGiaDeTai;
-            lsB_danhSach.Items.Remove(selectedThamGiaDeTai);
-            Forms.CleanInput(inpTGDTs);
+            int rowAffected = Database.DeleteThamGiaDeTai(selectedThamGiaDeTai);
+            if (rowAffected != 0)
+            {
+                MessageBox.Show("Xóa tham gia đề tài thành công!");
+                lsB_danhSach.Items.Remove(selectedThamGiaDeTai);
+                Forms.CleanInput(inpTGDTs);
+            }
+            else MessageBox.Show("Xóa tham gia đề tài thất bại!");
+
         }
 
         private void btn_troveTGDT_Click(object sender, EventArgs e)
@@ -103,18 +130,18 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             if (lsB_danhSach.SelectedIndex == -1)
             {
                 Forms.CleanInput(inpTGDTs);
-                txt_maDeTaiTGDT.Enabled = true;
-                txt_maSinhVienTGDT.Enabled = true;
+                cmB_maDeTaiTGDT.Enabled = true;
+                cmB_maSinhVienTGDT.Enabled = true;
                 btn_themTGDT.Enabled = true;
                 return;
             }
             ThamGiaDeTai selectedThamGiaDeTai = lsB_danhSach.SelectedItem as ThamGiaDeTai;
-            txt_maDeTaiTGDT.Text = selectedThamGiaDeTai.MaDT;
-            txt_maSinhVienTGDT.Text = selectedThamGiaDeTai.MaSV;
+            cmB_maDeTaiTGDT.Text = selectedThamGiaDeTai.MaDT;
+            cmB_maSinhVienTGDT.Text = selectedThamGiaDeTai.MaSV;
             txt_phuCapTGDT.Text = selectedThamGiaDeTai.PhuCap + "";
             txt_ketQuaTGDT.Text = selectedThamGiaDeTai.KetQua;
-            txt_maDeTaiTGDT.Enabled = false;
-            txt_maSinhVienTGDT.Enabled = false;
+            cmB_maDeTaiTGDT.Enabled = false;
+            cmB_maSinhVienTGDT.Enabled = false;
             btn_themTGDT.Enabled = false;
         }
 
@@ -123,9 +150,9 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             Forms.LsbRightClickDeselected(sender as ListBox, e);
         }
 
-        private void txt_maDeTaiTGDT_KeyPress(object sender, KeyPressEventArgs e)
+        private void txt_phuCapTGDT_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.TxtStringNumIdHandler(e);
+            Forms.TxtNumOnlyHandler(sender as TextBox, e);
         }
 
         private void txt_ketQuaTGDT_KeyPress(object sender, KeyPressEventArgs e)

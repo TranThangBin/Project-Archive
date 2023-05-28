@@ -45,26 +45,22 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         public static ThamGiaDeTai GetThamGiaDeTai(ArrayList inps, DeTai deTai = null)
         {
             int lastIndex = inps.Count - 1;
-            TextBox txtMaDT;
-            TextBox txtMaSV;
+            ComboBox cmbMaDT;
+            ComboBox cmbMaSV;
             TextBox txtPhuCap = inps[lastIndex - 1] as TextBox;
             TextBox txtKetQua = inps[lastIndex] as TextBox;
             string maDT;
             string maSV;
             if (deTai == null)
             {
-                txtMaDT = inps[lastIndex - 3] as TextBox;
-                txtMaSV = inps[lastIndex - 2] as TextBox;
-                if (txtMaDT.Text == "")
+                cmbMaDT = inps[lastIndex - 3] as ComboBox;
+                cmbMaSV = inps[lastIndex - 2] as ComboBox;
+                if (cmbMaDT.Text == "")
                     throw new Exception("Vui lòng không để trống mã đề tài!");
-                if (txtMaDT.TextLength < txtMaDT.MaxLength)
-                    throw new Exception($"Mã đề tài chưa thỏa yêu cầu! ({txtMaDT.MaxLength} ký tự)");
-                if (txtMaSV.Text == "")
+                if (cmbMaSV.Text == "")
                     throw new Exception("Vui lòng không để trống mã sinh viên!");
-                if (txtMaSV.TextLength < txtMaSV.MaxLength)
-                    throw new Exception($"Mã sinh viên chưa thỏa yêu cầu! ({txtMaSV.MaxLength} ký tự)");
-                maDT = txtMaDT.Text;
-                maSV = txtMaSV.Text;
+                maDT = cmbMaDT.Text;
+                maSV = cmbMaSV.Text;
             }
             else
             {
@@ -88,8 +84,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             TextBox txtKinhPhi = inps[2] as TextBox;
             DateTimePicker dtPNgayBD = inps[3] as DateTimePicker;
             DateTimePicker dtPNgayKT = inps[4] as DateTimePicker;
-            TextBox txtMaGV;
-            TextBox txtMaSV;
+            ComboBox cmbMaGV;
+            ComboBox cmbMaSV;
             string maGVHD;
             string maSVCNDT;
             if (txtMaDT.Text == "")
@@ -102,39 +98,31 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                 throw new Exception("Vui lòng không để trống kinh phí!");
             if (giangVien == null && sinhVien == null)
             {
-                txtMaGV = inps[lastIndex - 1] as TextBox;
-                txtMaSV = inps[lastIndex] as TextBox;
-                if (txtMaGV.Text == "")
+                cmbMaGV = inps[lastIndex - 1] as ComboBox;
+                cmbMaSV = inps[lastIndex] as ComboBox;
+                if (cmbMaGV.Text == "")
                     throw new Exception("Vui lòng không để trống mã giảng viên!");
-                if (txtMaGV.TextLength < txtMaGV.MaxLength)
-                    throw new Exception($"Mã giảng viên chưa thỏa yêu cầu! ({txtMaGV.MaxLength} ký tự)");
-                if (txtMaSV.Text == "")
+                if (cmbMaSV.Text == "")
                     throw new Exception("Vui lòng không để trống mã sinh viên!");
-                if (txtMaSV.TextLength < txtMaSV.MaxLength)
-                    throw new Exception($"Mã sinh viên chưa thỏa yêu cầu! ({txtMaSV.MaxLength} ký tự)");
-                maGVHD = txtMaGV.Text;
-                maSVCNDT = txtMaSV.Text;
+                maGVHD = cmbMaGV.Text;
+                maSVCNDT = cmbMaSV.Text;
             }
             else
             {
                 if (giangVien == null)
                 {
-                    txtMaGV = inps[lastIndex] as TextBox;
-                    if (txtMaGV.Text == "")
+                    cmbMaGV = inps[lastIndex] as ComboBox;
+                    if (cmbMaGV.Text == "")
                         throw new Exception("Vui lòng không để trống mã giảng viên!");
-                    if (txtMaGV.TextLength < txtMaGV.MaxLength)
-                        throw new Exception($"Mã giảng viên chưa thỏa yêu cầu! ({txtMaGV.MaxLength} ký tự)");
-                    maGVHD = txtMaGV.Text;
+                    maGVHD = cmbMaGV.Text;
                 }
                 else maGVHD = giangVien.MaGV;
                 if (sinhVien == null)
                 {
-                    txtMaSV = inps[lastIndex] as TextBox;
-                    if (txtMaSV.Text == "")
+                    cmbMaSV = inps[lastIndex] as ComboBox;
+                    if (cmbMaSV.Text == "")
                         throw new Exception("Vui lòng không để trống mã sinh viên!");
-                    if (txtMaSV.TextLength < txtMaSV.MaxLength)
-                        throw new Exception($"Mã sinh viên chưa thỏa yêu cầu! ({txtMaSV.MaxLength} ký tự)");
-                    maSVCNDT = txtMaSV.Text;
+                    maSVCNDT = cmbMaSV.Text;
                 }
                 else maSVCNDT = sinhVien.MaSV;
             }
@@ -156,7 +144,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             TextBox txtTenGV = inps[2] as TextBox;
             TextBox txtTrinhDo = inps[3] as TextBox;
             ComboBox cmBGioiTinh = inps[4] as ComboBox;
-            TextBox txtMaKhoa;
+            ComboBox cmbMaKhoa;
             string maKhoa;
             if (txtMaGV.Text == "")
                 throw new Exception("Vui lòng không để trống mã giảng viên!");
@@ -172,12 +160,10 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                 throw new Exception($"Mã giảng viên chưa thỏa yêu cầu! ({txtMaGV.MaxLength} ký tự)");
             if (khoa == null)
             {
-                txtMaKhoa = inps[lastIndex] as TextBox;
-                if (txtMaKhoa.Text == "")
+                cmbMaKhoa = inps[lastIndex] as ComboBox;
+                if (cmbMaKhoa.Text == "")
                     throw new Exception("Vui lòng không để trống mã khoa!");
-                if (txtMaKhoa.TextLength < txtMaKhoa.MaxLength)
-                    throw new Exception($"Mã khoa chưa thỏa yêu cầu! ({txtMaKhoa.MaxLength} ký tự)");
-                maKhoa = txtMaKhoa.Text;
+                maKhoa = cmbMaKhoa.Text;
             }
             else maKhoa = khoa.MaKhoa;
             string maGV = txtMaGV.Text;
@@ -195,7 +181,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             TextBox txtHoLot = inps[1] as TextBox;
             TextBox txtTenSV = inps[2] as TextBox;
             ComboBox cmBGioiTinh = inps[3] as ComboBox;
-            TextBox txtMaKhoa;
+            ComboBox cmbMaKhoa;
             string maKhoa;
             if (txtMaSV.Text == "")
                 throw new Exception("Vui lòng không để trống mã sinh viên!");
@@ -209,12 +195,10 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                 throw new Exception($"Mã sinh viên chưa thỏa yêu cầu! ({txtMaSV.MaxLength} ký tự)");
             if (khoa == null)
             {
-                txtMaKhoa = inps[lastIndex] as TextBox;
-                if (txtMaKhoa.Text == "")
+                cmbMaKhoa = inps[lastIndex] as ComboBox;
+                if (cmbMaKhoa.Text == "")
                     throw new Exception("Vui lòng không để trống mã khoa!");
-                if (txtMaKhoa.TextLength < txtMaKhoa.MaxLength)
-                    throw new Exception($"Mã khoa chưa thỏa yêu cầu! ({txtMaKhoa.MaxLength} ký tự)");
-                maKhoa = txtMaKhoa.Text;
+                maKhoa = cmbMaKhoa.Text;
             }
             else maKhoa = khoa.MaKhoa;
             string maSV = txtMaSV.Text;
@@ -277,15 +261,11 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             }
         }
 
-        public static void TxtNumIdHandler(TextBox textBox, KeyPressEventArgs e, bool allowNegative = false, bool isDecimal = false)
+        public static void TxtNumIdHandler(KeyPressEventArgs e)
         {
             if ((Control.ModifierKeys & Keys.Control) == Keys.Control) return;
             if (char.IsDigit(e.KeyChar)) return;
             if (e.KeyChar == (char)Keys.Back) return;
-            if (allowNegative)
-                if (e.KeyChar == '-' && textBox.TextLength == 0) return;
-            if (isDecimal)
-                if (e.KeyChar == '.' && textBox.TextLength > 0 && !textBox.Text.Contains(".")) return;
             e.Handled = true;
         }
 
@@ -295,6 +275,15 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             if (e.KeyChar == ' ')
                 e.Handled = true;
             else if (IsSpecialChar(e.KeyChar)) e.Handled = true;
+        }
+
+        public static void TxtNumOnlyHandler(TextBox textBox, KeyPressEventArgs e /**bool allowNegative,bool isDecimal**/)
+        {
+            if ((Control.ModifierKeys & Keys.Control) == Keys.Control) return;
+            if (char.IsDigit(e.KeyChar) && e.KeyChar != '0') return;
+            if (textBox.TextLength > 0 && e.KeyChar == '0') return;
+            if (e.KeyChar == (char)Keys.Back) return;
+            e.Handled = true;
         }
 
         public static void TxtStringOnlyHandler(TextBox textBox, KeyPressEventArgs e)

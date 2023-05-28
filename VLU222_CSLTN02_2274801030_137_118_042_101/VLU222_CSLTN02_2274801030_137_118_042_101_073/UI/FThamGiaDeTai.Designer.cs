@@ -39,13 +39,13 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txt_phuCapTGDT = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txt_maSinhVienTGDT = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txt_maDeTaiTGDT = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_troveTGDT = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmB_maSinhVienTGDT = new System.Windows.Forms.ComboBox();
+            this.cmB_maDeTaiTGDT = new System.Windows.Forms.ComboBox();
             this.groupBox6.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -90,6 +90,7 @@
             this.lsB_danhSach.Margin = new System.Windows.Forms.Padding(2);
             this.lsB_danhSach.Name = "lsB_danhSach";
             this.lsB_danhSach.Size = new System.Drawing.Size(381, 322);
+            this.lsB_danhSach.Sorted = true;
             this.lsB_danhSach.TabIndex = 0;
             this.lsB_danhSach.SelectedIndexChanged += new System.EventHandler(this.lsB_danhSach_SelectedIndexChanged);
             this.lsB_danhSach.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lsB_danhSach_MouseDown);
@@ -168,7 +169,7 @@
             this.txt_phuCapTGDT.Name = "txt_phuCapTGDT";
             this.txt_phuCapTGDT.Size = new System.Drawing.Size(237, 26);
             this.txt_phuCapTGDT.TabIndex = 2;
-            this.txt_phuCapTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumId_KeyPress);
+            this.txt_phuCapTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_phuCapTGDT_KeyPress);
             // 
             // label10
             // 
@@ -182,17 +183,6 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Phụ cấp :";
             // 
-            // txt_maSinhVienTGDT
-            // 
-            this.txt_maSinhVienTGDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txt_maSinhVienTGDT.Location = new System.Drawing.Point(139, 40);
-            this.txt_maSinhVienTGDT.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_maSinhVienTGDT.MaxLength = 13;
-            this.txt_maSinhVienTGDT.Name = "txt_maSinhVienTGDT";
-            this.txt_maSinhVienTGDT.Size = new System.Drawing.Size(237, 26);
-            this.txt_maSinhVienTGDT.TabIndex = 1;
-            this.txt_maSinhVienTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumId_KeyPress);
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -204,17 +194,6 @@
             this.label9.Size = new System.Drawing.Size(104, 20);
             this.label9.TabIndex = 0;
             this.label9.Text = "Mã sinh viên :";
-            // 
-            // txt_maDeTaiTGDT
-            // 
-            this.txt_maDeTaiTGDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txt_maDeTaiTGDT.Location = new System.Drawing.Point(139, 6);
-            this.txt_maDeTaiTGDT.Margin = new System.Windows.Forms.Padding(2);
-            this.txt_maDeTaiTGDT.MaxLength = 10;
-            this.txt_maDeTaiTGDT.Name = "txt_maDeTaiTGDT";
-            this.txt_maDeTaiTGDT.Size = new System.Drawing.Size(237, 26);
-            this.txt_maDeTaiTGDT.TabIndex = 0;
-            this.txt_maDeTaiTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_maDeTaiTGDT_KeyPress);
             // 
             // label8
             // 
@@ -264,18 +243,40 @@
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.cmB_maSinhVienTGDT);
+            this.panel1.Controls.Add(this.cmB_maDeTaiTGDT);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.txt_phuCapTGDT);
             this.panel1.Controls.Add(this.txt_ketQuaTGDT);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.txt_maDeTaiTGDT);
-            this.panel1.Controls.Add(this.txt_maSinhVienTGDT);
             this.panel1.Location = new System.Drawing.Point(31, 62);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(378, 139);
+            this.panel1.Size = new System.Drawing.Size(379, 139);
             this.panel1.TabIndex = 0;
+            // 
+            // cmB_maSinhVienTGDT
+            // 
+            this.cmB_maSinhVienTGDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmB_maSinhVienTGDT.FormattingEnabled = true;
+            this.cmB_maSinhVienTGDT.Location = new System.Drawing.Point(139, 40);
+            this.cmB_maSinhVienTGDT.Name = "cmB_maSinhVienTGDT";
+            this.cmB_maSinhVienTGDT.Size = new System.Drawing.Size(237, 28);
+            this.cmB_maSinhVienTGDT.TabIndex = 1;
+            this.cmB_maSinhVienTGDT.Enter += new System.EventHandler(this.cmB_Enter);
+            this.cmB_maSinhVienTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmB_KeyPress);
+            // 
+            // cmB_maDeTaiTGDT
+            // 
+            this.cmB_maDeTaiTGDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmB_maDeTaiTGDT.FormattingEnabled = true;
+            this.cmB_maDeTaiTGDT.Location = new System.Drawing.Point(139, 6);
+            this.cmB_maDeTaiTGDT.Name = "cmB_maDeTaiTGDT";
+            this.cmB_maDeTaiTGDT.Size = new System.Drawing.Size(237, 28);
+            this.cmB_maDeTaiTGDT.TabIndex = 0;
+            this.cmB_maDeTaiTGDT.Enter += new System.EventHandler(this.cmB_Enter);
+            this.cmB_maDeTaiTGDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmB_KeyPress);
             // 
             // FThamGiaDT
             // 
@@ -315,12 +316,12 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txt_phuCapTGDT;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txt_maSinhVienTGDT;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txt_maDeTaiTGDT;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_troveTGDT;
+        private System.Windows.Forms.ComboBox cmB_maDeTaiTGDT;
+        private System.Windows.Forms.ComboBox cmB_maSinhVienTGDT;
     }
 }

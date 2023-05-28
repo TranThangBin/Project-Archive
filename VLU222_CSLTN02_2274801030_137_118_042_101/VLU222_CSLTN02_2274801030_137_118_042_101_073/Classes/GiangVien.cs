@@ -14,7 +14,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         private string gioiTinh;
         private string trinhDo;
         private string maKhoa;
-        private Khoa khoa;
         private List<DeTai> detais = new List<DeTai>();
 
         public GiangVien()
@@ -35,10 +34,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             this.gioiTinh = gioiTinh;
             this.trinhDo = trinhDo;
             this.maKhoa = maKhoa;
-            this.khoa = new Khoa()
-            {
-                MaKhoa = this.maKhoa,
-            };
         }
 
         public override string ToString()
@@ -53,6 +48,5 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         public string TrinhDo { get => trinhDo; set => trinhDo = value; }
         public string MaKhoa { get => maKhoa; set => maKhoa = value; }
         public List<DeTai> Detais { get => detais; set => detais = value; }
-        public Khoa Khoa { get => khoa; set => khoa = value; }
     }
 }

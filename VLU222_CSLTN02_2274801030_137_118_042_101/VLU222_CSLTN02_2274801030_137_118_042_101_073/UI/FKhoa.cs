@@ -86,7 +86,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void txtNumId_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.TxtNumIdHandler(sender as TextBox, e);
+            Forms.TxtNumIdHandler(e);
         }
 
         private void txtStringOnly_KeyPress(object sender, KeyPressEventArgs e)
@@ -214,6 +214,11 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             Forms.TxtStringNumIdHandler(e);
         }
 
+        private void txt_namThanhLap_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Forms.TxtNumOnlyHandler(sender as TextBox, e);
+        }
+
         private void btn_themGV_Click(object sender, EventArgs e)
         {
             if (!Forms.LsbHasItemSelected(lsB_danhSachKhoa, "Bạn cần phải chọn 1 khoa để thêm giảng viên!")) return;
@@ -301,6 +306,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             if (lsV_danhSachGV.SelectedItems.Count == 0)
             {
                 Forms.CleanInput(inpGiangViens);
+                txt_maGiangVien.Enabled = true;
+                btn_themGV.Enabled = true;
                 return;
             }
             ListViewItem giangVienSelectedItem = lsV_danhSachGV.SelectedItems[0];
@@ -309,6 +316,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             txt_tenGiangVien.Text = giangVienSelectedItem.SubItems[2].Text;
             txt_trinhDoGV.Text = giangVienSelectedItem.SubItems[3].Text;
             cmB_gioiTinhGV.Text = giangVienSelectedItem.SubItems[4].Text;
+            txt_maGiangVien.Enabled = false;
+            btn_themGV.Enabled = false;
         }
 
         private void btn_themSV_Click(object sender, EventArgs e)
@@ -396,6 +405,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             if (lsV_danhSachSV.SelectedItems.Count == 0)
             {
                 Forms.CleanInput(inpSinhViens);
+                txt_maSinhVien.Enabled = true;
+                btn_themSV.Enabled = true;
                 return;
             }
             ListViewItem sinhVienSelectedItem = lsV_danhSachSV.SelectedItems[0];
@@ -403,6 +414,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             txt_hoLotSV.Text = sinhVienSelectedItem.SubItems[1].Text;
             txt_tenSinhVien.Text = sinhVienSelectedItem.SubItems[2].Text;
             cmb_gioiTinhSV.Text = sinhVienSelectedItem.SubItems[3].Text;
+            txt_maSinhVien.Enabled = false;
+            btn_themSV.Enabled = false;
         }
     }
 }

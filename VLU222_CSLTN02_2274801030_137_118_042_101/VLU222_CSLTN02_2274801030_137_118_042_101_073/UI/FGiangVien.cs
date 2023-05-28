@@ -29,7 +29,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 txt_tenGiangVien,
                 txt_trinhDo,
                 cmB_gioiTinh,
-                txt_maKhoa
+                cmB_maKhoa
             };
             inpDeTais = new ArrayList()
             {
@@ -38,7 +38,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 txt_kinhPhi,
                 dtP_ngayBatDau,
                 dtP_ngayKetThuc,
-                txt_maSinhVien
+                cmB_maSinhVien
             };
         }
 
@@ -76,7 +76,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void txtNumId_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms.TxtNumIdHandler(sender as TextBox, e);
+            Forms.TxtNumIdHandler(e);
         }
 
         private void txtStringNumId_KeyPress(object sender, KeyPressEventArgs e)
@@ -152,7 +152,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             txt_tenGiangVien.Text = selectedGiangVien.TenGV;
             txt_trinhDo.Text = selectedGiangVien.TrinhDo;
             cmB_gioiTinh.Text = selectedGiangVien.GioiTinh;
-            txt_maKhoa.Text = selectedGiangVien.MaKhoa;
+            cmB_maKhoa.Text = selectedGiangVien.MaKhoa;
             foreach (DeTai deTai in selectedGiangVien.Detais)
             {
                 string[] lsviObj = new string[]
@@ -182,14 +182,15 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             Forms.TxtOneWordOnlyHandler(e);
         }
 
-        private void cmB_gioiTinh_KeyPress(object sender, KeyPressEventArgs e)
+        private void cmB_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
 
-        private void cmB_gioiTinh_Enter(object sender, EventArgs e)
+        private void cmB_Enter(object sender, EventArgs e)
         {
-            cmB_gioiTinh.DroppedDown = true;
+            ComboBox cmb = sender as ComboBox;
+            cmb.DroppedDown = true;
         }
 
         private void btn_themDT_Click(object sender, EventArgs e)
@@ -281,6 +282,9 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             if (lsV_giangVienGuongdanVeDT.SelectedItems.Count == 0)
             {
                 Forms.CleanInput(inpDeTais);
+                txt_maDetai.Enabled = true;
+                cmB_maSinhVien.Enabled = true;
+                btn_themDT.Enabled = true;
                 return;
             }
             ListViewItem deTaiSelectedItem = lsV_giangVienGuongdanVeDT.SelectedItems[0];
@@ -289,7 +293,10 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             txt_kinhPhi.Text = deTaiSelectedItem.SubItems[2].Text;
             dtP_ngayBatDau.Text = deTaiSelectedItem.SubItems[3].Text;
             dtP_ngayKetThuc.Text = deTaiSelectedItem.SubItems[4].Text;
-            txt_maSinhVien.Text = deTaiSelectedItem.SubItems[5].Text;
+            cmB_maSinhVien.Text = deTaiSelectedItem.SubItems[5].Text;
+            txt_maDetai.Enabled = false;
+            cmB_maSinhVien.Enabled = false;
+            btn_themDT.Enabled = false;
         }
     }
 }

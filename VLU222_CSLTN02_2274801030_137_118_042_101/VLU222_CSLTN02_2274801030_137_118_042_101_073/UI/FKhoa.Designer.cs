@@ -129,7 +129,7 @@
             this.txt_namThanhLap.Name = "txt_namThanhLap";
             this.txt_namThanhLap.Size = new System.Drawing.Size(225, 26);
             this.txt_namThanhLap.TabIndex = 2;
-            this.txt_namThanhLap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumId_KeyPress);
+            this.txt_namThanhLap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_namThanhLap_KeyPress);
             // 
             // groupBox5
             // 
@@ -154,6 +154,7 @@
             this.lsB_danhSachKhoa.Margin = new System.Windows.Forms.Padding(2);
             this.lsB_danhSachKhoa.Name = "lsB_danhSachKhoa";
             this.lsB_danhSachKhoa.Size = new System.Drawing.Size(371, 422);
+            this.lsB_danhSachKhoa.Sorted = true;
             this.lsB_danhSachKhoa.TabIndex = 0;
             this.lsB_danhSachKhoa.SelectedIndexChanged += new System.EventHandler(this.lsB_danhSachKhoa_SelectedIndexChanged);
             this.lsB_danhSachKhoa.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lsB_danhSachKhoa_MouseDown);
@@ -346,6 +347,7 @@
             this.lsV_danhSachGV.Margin = new System.Windows.Forms.Padding(2);
             this.lsV_danhSachGV.Name = "lsV_danhSachGV";
             this.lsV_danhSachGV.Size = new System.Drawing.Size(383, 376);
+            this.lsV_danhSachGV.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lsV_danhSachGV.TabIndex = 0;
             this.lsV_danhSachGV.UseCompatibleStateImageBehavior = false;
             this.lsV_danhSachGV.View = System.Windows.Forms.View.Details;
@@ -590,6 +592,7 @@
             this.lsV_danhSachSV.Margin = new System.Windows.Forms.Padding(2);
             this.lsV_danhSachSV.Name = "lsV_danhSachSV";
             this.lsV_danhSachSV.Size = new System.Drawing.Size(390, 410);
+            this.lsV_danhSachSV.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lsV_danhSachSV.TabIndex = 0;
             this.lsV_danhSachSV.UseCompatibleStateImageBehavior = false;
             this.lsV_danhSachSV.View = System.Windows.Forms.View.Details;
