@@ -47,10 +47,9 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(98, 74);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(143, 91);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(595, 31);
+            this.label1.Size = new System.Drawing.Size(738, 39);
             this.label1.TabIndex = 0;
             this.label1.Text = "QUẢN LÝ ĐỀ TÀI NGHIÊN CỨU KHOA HỌC";
             // 
@@ -61,10 +60,9 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(184)))), ((int)(((byte)(19)))));
-            this.label2.Location = new System.Drawing.Point(312, 114);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(416, 140);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(178, 31);
+            this.label2.Size = new System.Drawing.Size(222, 39);
             this.label2.TabIndex = 0;
             this.label2.Text = "MAIN MENU";
             // 
@@ -74,9 +72,10 @@
             this.btn_thoat.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_thoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_thoat.ForeColor = System.Drawing.Color.White;
-            this.btn_thoat.Location = new System.Drawing.Point(283, 518);
+            this.btn_thoat.Location = new System.Drawing.Point(377, 638);
+            this.btn_thoat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_thoat.Name = "btn_thoat";
-            this.btn_thoat.Size = new System.Drawing.Size(226, 36);
+            this.btn_thoat.Size = new System.Drawing.Size(301, 44);
             this.btn_thoat.TabIndex = 6;
             this.btn_thoat.Text = "Thoát";
             this.btn_thoat.UseVisualStyleBackColor = false;
@@ -88,9 +87,10 @@
             this.btn_DSCK.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_DSCK.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_DSCK.ForeColor = System.Drawing.Color.White;
-            this.btn_DSCK.Location = new System.Drawing.Point(283, 400);
+            this.btn_DSCK.Location = new System.Drawing.Point(377, 492);
+            this.btn_DSCK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_DSCK.Name = "btn_DSCK";
-            this.btn_DSCK.Size = new System.Drawing.Size(226, 36);
+            this.btn_DSCK.Size = new System.Drawing.Size(301, 44);
             this.btn_DSCK.TabIndex = 4;
             this.btn_DSCK.Text = "Danh sách các khoa";
             this.btn_DSCK.UseVisualStyleBackColor = false;
@@ -102,9 +102,10 @@
             this.btn_SVCN.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_SVCN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_SVCN.ForeColor = System.Drawing.Color.White;
-            this.btn_SVCN.Location = new System.Drawing.Point(283, 341);
+            this.btn_SVCN.Location = new System.Drawing.Point(377, 420);
+            this.btn_SVCN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_SVCN.Name = "btn_SVCN";
-            this.btn_SVCN.Size = new System.Drawing.Size(226, 36);
+            this.btn_SVCN.Size = new System.Drawing.Size(301, 44);
             this.btn_SVCN.TabIndex = 3;
             this.btn_SVCN.Text = "Sinh viên chủ nhiệm";
             this.btn_SVCN.UseVisualStyleBackColor = false;
@@ -116,9 +117,10 @@
             this.btn_GVHD.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_GVHD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_GVHD.ForeColor = System.Drawing.Color.White;
-            this.btn_GVHD.Location = new System.Drawing.Point(283, 282);
+            this.btn_GVHD.Location = new System.Drawing.Point(377, 347);
+            this.btn_GVHD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_GVHD.Name = "btn_GVHD";
-            this.btn_GVHD.Size = new System.Drawing.Size(226, 36);
+            this.btn_GVHD.Size = new System.Drawing.Size(301, 44);
             this.btn_GVHD.TabIndex = 2;
             this.btn_GVHD.Text = "Giảng viên hướng dẫn";
             this.btn_GVHD.UseVisualStyleBackColor = false;
@@ -130,9 +132,10 @@
             this.btn_DSDT.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_DSDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_DSDT.ForeColor = System.Drawing.Color.White;
-            this.btn_DSDT.Location = new System.Drawing.Point(283, 223);
+            this.btn_DSDT.Location = new System.Drawing.Point(377, 274);
+            this.btn_DSDT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_DSDT.Name = "btn_DSDT";
-            this.btn_DSDT.Size = new System.Drawing.Size(226, 36);
+            this.btn_DSDT.Size = new System.Drawing.Size(301, 44);
             this.btn_DSDT.TabIndex = 1;
             this.btn_DSDT.Text = "Danh sách đề tài";
             this.btn_DSDT.UseVisualStyleBackColor = false;
@@ -144,9 +147,10 @@
             this.btn_TGDT.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_TGDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_TGDT.ForeColor = System.Drawing.Color.White;
-            this.btn_TGDT.Location = new System.Drawing.Point(283, 164);
+            this.btn_TGDT.Location = new System.Drawing.Point(377, 202);
+            this.btn_TGDT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_TGDT.Name = "btn_TGDT";
-            this.btn_TGDT.Size = new System.Drawing.Size(226, 36);
+            this.btn_TGDT.Size = new System.Drawing.Size(301, 44);
             this.btn_TGDT.TabIndex = 0;
             this.btn_TGDT.Text = "Tham gia đề tài";
             this.btn_TGDT.UseVisualStyleBackColor = false;
@@ -158,9 +162,10 @@
             this.btn_thanhVien.BackColor = System.Drawing.Color.RoyalBlue;
             this.btn_thanhVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_thanhVien.ForeColor = System.Drawing.Color.White;
-            this.btn_thanhVien.Location = new System.Drawing.Point(283, 458);
+            this.btn_thanhVien.Location = new System.Drawing.Point(377, 564);
+            this.btn_thanhVien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_thanhVien.Name = "btn_thanhVien";
-            this.btn_thanhVien.Size = new System.Drawing.Size(226, 36);
+            this.btn_thanhVien.Size = new System.Drawing.Size(301, 44);
             this.btn_thanhVien.TabIndex = 5;
             this.btn_thanhVien.Text = "Thành viên trong nhóm";
             this.btn_thanhVien.UseVisualStyleBackColor = false;
@@ -168,11 +173,11 @@
             // 
             // QLDETAINCKHSINHVIEN
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(780, 612);
+            this.ClientSize = new System.Drawing.Size(1040, 753);
             this.Controls.Add(this.btn_thanhVien);
             this.Controls.Add(this.btn_TGDT);
             this.Controls.Add(this.btn_DSDT);
@@ -183,6 +188,7 @@
             this.Controls.Add(this.btn_thoat);
             this.Controls.Add(this.btn_DSCK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "QLDETAINCKHSINHVIEN";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

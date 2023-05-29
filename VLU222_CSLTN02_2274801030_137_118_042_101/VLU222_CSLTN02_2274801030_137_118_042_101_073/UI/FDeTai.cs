@@ -41,6 +41,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void FDeTai_Load(object sender, EventArgs e)
         {
             //render Database data in this event
+            Database.RenderDeTai(lsB_danhSachDeTai, cmB_maGiangVien, cmB_maSinhVien);
         }
 
         private void FDeTai_FormClosing(object sender, FormClosingEventArgs e)
@@ -97,8 +98,15 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             {
                 //Insert data into DETAI table
                 DeTai deTai = Forms.GetDeTai(inpDeTais);
-                lsB_danhSachDeTai.Items.Add(deTai);
-                Forms.CleanInput(inpDeTais);
+                int rowAffected = Database.InsertDeTai(deTai);
+                if(rowAffected != 0)
+                {
+                    MessageBox.Show("Thêm đề tài thành công!");
+                    lsB_danhSachDeTai.Items.Add(deTai);
+                    lsB_danhSachDeTai .Sorted = true;
+                    Forms.CleanInput(inpDeTais);
+                }
+                else MessageBox.Show("Thêm đề tài thất bại!");
             }
             catch (Exception ex)
             {
@@ -115,8 +123,14 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 //Update data for DETAI table
                 DeTai newDeTai = Forms.GetDeTai(inpDeTais);
                 newDeTai.ThamGiaDeTais = selectedDeTai.ThamGiaDeTais;
-                Forms.LsbUpdateItem(lsB_danhSachDeTai, GetDeTaiSelectedIndex(), newDeTai);
-                Forms.CleanInput(inpDeTais);
+                int rowAffected = Database.UpdateDeTai( selectedDeTai, newDeTai);
+                if (rowAffected != 0)
+                {
+                    MessageBox.Show("Sửa đề tài thành công!");
+                    Forms.LsbUpdateItem(lsB_danhSachDeTai, GetDeTaiSelectedIndex(), newDeTai);
+                    Forms.CleanInput(inpDeTais);
+                }
+                else MessageBox.Show("Sửa đề tài thất bại!");
             }
             catch (Exception ex)
             {
@@ -128,8 +142,14 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         {
             //Delete data for DeTai table
             DeTai deTai = GetSelectedDeTai();
-            lsB_danhSachDeTai.Items.Remove(deTai);
-            Forms.CleanInput(inpDeTais);
+            int rowAffected = Database.DeleteDeTai(deTai);
+            if(rowAffected != 0)
+            {
+                MessageBox.Show("Xóa đề tài thành công!");
+                lsB_danhSachDeTai.Items.Remove(deTai);
+                Forms.CleanInput(inpDeTais);
+            }
+            else MessageBox.Show("Xóa đề tài thất bại!");
         }
 
         private void btn_troVeDeTai_Click(object sender, EventArgs e)
@@ -192,18 +212,26 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             {
                 //Insert data into TGDT table
                 ThamGiaDeTai thamGiaDeTai = Forms.GetThamGiaDeTai(inpTGDTs, selectedDeTai);
-                string[] lsviObj = new string[]
+                int rowAffected = Database.InsertThamGiaDeTai(thamGiaDeTai);
+                if (rowAffected != 0) 
                 {
-                    thamGiaDeTai.MaDT,
-                    thamGiaDeTai.MaSV,
-                    thamGiaDeTai.PhuCap + "",
-                    thamGiaDeTai.KetQua
-                };
-                ListViewItem lsvItem = new ListViewItem(lsviObj);
-                lsv_danhSachTGDT.Items.Add(lsvItem);
-                selectedDeTai.ThamGiaDeTais.Add(thamGiaDeTai);
-                Forms.CleanInput(inpTGDTs);
+                    MessageBox.Show("Thêm tham gia đề tài thành công!");
+                    string[] lsviObj = new string[]
+                    {
+                        thamGiaDeTai.MaDT,
+                        thamGiaDeTai.MaSV,
+                        thamGiaDeTai.PhuCap + "",
+                        thamGiaDeTai.KetQua
+                    };
+                    ListViewItem lsvItem = new ListViewItem(lsviObj);
+                    lsv_danhSachTGDT.Items.Add(lsvItem);
+                    selectedDeTai.ThamGiaDeTais.Add(thamGiaDeTai);
+                    Forms.CleanInput(inpTGDTs);
+                }
+                else
+                    MessageBox.Show("Thêm tham gia đề tài thất bại!");
             }
+                
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -226,17 +254,24 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 ThamGiaDeTai newThamGiaDeTai = Forms.GetThamGiaDeTai(inpTGDTs, selectedDeTai);
                 selectedDeTai.ThamGiaDeTais.RemoveAt(TGDTSelectedIndex);
                 selectedDeTai.ThamGiaDeTais.Insert(TGDTSelectedIndex, newThamGiaDeTai);
-                string[] newLsviObj = new string[]
+                //int rowAffected = Database.UpdateThamGiaDeTai(thamGiaDeTai);
+                if (rowAffected != 0)
                 {
-                    newThamGiaDeTai.MaDT,
-                    newThamGiaDeTai.MaSV,
-                    newThamGiaDeTai.PhuCap + "",
-                    newThamGiaDeTai.KetQua
-                };
-                ListViewItem newLsvItem = new ListViewItem(newLsviObj);
-                lsv_danhSachTGDT.Items.RemoveAt(TGDTSelectedIndex);
-                lsv_danhSachTGDT.Items.Insert(TGDTSelectedIndex, newLsvItem);
-                Forms.CleanInput(inpTGDTs);
+                    MessageBox.Show("Sửa tham gia đề tài thành công!");
+                    string[] newLsviObj = new string[]
+                    {
+                        newThamGiaDeTai.MaDT,
+                        newThamGiaDeTai.MaSV,
+                        newThamGiaDeTai.PhuCap + "",
+                        newThamGiaDeTai.KetQua
+                    };
+                    ListViewItem newLsvItem = new ListViewItem(newLsviObj);
+                    lsv_danhSachTGDT.Items.RemoveAt(TGDTSelectedIndex);
+                    lsv_danhSachTGDT.Items.Insert(TGDTSelectedIndex, newLsvItem);
+                    Forms.CleanInput(inpTGDTs);
+                }    
+                else
+                    MessageBox.Show("Sửa tham gia đề tài thất bại!");
             }
             catch (Exception ex)
             {
@@ -251,8 +286,15 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             int TGDTSelectedIndex = TGDTSelectedItem.Index;
             lsv_danhSachTGDT.Items.Remove(TGDTSelectedItem);
             DeTai selectedDeTai = GetSelectedDeTai();
-            selectedDeTai.ThamGiaDeTais.RemoveAt(TGDTSelectedIndex);
-            Forms.CleanInput(inpTGDTs);
+            //int rowAffected = Database.DeleteThamGiaDeTai();
+            if (rowAffected != 0)
+            {
+                MessageBox.Show("Xóa tham gia đề tài thành công!");
+                selectedDeTai.ThamGiaDeTais.RemoveAt(TGDTSelectedIndex);
+                Forms.CleanInput(inpTGDTs);
+            }
+            else
+                MessageBox.Show("Xóa tham gia đề tài thất bại!");
         }
 
         private void btn_truyCapTGDT_Click(object sender, EventArgs e)
