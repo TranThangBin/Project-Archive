@@ -49,6 +49,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void FKhoa_Load(object sender, EventArgs e)
         {
             //render Database data in this event
+            Database.RenderKhoa(lsB_danhSachKhoa);
         }
 
         private void FKhoa_FormClosing(object sender, FormClosingEventArgs e)
@@ -116,8 +117,15 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             {
                 //Insert data into KHOA table
                 Khoa khoa = Forms.GetKhoa(inpKhoas);
-                lsB_danhSachKhoa.Items.Add(khoa);
-                Forms.CleanInput(inpKhoas);
+                int rowAffected = Database.InsertKhoa(khoa);
+                if(rowAffected != 0)
+                {
+                    MessageBox.Show("Thêm Khoa thành công");
+                    lsB_danhSachKhoa.Items.Add(khoa);
+                    Forms.CleanInput(inpKhoas);
+                }
+                else
+                    MessageBox.Show("Thêm Khoa thất bại");
             }
             catch (Exception ex)
             {
@@ -135,8 +143,15 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 Khoa newKhoa = Forms.GetKhoa(inpKhoas);
                 newKhoa.SinhViens = selectedKhoa.SinhViens;
                 newKhoa.GiangViens = selectedKhoa.GiangViens;
-                Forms.LsbUpdateItem(lsB_danhSachKhoa, GetKhoaSelectedIndex(), newKhoa);
-                Forms.CleanInput(inpKhoas);
+                int rowAffected = Database.UpdateKhoa(selectedKhoa, newKhoa);
+                if (rowAffected != 0)
+                {
+                    MessageBox.Show("Sửa Khoa thành công");
+                    Forms.LsbUpdateItem(lsB_danhSachKhoa, GetKhoaSelectedIndex(), newKhoa);
+                    Forms.CleanInput(inpKhoas);
+                }
+                else
+                    MessageBox.Show("Sửa Khoa thất bại");
             }
             catch (Exception ex)
             {
@@ -147,8 +162,16 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void btn_xoaKhoa_Click(object sender, EventArgs e)
         {
             //Delete data from KHOA table
-            lsB_danhSachKhoa.Items.Remove(GetSelectedKhoa());
-            Forms.CleanInput(inpKhoas);
+            Khoa selectedKhoa = GetSelectedKhoa();
+            int rowAffected = Database.DeleteKhoa(selectedKhoa);
+            if(rowAffected != 0)
+            {
+                MessageBox.Show("Xóa Khoa thành công");
+                lsB_danhSachKhoa.Items.Remove(selectedKhoa);
+                Forms.CleanInput(inpKhoas);
+            }    
+            else
+                MessageBox.Show("Xóa Khoa thất bại");
         }
 
         private void btn_troVeKhoa_Click(object sender, EventArgs e)
