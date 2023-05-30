@@ -53,12 +53,6 @@
     <Compile Include="Classes\Khoa.cs" />
     <Compile Include="Classes\SinhVien.cs" />
     <Compile Include="Classes\ThamGiaDeTai.cs" />
-    <Compile Include="UI\FDeTai.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FDeTai.Designer.cs">
-      <DependentUpon>FDeTai.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\FGiangVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,12 +70,6 @@
     </Compile>
     <Compile Include="UI\FSinhVien.Designer.cs">
       <DependentUpon>FSinhVien.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FThamGiaDeTai.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FThamGiaDeTai.Designer.cs">
-      <DependentUpon>FThamGiaDeTai.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FThanhVien.cs">
       <SubType>Form</SubType>
@@ -106,9 +94,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\FDeTai.resx">
-      <DependentUpon>FDeTai.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\FGiangVien.resx">
       <DependentUpon>FGiangVien.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,9 +102,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FSinhVien.resx">
       <DependentUpon>FSinhVien.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\FThamGiaDeTai.resx">
-      <DependentUpon>FThamGiaDeTai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FThanhVien.resx">
       <DependentUpon>FThanhVien.cs</DependentUpon>

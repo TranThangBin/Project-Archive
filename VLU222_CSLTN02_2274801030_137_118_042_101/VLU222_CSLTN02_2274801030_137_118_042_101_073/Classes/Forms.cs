@@ -12,16 +12,12 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
     internal static class Forms
     {
         private static QLDETAINCKHSINHVIEN mainMenu;
-        private static FThamGiaDT thamGiaDT;
-        private static FDeTai deTai;
         private static FGiangVien giangVien;
         private static FSinhVien sinhVien;
         private static FKhoa khoa;
         private static FThanhVien thanhVien;
 
         public static QLDETAINCKHSINHVIEN MainMenu { get => mainMenu; set => mainMenu = value; }
-        public static FThamGiaDT ThamGiaDT { get => thamGiaDT; set => thamGiaDT = value; }
-        public static FDeTai DeTai { get => deTai; set => deTai = value; }
         public static FGiangVien GiangVien { get => giangVien; set => giangVien = value; }
         public static FSinhVien SinhVien { get => sinhVien; set => sinhVien = value; }
         public static FKhoa Khoa { get => khoa; set => khoa = value; }
@@ -295,6 +291,16 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             }
             else if (IsSpecialChar(e.KeyChar)) e.Handled = true;
             else if (char.IsDigit(e.KeyChar)) e.Handled = true;
+        }
+
+        public static void TxtStringNumHandler(TextBox textBox, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ' ')
+            {
+                if (textBox.Text.EndsWith(" ") || textBox.TextLength == 0)
+                    e.Handled = true;
+            }
+            else if (IsSpecialChar(e.KeyChar)) e.Handled = true;
         }
 
         public static void TxtOneWordOnlyHandler(KeyPressEventArgs e)

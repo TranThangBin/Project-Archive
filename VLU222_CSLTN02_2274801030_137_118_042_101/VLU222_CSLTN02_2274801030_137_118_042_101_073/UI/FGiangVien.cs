@@ -15,8 +15,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 {
     public partial class FGiangVien : Form
     {
-        private bool toMenu = true;
-        private bool toDeTai = false;
         private ArrayList inpGiangViens;
         private ArrayList inpDeTais;
         public FGiangVien()
@@ -49,19 +47,9 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void FGiangVien_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (toMenu && MessageBox.Show("Bạn muốn quay về trang chủ?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            if (MessageBox.Show("Bạn muốn quay về trang chủ?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 Forms.MainMenu.Show();
-            else if (toDeTai && MessageBox.Show("Bạn muốn truy cập Form đề tài?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
-            {
-                Forms.DeTai = new FDeTai();
-                Forms.DeTai.Show();
-            }
-            else
-            {
-                e.Cancel = true;
-                toMenu = true;
-                toDeTai = false;
-            }
+            else e.Cancel = true;
         }
 
         private GiangVien GetSelectedGiangVien()
@@ -142,7 +130,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             {
                 Forms.CleanInput(inpGiangViens);
                 Forms.CleanInput(inpDeTais);
-                txt_maGiangVien.Enabled = true;
+                txt_maGiangVien.Enabled =
+                cmB_maKhoa.Enabled =
                 btn_themGV.Enabled = true;
                 return;
             }
@@ -168,7 +157,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 ListViewItem lsvItem = new ListViewItem(lsviObj);
                 lsV_giangVienGuongdanVeDT.Items.Add(lsvItem);
             }
-            txt_maGiangVien.Enabled = false;
+            txt_maGiangVien.Enabled =
+            cmB_maKhoa.Enabled =
             btn_themGV.Enabled = false;
         }
 
@@ -270,20 +260,13 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             Forms.CleanInput(inpDeTais);
         }
 
-        private void btn_truyCapDT_Click(object sender, EventArgs e)
-        {
-            toMenu = false;
-            toDeTai = true;
-            Close();
-        }
-
         private void lsV_giangVienGuongdanVeDT_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lsV_giangVienGuongdanVeDT.SelectedItems.Count == 0)
             {
                 Forms.CleanInput(inpDeTais);
-                txt_maDetai.Enabled = true;
-                cmB_maSinhVien.Enabled = true;
+                txt_maDetai.Enabled =
+                cmB_maSinhVien.Enabled =
                 btn_themDT.Enabled = true;
                 return;
             }
@@ -294,9 +277,14 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             dtP_ngayBatDau.Text = deTaiSelectedItem.SubItems[3].Text;
             dtP_ngayKetThuc.Text = deTaiSelectedItem.SubItems[4].Text;
             cmB_maSinhVien.Text = deTaiSelectedItem.SubItems[5].Text;
-            txt_maDetai.Enabled = false;
-            cmB_maSinhVien.Enabled = false;
+            txt_maDetai.Enabled =
+            cmB_maSinhVien.Enabled =
             btn_themDT.Enabled = false;
+        }
+
+        private void txt_tenDeTai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Forms.TxtStringNumHandler(sender as TextBox, e);
         }
     }
 }

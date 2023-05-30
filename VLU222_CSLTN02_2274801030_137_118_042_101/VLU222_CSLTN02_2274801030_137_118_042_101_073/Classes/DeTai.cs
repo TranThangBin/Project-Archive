@@ -15,7 +15,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         private DateTime ngayKT;
         private string maGVHD;
         private string maSVCNDT;
-        private List<ThamGiaDeTai> thamGiaDeTais = new List<ThamGiaDeTai>();
+        private ThamGiaDeTai thamGiaDeTai;
 
         public DeTai()
         {
@@ -26,6 +26,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             ngayKT = DateTime.Today;
             maGVHD = "";
             maSVCNDT = "";
+            thamGiaDeTai = null;
         }
 
         public DeTai(string maDT, string tenDT, long kinhPhi, DateTime ngayBD, DateTime ngayKT, string maGVHD, string maSVCNDT)
@@ -37,6 +38,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             this.ngayKT = ngayKT;
             this.maGVHD = maGVHD;
             this.maSVCNDT = maSVCNDT;
+            this.thamGiaDeTai = null;
         }
 
         public override string ToString()
@@ -51,6 +53,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
         public DateTime NgayKT { get => ngayKT; set => ngayKT = value; }
         public string MaGVHD { get => maGVHD; set => maGVHD = value; }
         public string MaSVCNDT { get => maSVCNDT; set => maSVCNDT = value; }
-        public List<ThamGiaDeTai> ThamGiaDeTais { get => thamGiaDeTais; set => thamGiaDeTais = value; }
+        public ThamGiaDeTai ThamGiaDeTai { get => thamGiaDeTai; set => thamGiaDeTai = value; }
     }
 }

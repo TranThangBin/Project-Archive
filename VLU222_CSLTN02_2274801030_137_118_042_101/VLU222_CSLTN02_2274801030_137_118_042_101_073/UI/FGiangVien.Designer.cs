@@ -64,7 +64,6 @@
             this.colMaGV = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colMaSV = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btn_truyCapDT = new System.Windows.Forms.Button();
             this.btn_xoaDT = new System.Windows.Forms.Button();
             this.btn_suaDT = new System.Windows.Forms.Button();
             this.btn_themDT = new System.Windows.Forms.Button();
@@ -104,7 +103,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(184)))), ((int)(((byte)(19)))));
-            this.groupBox1.Location = new System.Drawing.Point(16, 5);
+            this.groupBox1.Location = new System.Drawing.Point(15, 5);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -357,7 +356,7 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(184)))), ((int)(((byte)(19)))));
-            this.groupBox2.Location = new System.Drawing.Point(445, 5);
+            this.groupBox2.Location = new System.Drawing.Point(444, 5);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
@@ -467,29 +466,16 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.btn_truyCapDT);
             this.groupBox4.Controls.Add(this.btn_xoaDT);
             this.groupBox4.Controls.Add(this.btn_suaDT);
             this.groupBox4.Controls.Add(this.btn_themDT);
-            this.groupBox4.Location = new System.Drawing.Point(20, 243);
+            this.groupBox4.Location = new System.Drawing.Point(71, 243);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox4.Size = new System.Drawing.Size(374, 57);
+            this.groupBox4.Size = new System.Drawing.Size(271, 57);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
-            // 
-            // btn_truyCapDT
-            // 
-            this.btn_truyCapDT.ForeColor = System.Drawing.Color.Black;
-            this.btn_truyCapDT.Location = new System.Drawing.Point(267, 17);
-            this.btn_truyCapDT.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_truyCapDT.Name = "btn_truyCapDT";
-            this.btn_truyCapDT.Size = new System.Drawing.Size(94, 31);
-            this.btn_truyCapDT.TabIndex = 3;
-            this.btn_truyCapDT.Text = "Truy cập";
-            this.btn_truyCapDT.UseVisualStyleBackColor = true;
-            this.btn_truyCapDT.Click += new System.EventHandler(this.btn_truyCapDT_Click);
             // 
             // btn_xoaDT
             // 
@@ -589,7 +575,7 @@
             this.txt_tenDeTai.Name = "txt_tenDeTai";
             this.txt_tenDeTai.Size = new System.Drawing.Size(239, 26);
             this.txt_tenDeTai.TabIndex = 1;
-            this.txt_tenDeTai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStringOnly_KeyPress);
+            this.txt_tenDeTai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_tenDeTai_KeyPress);
             // 
             // label8
             // 
@@ -688,7 +674,6 @@
         private System.Windows.Forms.Button btn_xoaGV;
         private System.Windows.Forms.DateTimePicker dtP_ngayKetThuc;
         private System.Windows.Forms.DateTimePicker dtP_ngayBatDau;
-        private System.Windows.Forms.Button btn_truyCapDT;
         private System.Windows.Forms.Button btn_xoaDT;
         private System.Windows.Forms.Button btn_suaDT;
         private System.Windows.Forms.ColumnHeader colMaDT;

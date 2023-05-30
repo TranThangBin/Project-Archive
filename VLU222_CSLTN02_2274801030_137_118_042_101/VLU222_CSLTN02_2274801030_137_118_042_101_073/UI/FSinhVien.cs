@@ -15,9 +15,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 {
     public partial class FSinhVien : Form
     {
-        private bool toMenu = true;
-        private bool toDeTai = false;
-        private bool toTGDT = false;
         private ArrayList inpSinhViens;
         private ArrayList inpDeTais;
         private ArrayList inpTGDTs;
@@ -55,25 +52,9 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void FSinhVien_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (toMenu && MessageBox.Show("Bạn muốn quay về trang chủ?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            if (MessageBox.Show("Bạn muốn quay về trang chủ?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 Forms.MainMenu.Show();
-            else if (toDeTai && MessageBox.Show("Bạn muốn truy cập Form đề tài?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
-            {
-                Forms.DeTai = new FDeTai();
-                Forms.DeTai.Show();
-            }
-            else if (toTGDT && MessageBox.Show("Bạn muốn tham gia đề tài?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
-            {
-                Forms.ThamGiaDT = new FThamGiaDT();
-                Forms.ThamGiaDT.Show();
-            }
-            else
-            {
-                e.Cancel = true;
-                toMenu = true;
-                toDeTai = false;
-                toTGDT = false;
-            }
+            else e.Cancel = true;
         }
 
         private SinhVien GetSelectedSinhVien()
@@ -187,10 +168,9 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 Forms.CleanInput(inpSinhViens);
                 Forms.CleanInput(inpDeTais);
                 Forms.CleanInput(inpTGDTs);
-                txt_maSinhVien.Enabled = true;
+                txt_maSinhVien.Enabled =
+                cmB_maKhoaSV.Enabled =
                 btn_themSV.Enabled = true;
-                txt_maDetai.Enabled = true;
-                btn_themDeTai.Enabled = true;
                 return;
             }
             SinhVien selectedSinhVien = GetSelectedSinhVien();
@@ -201,7 +181,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             cmB_maKhoaSV.Text = selectedSinhVien.MaKhoa;
             foreach (DeTai deTai in selectedSinhVien.Detais)
                 lsb_danhSachDeTai.Items.Add(deTai);
-            txt_maSinhVien.Enabled = false;
+            txt_maSinhVien.Enabled =
+            cmB_maKhoaSV.Enabled =
             btn_themSV.Enabled = false;
         }
 
@@ -238,7 +219,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             {
                 int deTaiSelectedIndex = GetDeTaiSelectedIndex();
                 DeTai newDeTai = Forms.GetDeTai(inpDeTais, null, selectedSinhVien);
-                newDeTai.ThamGiaDeTais = selectedDeTai.ThamGiaDeTais;
+                newDeTai.ThamGiaDeTai = selectedDeTai.ThamGiaDeTai;
                 selectedSinhVien.Detais.RemoveAt(deTaiSelectedIndex);
                 selectedSinhVien.Detais.Insert(deTaiSelectedIndex, newDeTai);
                 Forms.LsbUpdateItem(lsb_danhSachDeTai, deTaiSelectedIndex, newDeTai);
@@ -260,13 +241,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             Forms.CleanInput(inpDeTais);
         }
 
-        private void btn_truycapDeTai_Click(object sender, EventArgs e)
-        {
-            toMenu = false;
-            toDeTai = true;
-            Close();
-        }
-
         private void lsb_danhSachDeTai_SelectedIndexChanged(object sender, EventArgs e)
         {
             lsv_danhSachTGDT.Items.Clear();
@@ -274,7 +248,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             {
                 Forms.CleanInput(inpDeTais);
                 Forms.CleanInput(inpTGDTs);
-                txt_maDetai.Enabled = true;
+                txt_maDetai.Enabled =
+                cmB_maGiangVienDT.Enabled =
                 btn_themDeTai.Enabled = true;
                 return;
             }
@@ -285,7 +260,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             dtP_ngayBatDauDT.Value = selectedDeTai.NgayBD;
             dtP_ngayKetThucDT.Value = selectedDeTai.NgayKT;
             cmB_maGiangVienDT.Text = selectedDeTai.MaGVHD;
-            foreach (ThamGiaDeTai thamGiaDeTai in selectedDeTai.ThamGiaDeTais)
+            ThamGiaDeTai thamGiaDeTai = selectedDeTai.ThamGiaDeTai;
+            if (thamGiaDeTai != null)
             {
                 string[] lsviObj = new string[]
                 {
@@ -297,19 +273,31 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 ListViewItem lsvItem = new ListViewItem(lsviObj);
                 lsv_danhSachTGDT.Items.Add(lsvItem);
             }
-            txt_maDetai.Enabled = false;
+            txt_maDetai.Enabled =
+            cmB_maGiangVienDT.Enabled =
             btn_themDeTai.Enabled = false;
+        }
+
+        private void txt_tenDetai_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Forms.TxtStringNumHandler(sender as TextBox, e);
         }
 
         private void btn_themTGDT_Click(object sender, EventArgs e)
         {
             if (!Forms.LsbHasItemSelected(lsb_danhSachDeTai, "Bạn cần phải chọn 1 đề tài để tham gia!")) return;
             DeTai selectedDeTai = GetSelectedDeTai();
+            if (selectedDeTai.ThamGiaDeTai != null)
+            {
+                MessageBox.Show("Trong đề tài với mã sinh viên và mã giảng viên tương ứng " +
+                                "chỉ được phép tồn tại 1 tham gia đề tài!");
+                return;
+            }
             //Insert data into TGDT table
             try
             {
                 ThamGiaDeTai thamGiaDeTai = Forms.GetThamGiaDeTai(inpTGDTs, selectedDeTai);
-                selectedDeTai.ThamGiaDeTais.Add(thamGiaDeTai);
+                selectedDeTai.ThamGiaDeTai = thamGiaDeTai;
                 string[] lsviObj = new string[]
                 {
                     thamGiaDeTai.MaDT,
@@ -341,8 +329,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             try
             {
                 ThamGiaDeTai newTGDT = Forms.GetThamGiaDeTai(inpTGDTs, selectedDeTai);
-                selectedDeTai.ThamGiaDeTais.RemoveAt(TGDTSelectedIndex);
-                selectedDeTai.ThamGiaDeTais.Insert(TGDTSelectedIndex, newTGDT);
+                selectedDeTai.ThamGiaDeTai = newTGDT;
                 string[] newLsviObj = new string[]
                 {
                     newTGDT.MaDT,
@@ -368,15 +355,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             int TGDTSelectedIndex = TGDTSelectedItem.Index;
             lsv_danhSachTGDT.Items.RemoveAt(TGDTSelectedIndex);
             DeTai selectedDeTai = GetSelectedDeTai();
-            selectedDeTai.ThamGiaDeTais.RemoveAt(TGDTSelectedIndex);
+            selectedDeTai.ThamGiaDeTai = null;
             Forms.CleanInput(inpTGDTs);
-        }
-
-        private void btn_truyCapTGDT_Click(object sender, EventArgs e)
-        {
-            toMenu = false;
-            toTGDT = true;
-            Close();
         }
 
         private void lsv_danhSachTGDT_SelectedIndexChanged(object sender, EventArgs e)

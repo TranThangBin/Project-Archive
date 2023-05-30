@@ -165,7 +165,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 Forms.CleanInput(inpKhoas);
                 Forms.CleanInput(inpGiangViens);
                 Forms.CleanInput(inpSinhViens);
-                txt_maKhoa.Enabled = true;
+                txt_maKhoa.Enabled =
                 btn_themKhoa.Enabled = true;
                 return;
             }
@@ -200,7 +200,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 ListViewItem lsvItem = new ListViewItem(lsviObj);
                 lsV_danhSachSV.Items.Add(lsvItem);
             }
-            txt_maKhoa.Enabled = false;
+            txt_maKhoa.Enabled =
             btn_themKhoa.Enabled = false;
         }
 
@@ -306,7 +306,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             if (lsV_danhSachGV.SelectedItems.Count == 0)
             {
                 Forms.CleanInput(inpGiangViens);
-                txt_maGiangVien.Enabled = true;
+                txt_maGiangVien.Enabled =
                 btn_themGV.Enabled = true;
                 return;
             }
@@ -316,7 +316,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             txt_tenGiangVien.Text = giangVienSelectedItem.SubItems[2].Text;
             txt_trinhDoGV.Text = giangVienSelectedItem.SubItems[3].Text;
             cmB_gioiTinhGV.Text = giangVienSelectedItem.SubItems[4].Text;
-            txt_maGiangVien.Enabled = false;
+            txt_maGiangVien.Enabled =
             btn_themGV.Enabled = false;
         }
 
@@ -405,7 +405,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             if (lsV_danhSachSV.SelectedItems.Count == 0)
             {
                 Forms.CleanInput(inpSinhViens);
-                txt_maSinhVien.Enabled = true;
+                txt_maSinhVien.Enabled =
                 btn_themSV.Enabled = true;
                 return;
             }
@@ -414,7 +414,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             txt_hoLotSV.Text = sinhVienSelectedItem.SubItems[1].Text;
             txt_tenSinhVien.Text = sinhVienSelectedItem.SubItems[2].Text;
             cmb_gioiTinhSV.Text = sinhVienSelectedItem.SubItems[3].Text;
-            txt_maSinhVien.Enabled = false;
+            txt_maSinhVien.Enabled =
             btn_themSV.Enabled = false;
         }
     }

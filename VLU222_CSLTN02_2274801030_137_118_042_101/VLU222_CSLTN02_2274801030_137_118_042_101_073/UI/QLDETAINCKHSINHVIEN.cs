@@ -16,11 +16,11 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073
     public partial class QLDETAINCKHSINHVIEN : Form
     {
         // connectionString của Trần Quang Thắng
-        //private const string connectionString = "Data Source=DESKTOP-VOPAJLN;Initial Catalog=QLNCKH_SV;Integrated Security=True";
+        private const string connectionString = "Data Source=DESKTOP-VOPAJLN;Initial Catalog=QLNCKH_SV;Integrated Security=True";
         // connectionString của Châu Gia Hào
         //private const string connectionString = "Data Source=PeachSwe3t\\HAOCHAU;Initial Catalog=QLNCKH_SV;Integrated Security=True";
         // connectionString của Bảo Nguyên
-        private const string connectionString = "Data Source=LAPTOP-N17PMH73\\SQLEXPRESS02;Initial Catalog=QLNCKH_SV;Integrated Security=True";
+        //private const string connectionString = "Data Source=LAPTOP-N17PMH73\\SQLEXPRESS02;Initial Catalog=QLNCKH_SV;Integrated Security=True";
 
         public QLDETAINCKHSINHVIEN()
         {
@@ -30,8 +30,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073
 
         private void QLDETAINCKHSINHVIEN_Load(object sender, EventArgs e)
         {
-            //WHAT IS THIS?
-            //CHECKOUT DATABASE CLASS
             Database.Connect(connectionString);
         }
 
@@ -40,20 +38,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073
             if (MessageBox.Show("Bạn muốn thoát Form?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 Database.Disconnect();
             else e.Cancel = true;
-        }
-
-        private void btn_TGDT_Click(object sender, EventArgs e)
-        {
-            Hide();
-            Forms.ThamGiaDT = new FThamGiaDT();
-            Forms.ThamGiaDT.Show();
-        }
-
-        private void btn_DSDT_Click(object sender, EventArgs e)
-        {
-            Hide();
-            Forms.DeTai = new FDeTai();
-            Forms.DeTai.Show();
         }
 
         private void btn_GVHD_Click(object sender, EventArgs e)

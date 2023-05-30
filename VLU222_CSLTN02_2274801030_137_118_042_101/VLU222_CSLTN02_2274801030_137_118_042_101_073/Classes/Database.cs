@@ -44,62 +44,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             return command.ExecuteNonQuery();
         }
 
-        public static void RenderThamGiaDeTai(ListBox listBox, ComboBox cmbMaDT, ComboBox cmbMaSV)
-        {
-            string sql = "SELECT MADT, MASV, PHUCAP, KETQUA FROM THAMGIADETAI";
-            using (SqlDataReader reader = ExecuteQuery(sql))
-            {
-                while (reader.Read())
-                {
-                    string maDT = reader.GetString(0);
-                    string maSV = reader.GetString(1);
-                    long phuCap = (long)reader.GetDecimal(2);
-                    string ketQua = reader.GetString(3);
-                    ThamGiaDeTai thamGiaDeTai = new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
-                    listBox.Items.Add(thamGiaDeTai);
-                }
-                reader.Close();
-            }
-            sql = "SELECT MADT FROM DETAI";
-            using (SqlDataReader reader = ExecuteQuery(sql))
-            {
-                while (reader.Read())
-                    cmbMaDT.Items.Add(reader.GetString(0));
-                reader.Close();
-            }
-            sql = "SELECT MASV FROM SINHVIEN";
-            using (SqlDataReader reader = ExecuteQuery(sql))
-            {
-                while (reader.Read())
-                    cmbMaSV.Items.Add(reader.GetString(0));
-                reader.Close();
-            }
-        }
-
-        public static void RenderThamGiaDeTai(ListView listView)
-        {
-            string sql = "SELECT MADT, MASV, PHUCAP, KETQUA FROM THAMGIADETAI";
-            SqlDataReader reader = ExecuteQuery(sql);
-            while (reader.Read())
-            {
-                string maDT = reader.GetString(0);
-                string maSV = reader.GetString(1);
-                long phuCap = (long)reader.GetDecimal(2);
-                string ketQua = reader.GetString(3);
-                ThamGiaDeTai thamGiaDeTai = new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
-                string[] lsviObj = new string[]
-                {
-                    thamGiaDeTai.MaDT,
-                    thamGiaDeTai.MaSV,
-                    thamGiaDeTai.PhuCap+"",
-                    thamGiaDeTai.KetQua
-                };
-                ListViewItem lsvItem = new ListViewItem(lsviObj);
-                listView.Items.Add(lsvItem);
-            }
-            reader.Close();
-        }
-
         public static int InsertThamGiaDeTai(ThamGiaDeTai thamGiaDeTai)
         {
             string sql = "INSERT INTO THAMGIADETAI " +
@@ -164,61 +108,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
             return ExecuteNonQuery(sql, parameters);
         }
 
-        public static void RenderDeTai(ListBox listBox, ComboBox cmbMaGV, ComboBox cmbMaSV)
-        {
-            string sql = "SELECT MADT, TENDT, KINHPHI, NGAYBD, NGAYKT, " +
-                         "MAGVHD, MASV_CNDT FROM DETAI";
-            using (SqlDataReader reader = ExecuteQuery(sql))
-            {
-                while (reader.Read())
-                {
-                    string maDT = reader.GetString(0);
-                    string tenDT = reader.GetString(1);
-                    long kinhPhi = (long)reader.GetDecimal(2);
-                    DateTime ngayBD = reader.GetDateTime(3);
-                    DateTime ngayKT = reader.GetDateTime(4);
-                    string maGV = reader.GetString(5);
-                    string maSV = reader.GetString(6);
-                    DeTai deTai = new DeTai(maDT, tenDT, kinhPhi, ngayBD, ngayKT, maGV, maSV);
-                    listBox.Items.Add(deTai);
-                }
-                reader.Close();
-            }
-            foreach (DeTai deTai in listBox.Items)
-            {
-                sql = "SELECT MADT, MASV, PHUCAP, " +
-                      "KETQUA FROM THAMGIADETAI " +
-                     $"WHERE MADT = \'{deTai.MaDT}\'";
-                using (SqlDataReader reader = ExecuteQuery(sql))
-                {
-                    while (reader.Read())
-                    {
-                        string maDT = reader.GetString(0);
-                        string maSV = reader.GetString(1);
-                        long phuCap = (long)reader.GetDecimal(2);
-                        string ketQua = reader.GetString(3);
-                        ThamGiaDeTai thamGiaDeTai = new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
-                        deTai.ThamGiaDeTais.Add(thamGiaDeTai);
-                    }
-                    reader.Close();
-                }
-            }
-            sql = "SELECT MAGV FROM GIANGVIEN";
-            using (SqlDataReader reader = ExecuteQuery(sql))
-            {
-                while (reader.Read())
-                    cmbMaGV.Items.Add(reader.GetString(0));
-                reader.Close();
-            }
-            sql = "SELECT MASV FROM SINHVIEN";
-            using (SqlDataReader reader = ExecuteQuery(sql))
-            {
-                while (reader.Read())
-                    cmbMaSV.Items.Add(reader.GetString(0));
-                reader.Close();
-            }
-        }
-
         public static int InsertDeTai(DeTai deTai)
         {
             string sql = "INSERT INTO DETAI " +
@@ -253,6 +142,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
 
         public static int DeleteDeTai(DeTai deTai)
         {
+            if (deTai.ThamGiaDeTai != null)
+                DeleteThamGiaDeTai(deTai.ThamGiaDeTai);
             string sql = "DELETE FROM DETAI " +
                          "WHERE MADT = @MADT AND MASV_CNDT = @MASV_CNDT";
             List<SqlParameter> parameters = new List<SqlParameter>()
@@ -270,36 +161,40 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
 
         public static int UpdateDeTai(DeTai oldDeTai, DeTai newDeTai)
         {
-            string sql = "UPDATE THAMGIADETAI " +
-                         "SET TENDT = @TENDT, KINHPHI = @KINHPHI, @NGAYBD = NGAYBD, " + 
-                         "NGAYKT = @NGAYKT, MAGVHD = @MAGVHD" +
-                         "WHERE MADT = @OLDMADT AND MASV_CNDT = @OLDMASV_CNDT";
+            string sql = "UPDATE DETAI " +
+                         "SET TENDT = @TENDT, KINHPHI = @KINHPHI, " +
+                         "@NGAYBD = NGAYBD, NGAYKT = @NGAYKT " +
+                         "WHERE MADT = @OLDMADT AND MAGVHD = @OLDMAGVHD " +
+                                               "AND MASV_CNDT = @OLDMASV_CNDT";
             List<SqlParameter> parameters = new List<SqlParameter>()
+            {
+                new SqlParameter("@TENDT", SqlDbType.NVarChar)
                 {
-                    new SqlParameter("@TENDT", SqlDbType.NVarChar)
-                    {
-                        Value = newDeTai.TenDT
-                    }, new SqlParameter("@KINHPHI", SqlDbType.Decimal)
-                    {
-                        Value = newDeTai.KinhPhi
-                    }, new SqlParameter("@NGAYBD", SqlDbType.DateTime)
-                    {
-                        Value = newDeTai.NgayBD
-                    }, new SqlParameter("@NGAYKT", SqlDbType.DateTime)
-                    {
-                        Value = newDeTai.NgayKT
-                    },new SqlParameter("@OLDMADT", SqlDbType.Char)
-                    {
-                        Value = oldDeTai.MaDT
-                    }, new SqlParameter("@OLDMASV_CNDT", SqlDbType.Char)
-                    {
-                        Value = oldDeTai.MaSVCNDT
-                    }
-                };
+                    Value = newDeTai.TenDT
+                }, new SqlParameter("@KINHPHI", SqlDbType.Decimal)
+                {
+                    Value = newDeTai.KinhPhi
+                }, new SqlParameter("@NGAYBD", SqlDbType.DateTime)
+                {
+                    Value = newDeTai.NgayBD
+                }, new SqlParameter("@NGAYKT", SqlDbType.DateTime)
+                {
+                    Value = newDeTai.NgayKT
+                },new SqlParameter("@OLDMADT", SqlDbType.Char)
+                {
+                    Value = oldDeTai.MaDT
+                },new SqlParameter("@OLDMAGVHD",SqlDbType.Char)
+                {
+                    Value = oldDeTai.MaGVHD
+                }, new SqlParameter("@OLDMASV_CNDT", SqlDbType.Char)
+                {
+                    Value = oldDeTai.MaSVCNDT
+                }
+            };
             return ExecuteNonQuery(sql, parameters);
         }
     }
 }
 
-        
+
 
