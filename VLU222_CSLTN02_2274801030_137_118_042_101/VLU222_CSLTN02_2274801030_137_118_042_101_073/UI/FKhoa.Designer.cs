@@ -337,8 +337,8 @@
             this.colMaGV,
             this.colHoLotGV,
             this.colTenGV,
-            this.colGioiTinhGV,
             this.colTrinhDo,
+            this.colGioiTinhGV,
             this.colMaKhoaGV});
             this.lsV_danhSachGV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lsV_danhSachGV.FullRowSelect = true;
@@ -370,11 +370,13 @@
             // 
             // colGioiTinhGV
             // 
+            this.colGioiTinhGV.DisplayIndex = 3;
             this.colGioiTinhGV.Text = "Giới tính";
             this.colGioiTinhGV.Width = 64;
             // 
             // colTrinhDo
             // 
+            this.colTrinhDo.DisplayIndex = 4;
             this.colTrinhDo.Text = "Trình độ";
             this.colTrinhDo.Width = 64;
             // 

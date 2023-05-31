@@ -75,7 +75,7 @@
             this.btn_thoat.Location = new System.Drawing.Point(259, 373);
             this.btn_thoat.Name = "btn_thoat";
             this.btn_thoat.Size = new System.Drawing.Size(226, 36);
-            this.btn_thoat.TabIndex = 6;
+            this.btn_thoat.TabIndex = 4;
             this.btn_thoat.Text = "Thoát";
             this.btn_thoat.UseVisualStyleBackColor = false;
             this.btn_thoat.Click += new System.EventHandler(this.btn_thoat_Click);
@@ -89,7 +89,7 @@
             this.btn_DSCK.Location = new System.Drawing.Point(259, 196);
             this.btn_DSCK.Name = "btn_DSCK";
             this.btn_DSCK.Size = new System.Drawing.Size(226, 36);
-            this.btn_DSCK.TabIndex = 4;
+            this.btn_DSCK.TabIndex = 1;
             this.btn_DSCK.Text = "Danh sách các khoa";
             this.btn_DSCK.UseVisualStyleBackColor = false;
             this.btn_DSCK.Click += new System.EventHandler(this.btn_DSCK_Click);
@@ -131,7 +131,7 @@
             this.btn_thanhVien.Location = new System.Drawing.Point(259, 137);
             this.btn_thanhVien.Name = "btn_thanhVien";
             this.btn_thanhVien.Size = new System.Drawing.Size(226, 36);
-            this.btn_thanhVien.TabIndex = 5;
+            this.btn_thanhVien.TabIndex = 0;
             this.btn_thanhVien.Text = "Thành viên trong nhóm";
             this.btn_thanhVien.UseVisualStyleBackColor = false;
             this.btn_thanhVien.Click += new System.EventHandler(this.btn_thanhVien_Click);

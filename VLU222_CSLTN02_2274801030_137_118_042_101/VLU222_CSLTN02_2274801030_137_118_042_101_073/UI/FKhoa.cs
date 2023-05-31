@@ -118,14 +118,12 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 //Insert data into KHOA table
                 Khoa khoa = Forms.GetKhoa(inpKhoas);
                 int rowAffected = Database.InsertKhoa(khoa);
-                if(rowAffected != 0)
-                {
-                    MessageBox.Show("Thêm Khoa thành công");
-                    lsB_danhSachKhoa.Items.Add(khoa);
-                    Forms.CleanInput(inpKhoas);
-                }
-                else
-                    MessageBox.Show("Thêm Khoa thất bại");
+                if (rowAffected == 0 && MessageBox.Show("Thêm Khoa thất bại") == DialogResult.OK)
+                    return;
+                MessageBox.Show("Thêm Khoa thành công");
+                lsB_danhSachKhoa.Items.Add(khoa);
+                Forms.CleanInput(inpKhoas);
+
             }
             catch (Exception ex)
             {
@@ -141,17 +139,14 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             {
                 //Update data for KHOA table
                 Khoa newKhoa = Forms.GetKhoa(inpKhoas);
+                int rowAffected = Database.UpdateKhoa(selectedKhoa, newKhoa);
+                if (rowAffected == 0 && MessageBox.Show("Sửa Khoa thất bại") == DialogResult.OK)
+                    return;
+                MessageBox.Show("Sửa Khoa thành công");
                 newKhoa.SinhViens = selectedKhoa.SinhViens;
                 newKhoa.GiangViens = selectedKhoa.GiangViens;
-                int rowAffected = Database.UpdateKhoa(selectedKhoa, newKhoa);
-                if (rowAffected != 0)
-                {
-                    MessageBox.Show("Sửa Khoa thành công");
-                    Forms.LsbUpdateItem(lsB_danhSachKhoa, GetKhoaSelectedIndex(), newKhoa);
-                    Forms.CleanInput(inpKhoas);
-                }
-                else
-                    MessageBox.Show("Sửa Khoa thất bại");
+                Forms.LsbUpdateItem(lsB_danhSachKhoa, GetKhoaSelectedIndex(), newKhoa);
+                Forms.CleanInput(inpKhoas);
             }
             catch (Exception ex)
             {
@@ -162,14 +157,17 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void btn_xoaKhoa_Click(object sender, EventArgs e)
         {
             //Delete data from KHOA table
+            if (GetKhoaSelectedIndex() == -1 && MessageBox.Show("Bạn cần phải chọn 1 khoa để xóa!")
+                                             == DialogResult.OK)
+                return;
             Khoa selectedKhoa = GetSelectedKhoa();
             int rowAffected = Database.DeleteKhoa(selectedKhoa);
-            if(rowAffected != 0)
+            if (rowAffected != 0)
             {
                 MessageBox.Show("Xóa Khoa thành công");
                 lsB_danhSachKhoa.Items.Remove(selectedKhoa);
                 Forms.CleanInput(inpKhoas);
-            }    
+            }
             else
                 MessageBox.Show("Xóa Khoa thất bại");
         }
@@ -189,7 +187,11 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 Forms.CleanInput(inpGiangViens);
                 Forms.CleanInput(inpSinhViens);
                 txt_maKhoa.Enabled =
-                btn_themKhoa.Enabled = true;
+                btn_themKhoa.Enabled =
+                txt_maGiangVien.Enabled =
+                btn_themGV.Enabled =
+                txt_maSinhVien.Enabled =
+                btn_themSV.Enabled = true;
                 return;
             }
             Khoa selectedKhoa = GetSelectedKhoa();
@@ -250,26 +252,24 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             {
                 //Insert data into GIANGVIEN table
                 GiangVien giangVien = Forms.GetGiangVien(inpGiangViens, selectedKhoa);
-                selectedKhoa.GiangViens.Add(giangVien);
                 int rowAffected = Database.InsertGiangVien(giangVien);
-                if (rowAffected != 0)
+                if (rowAffected == 0 && MessageBox.Show("Thêm Giảng viên thất bại!") == DialogResult.OK)
+                    return;
+                MessageBox.Show("Thêm Giảng viên thành công!");
+                selectedKhoa.GiangViens.Add(giangVien);
+                string[] lsviObj = new string[]
                 {
-                    MessageBox.Show("Thêm Giảng viên thành công!");
-                    string[] lsviObj = new string[]
-                    {
-                        giangVien.MaGV,
-                        giangVien.HoLot,
-                        giangVien.TenGV,
-                        giangVien.GioiTinh,
-                        giangVien.TrinhDo,
-                        giangVien.MaKhoa
-                    };
-                    ListViewItem lsvItem = new ListViewItem(lsviObj);
-                    lsV_danhSachGV.Items.Add(lsvItem);
-                    Forms.CleanInput(inpGiangViens);
-                }
-                else
-                    MessageBox.Show("Thêm Giảng viên thất bại!");
+                    giangVien.MaGV,
+                    giangVien.HoLot,
+                    giangVien.TenGV,
+                    giangVien.GioiTinh,
+                    giangVien.TrinhDo,
+                    giangVien.MaKhoa
+                };
+                ListViewItem lsvItem = new ListViewItem(lsviObj);
+                lsV_danhSachGV.Items.Add(lsvItem);
+                Forms.CleanInput(inpGiangViens);
+
             }
             catch (Exception ex)
             {
@@ -279,11 +279,9 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_suaGV_Click(object sender, EventArgs e)
         {
-            if (lsV_danhSachGV.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Vui lòng chọn 1 giảng viên để chỉnh sửa!");
+            if (lsV_danhSachGV.SelectedItems.Count == 0 &&
+                MessageBox.Show("Vui lòng chọn 1 giảng viên để chỉnh sửa!") == DialogResult.OK)
                 return;
-            }
             //Update data for GIANGVIEN table
             ListViewItem giangVienSelectedItem = lsV_danhSachGV.SelectedItems[0];
             int giangVienSelectedIndex = giangVienSelectedItem.Index;
@@ -291,28 +289,25 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             try
             {
                 GiangVien newGiangVien = Forms.GetGiangVien(inpGiangViens, selectedKhoa);
+                int rowAffected = Database.UpdateGiangVien(selectedKhoa.GiangViens[giangVienSelectedIndex], newGiangVien);
+                if (rowAffected == 0 && MessageBox.Show("Sửa Giảng viên thất bại!") == DialogResult.OK)
+                    return;
+                MessageBox.Show("Sửa Giảng viên thành công!");
                 selectedKhoa.GiangViens.RemoveAt(giangVienSelectedIndex);
                 selectedKhoa.GiangViens.Insert(giangVienSelectedIndex, newGiangVien);
-                int rowAffected = Database.UpdateGiangVien(selectedKhoa.GiangViens[giangVienSelectedIndex], newGiangVien);
-                if (rowAffected != 0)
+                string[] newLsviObj = new string[]
                 {
-                    MessageBox.Show("Sửa Giảng viên thành công!");
-                    string[] newLsviObj = new string[]
-                    {
-                        newGiangVien.MaGV,
-                        newGiangVien.HoLot,
-                        newGiangVien.TenGV,
-                        newGiangVien.GioiTinh,
-                        newGiangVien.TrinhDo,
-                        newGiangVien.MaKhoa
-                    };
-                    ListViewItem newLsvItem = new ListViewItem(newLsviObj);
-                    lsV_danhSachGV.Items.RemoveAt(giangVienSelectedIndex);
-                    lsV_danhSachGV.Items.Insert(giangVienSelectedIndex, newLsvItem);
-                    Forms.CleanInput(inpGiangViens);
-                }
-                else
-                    MessageBox.Show("Sửa Giảng viên thất bại!");
+                    newGiangVien.MaGV,
+                    newGiangVien.HoLot,
+                    newGiangVien.TenGV,
+                    newGiangVien.GioiTinh,
+                    newGiangVien.TrinhDo,
+                    newGiangVien.MaKhoa
+                };
+                ListViewItem newLsvItem = new ListViewItem(newLsviObj);
+                lsV_danhSachGV.Items.RemoveAt(giangVienSelectedIndex);
+                lsV_danhSachGV.Items.Insert(giangVienSelectedIndex, newLsvItem);
+                Forms.CleanInput(inpGiangViens);
             }
             catch (Exception ex)
             {
@@ -323,19 +318,20 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void btn_xoaGV_Click(object sender, EventArgs e)
         {
             //Delete data from GIANGVIEN table
+            if (lsV_danhSachGV.SelectedItems.Count == 0 &&
+                MessageBox.Show("Bạn cần phải chọn 1 giảng viên để xóa!") == DialogResult.OK)
+                return;
             ListViewItem giangVienSelectedItem = lsV_danhSachGV.SelectedItems[0];
             int giangVienSelectedIndex = giangVienSelectedItem.Index;
-            lsV_danhSachGV.Items.RemoveAt(giangVienSelectedIndex);
             Khoa selectedKhoa = GetSelectedKhoa();
             int rowAffected = Database.DeleteGiangVien(selectedKhoa.GiangViens[giangVienSelectedIndex]);
-            if (rowAffected != 0)
-            {
-                MessageBox.Show("Xóa Giảng viên thành công!");
-                selectedKhoa.GiangViens.RemoveAt(giangVienSelectedIndex);
-                Forms.CleanInput(inpGiangViens);
-            }
-            else
-                MessageBox.Show("Xóa Giảng viên thất bại!");
+            if (rowAffected == 0 && MessageBox.Show("Xóa Giảng viên thất bại!") == DialogResult.OK)
+                return;
+            MessageBox.Show("Xóa Giảng viên thành công!");
+            selectedKhoa.GiangViens.RemoveAt(giangVienSelectedIndex);
+            lsV_danhSachGV.Items.RemoveAt(giangVienSelectedIndex);
+            Forms.CleanInput(inpGiangViens);
+
         }
 
         private void btn_truyCapGV_Click(object sender, EventArgs e)
@@ -372,25 +368,22 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             {
                 //Insert data into SINHVIEN table
                 SinhVien sinhVien = Forms.GetSinhVien(inpSinhViens, selectedKhoa);
-                selectedKhoa.SinhViens.Add(sinhVien);
                 int rowAffected = Database.InsertSinhVien(sinhVien);
-                if (rowAffected != 0)
+                if (rowAffected == 0 && MessageBox.Show("Thêm Sinh viên thất bại!") == DialogResult.OK)
+                    return;
+                MessageBox.Show("Thêm Sinh viên thành công!");
+                selectedKhoa.SinhViens.Add(sinhVien);
+                string[] lsviObj = new string[]
                 {
-                    MessageBox.Show("Thêm Sinh viên thành công!");
-                    string[] lsviObj = new string[]
-                    {
-                    sinhVien.MaSV,
-                    sinhVien.HoLot,
-                    sinhVien.TenSV,
-                    sinhVien.GioiTinh,
-                    sinhVien.MaKhoa
-                    };
-                    ListViewItem lsvItem = new ListViewItem(lsviObj);
-                    lsV_danhSachSV.Items.Add(lsvItem);
-                    Forms.CleanInput(inpSinhViens);
-                }
-                else
-                    MessageBox.Show("Thêm Sinh viên thất bại!");
+                        sinhVien.MaSV,
+                        sinhVien.HoLot,
+                        sinhVien.TenSV,
+                        sinhVien.GioiTinh,
+                        sinhVien.MaKhoa
+                };
+                ListViewItem lsvItem = new ListViewItem(lsviObj);
+                lsV_danhSachSV.Items.Add(lsvItem);
+                Forms.CleanInput(inpSinhViens);
             }
             catch (Exception ex)
             {
@@ -400,11 +393,9 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
 
         private void btn_suaSV_Click(object sender, EventArgs e)
         {
-            if (lsV_danhSachSV.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Vui lòng chọn 1 sinh viên để chỉnh sửa!");
+            if (lsV_danhSachSV.SelectedItems.Count == 0 &&
+                MessageBox.Show("Vui lòng chọn 1 sinh viên để chỉnh sửa!") == DialogResult.OK)
                 return;
-            }
             //Update data for SINHVIEN table
             ListViewItem sinhVienSelectedItem = lsV_danhSachSV.SelectedItems[0];
             int sinhVienSelectedIndex = sinhVienSelectedItem.Index;
@@ -412,27 +403,24 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
             try
             {
                 SinhVien newSinhVien = Forms.GetSinhVien(inpSinhViens, selectedKhoa);
+                int rowAffected = Database.UpdateSinhVien(selectedKhoa.SinhViens[sinhVienSelectedIndex], newSinhVien);
+                if (rowAffected == 0 && MessageBox.Show("Sửa Sinh viên thất bại!") == DialogResult.OK)
+                    return;
+                MessageBox.Show("Sửa Sinh viên thành công!");
                 selectedKhoa.SinhViens.RemoveAt(sinhVienSelectedIndex);
                 selectedKhoa.SinhViens.Insert(sinhVienSelectedIndex, newSinhVien);
-                int rowAffected = Database.UpdateSinhVien(selectedKhoa.SinhViens[sinhVienSelectedIndex], newSinhVien);
-                if (rowAffected != 0)
+                string[] newLsviObj = new string[]
                 {
-                    MessageBox.Show("Sửa Sinh viên thành công!");
-                    string[] newLsviObj = new string[]
-                    {
                         newSinhVien.MaSV,
                         newSinhVien.HoLot,
                         newSinhVien.TenSV,
                         newSinhVien.GioiTinh,
                         newSinhVien.MaKhoa
-                    };
-                    ListViewItem newLsvItem = new ListViewItem(newLsviObj);
-                    lsV_danhSachGV.Items.RemoveAt(sinhVienSelectedIndex);
-                    lsV_danhSachGV.Items.Insert(sinhVienSelectedIndex, newLsvItem);
-                    Forms.CleanInput(inpSinhViens);
-                }
-                else
-                    MessageBox.Show("Sửa Sinh viên thất bại!");
+                };
+                ListViewItem newLsvItem = new ListViewItem(newLsviObj);
+                lsV_danhSachGV.Items.RemoveAt(sinhVienSelectedIndex);
+                lsV_danhSachGV.Items.Insert(sinhVienSelectedIndex, newLsvItem);
+                Forms.CleanInput(inpSinhViens);
             }
             catch (Exception ex)
             {
@@ -443,19 +431,19 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void btn_xoaSV_Click(object sender, EventArgs e)
         {
             //Delete data from SINHVIEN table
+            if (lsV_danhSachSV.SelectedItems.Count == 0 &&
+                MessageBox.Show("Bạn cần phải chọn 1 sinh viên để xóa!") == DialogResult.OK)
+                return;
             ListViewItem sinhVienSelectedItem = lsV_danhSachSV.SelectedItems[0];
             int sinhVienSelectedIndex = sinhVienSelectedItem.Index;
-            lsV_danhSachSV.Items.RemoveAt(sinhVienSelectedIndex);
             Khoa selectedKhoa = GetSelectedKhoa();
             int rowAffected = Database.DeleteSinhVien(selectedKhoa.SinhViens[sinhVienSelectedIndex]);
-            if (rowAffected != 0)
-            {
-                MessageBox.Show("Xóa Sinh viên thành công!");
-                selectedKhoa.SinhViens.RemoveAt(sinhVienSelectedIndex);
-                Forms.CleanInput(inpSinhViens);
-            }
-            else
-                MessageBox.Show("Xóa Sinh viên thất bại!");
+            if (rowAffected == 0 && MessageBox.Show("Xóa Sinh viên thất bại!") == DialogResult.OK)
+                return;
+            MessageBox.Show("Xóa Sinh viên thành công!");
+            selectedKhoa.SinhViens.RemoveAt(sinhVienSelectedIndex);
+            lsV_danhSachSV.Items.RemoveAt(sinhVienSelectedIndex);
+            Forms.CleanInput(inpSinhViens);
         }
 
         private void btn_truyCapSV_Click(object sender, EventArgs e)
