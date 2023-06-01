@@ -100,7 +100,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(187, 146);
+            this.label5.Location = new System.Drawing.Point(187, 202);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 31);
             this.label5.TabIndex = 99;
@@ -112,7 +112,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(187, 202);
+            this.label6.Location = new System.Drawing.Point(187, 146);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 31);
             this.label6.TabIndex = 99;
@@ -143,8 +143,7 @@
             this.label8.TabIndex = 1;
             this.label8.Text = "Trần Hoàng Phúc";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tipRole.SetToolTip(this.label8, "Thiết kế Form: có 2 Form bị hủy\r\n(FThamGiaDeTai và FDeTai) vì sai\r\nsót về mặt chu" +
-        "ẩn bị của nhóm \r\ntrưởng.\r\nCode Form:\r\n- Menu\r\n- Tham gia đề tài (Đã bị hủy)");
+            this.tipRole.SetToolTip(this.label8, "Thiết kế Form\r\nCode Form:\r\n- Truy cập\r\n- Menu");
             // 
             // label9
             // 
@@ -157,7 +156,7 @@
             this.label9.TabIndex = 2;
             this.label9.Text = "Nguyễn Kim Bảo Nguyên";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tipRole.SetToolTip(this.label9, "Lập trình kết nối cơ sở dữ liệu");
+            this.tipRole.SetToolTip(this.label9, "Lập trình kết nối cơ sở dữ liệu\r\nthông qua class Database");
             // 
             // label10
             // 
@@ -170,7 +169,7 @@
             this.label10.TabIndex = 3;
             this.label10.Text = "Châu Gia Hào";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tipRole.SetToolTip(this.label10, "Code các class\r\nCode Form Đề Tài (Đã bị hủy)");
+            this.tipRole.SetToolTip(this.label10, "Code các class của dữ liệu và class Forms");
             // 
             // btn_trove
             // 

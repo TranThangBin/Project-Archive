@@ -11,12 +11,14 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
 {
     internal static class Forms
     {
+        private static FTruyCapCSDL truyCapCSDL;
         private static QLDETAINCKHSINHVIEN mainMenu;
         private static FGiangVien giangVien;
         private static FSinhVien sinhVien;
         private static FKhoa khoa;
         private static FThanhVien thanhVien;
 
+        public static FTruyCapCSDL TruyCapCSDL { get => truyCapCSDL; set => truyCapCSDL = value; }
         public static QLDETAINCKHSINHVIEN MainMenu { get => mainMenu; set => mainMenu = value; }
         public static FGiangVien GiangVien { get => giangVien; set => giangVien = value; }
         public static FSinhVien SinhVien { get => sinhVien; set => sinhVien = value; }

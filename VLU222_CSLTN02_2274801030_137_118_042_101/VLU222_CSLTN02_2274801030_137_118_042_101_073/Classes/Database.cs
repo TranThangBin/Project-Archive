@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Server;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -13,11 +14,14 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
 {
     internal static class Database
     {
+        private static SqlConnectionStringBuilder connectionStringBuilder = null;
         private static SqlConnection connection = null;
 
-        public static void Connect(string connectionString)
+        public static SqlConnectionStringBuilder ConnectionStringBuilder { get => connectionStringBuilder; set => connectionStringBuilder = value; }
+
+        public static void Connect()
         {
-            if (connection == null) connection = new SqlConnection(connectionString);
+            if (connection == null) connection = new SqlConnection(connectionStringBuilder.ConnectionString);
             if (connection.State == ConnectionState.Closed) connection.Open();
         }
 

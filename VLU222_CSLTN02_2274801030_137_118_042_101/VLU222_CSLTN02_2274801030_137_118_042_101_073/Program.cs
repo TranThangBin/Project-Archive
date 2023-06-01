@@ -17,7 +17,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new QLDETAINCKHSINHVIEN());
+            Application.Run(new FTruyCapCSDL());
         }
     }
 }

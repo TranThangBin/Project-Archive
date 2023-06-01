@@ -22,22 +22,32 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073
         // connectionString của Bảo Nguyên
         //private const string connectionString = "Data Source=LAPTOP-N17PMH73\\SQLEXPRESS02;Initial Catalog=QLNCKH_SV;Integrated Security=True";
         //connectionString của Hoàng Phúc
-        private const string connectionString = "Data Source=DESKTOP-BF0SUD8;Initial Catalog=QLNCKH_SV;Integrated Security=True";
+        //private const string connectionString = "Data Source=DESKTOP-BF0SUD8;Initial Catalog=QLNCKH_SV;Integrated Security=True";
+        private bool connectionFailed = true;
         public QLDETAINCKHSINHVIEN()
         {
             InitializeComponent();
-            Forms.MainMenu = this;
         }
 
         private void QLDETAINCKHSINHVIEN_Load(object sender, EventArgs e)
         {
-            Database.Connect(connectionString);
+            try
+            {
+                Database.Connect();
+                connectionFailed = false;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                Forms.TruyCapCSDL.Show();
+                Close();
+            }
         }
 
         private void QLDETAINCKHSINHVIEN_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Bạn muốn thoát Form?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
-                Database.Disconnect();
+            if (connectionFailed || MessageBox.Show("Bạn muốn thoát khỏi cơ sở dữ liệu?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+                Forms.TruyCapCSDL.Show();
             else e.Cancel = true;
         }
 

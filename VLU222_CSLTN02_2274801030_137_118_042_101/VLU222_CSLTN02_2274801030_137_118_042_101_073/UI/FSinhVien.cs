@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -122,6 +123,12 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 lsb_danhSachSinhVien.Items.Add(sinhVien);
                 Forms.CleanInput(inpSinhViens);
             }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 2627)
+                    MessageBox.Show("Mã sinh viên bị trùng với 1 trong các " +
+                                    "sinh viên đã có trong cơ sở dữ liệu!");
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -226,6 +233,12 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                 selectedSinhVien.Detais.Add(deTai);
                 lsb_danhSachDeTai.Items.Add(deTai);
                 Forms.CleanInput(inpDeTais);
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 2627)
+                    MessageBox.Show("Mã đề tài bị trùng với 1 trong các " +
+                                    "mã đề tài đã có trong cơ sở dữ liệu!");
             }
             catch (Exception ex)
             {
