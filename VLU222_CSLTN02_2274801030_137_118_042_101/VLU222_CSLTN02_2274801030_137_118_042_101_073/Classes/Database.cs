@@ -111,10 +111,12 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                              $"WHERE MADT = '{maDT}' AND MASV = '{maSV}'";
                         using (SqlDataReader reader = ExecuteQuery(sql))
                         {
-                            reader.Read();
-                            long phuCap = (long)reader.GetDecimal(0);
-                            string ketQua = reader.GetString(1);
-                            deTai.ThamGiaDeTai = new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
+                            if (reader.Read())
+                            {
+                                long phuCap = (long)reader.GetDecimal(0);
+                                string ketQua = reader.GetString(1);
+                                deTai.ThamGiaDeTai = new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
+                            }
                             reader.Close();
                         }
                     }
@@ -162,10 +164,12 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                              $"WHERE MADT = '{maDT}' AND MASV = '{maSV}'";
                         using (SqlDataReader reader = ExecuteQuery(sql))
                         {
-                            reader.Read();
-                            long phuCap = (long)reader.GetDecimal(0);
-                            string ketQua = reader.GetString(1);
-                            deTai.ThamGiaDeTai = new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
+                            if (reader.Read())
+                            {
+                                long phuCap = (long)reader.GetDecimal(0);
+                                string ketQua = reader.GetString(1);
+                                deTai.ThamGiaDeTai = new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
+                            }
                             reader.Close();
                         }
                     }
@@ -280,10 +284,12 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                          $"WHERE MADT = '{maDT}' AND MASV = '{maSV}'";
                     using (SqlDataReader reader = ExecuteQuery(sql))
                     {
-                        reader.Read();
-                        long phuCap = (long)reader.GetDecimal(0);
-                        string ketQua = reader.GetString(1);
-                        deTai.ThamGiaDeTai = new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
+                        if (reader.Read())
+                        {
+                            long phuCap = (long)reader.GetDecimal(0);
+                            string ketQua = reader.GetString(1);
+                            deTai.ThamGiaDeTai = new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
+                        }
                         reader.Close();
                     }
                 }
@@ -427,10 +433,12 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                          $"WHERE MADT = '{maDT}' AND MASV = '{maSV}'";
                     using (SqlDataReader reader = ExecuteQuery(sql))
                     {
-                        reader.Read();
-                        long phuCap = (long)reader.GetDecimal(0);
-                        string ketQua = reader.GetString(1);
-                        deTai.ThamGiaDeTai = new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
+                        if (reader.Read())
+                        {
+                            long phuCap = (long)reader.GetDecimal(0);
+                            string ketQua = reader.GetString(1);
+                            deTai.ThamGiaDeTai = new ThamGiaDeTai(maDT, maSV, phuCap, ketQua);
+                        }
                         reader.Close();
                     }
                 }
