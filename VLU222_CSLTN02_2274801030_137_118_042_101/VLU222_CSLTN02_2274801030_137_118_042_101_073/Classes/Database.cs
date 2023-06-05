@@ -247,7 +247,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                     string trinhDo = reader.GetString(4);
                     string maKhoa = reader.GetString(5);
                     GiangVien giangVien = new GiangVien(maGV, hoLot, tenGV, gioiTinh, trinhDo, maKhoa);
-                    cmB_maKhoa.Items.Add(maKhoa);
                     listbox.Items.Add(giangVien);
                 }
                 reader.Close();
@@ -288,6 +287,20 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                         reader.Close();
                     }
                 }
+            }
+            sql = "SELECT MAKHOA FROM KHOA";
+            using (SqlDataReader reader = ExecuteQuery(sql))
+            {
+                while (reader.Read())
+                    cmB_maKhoa.Items.Add(reader.GetString(0));
+                reader.Close();
+            }
+            sql = "SELECT MASV FROM SINHVIEN";
+            using (SqlDataReader reader = ExecuteQuery(sql))
+            {
+                while (reader.Read())
+                    cmB_maSV.Items.Add(reader.GetString(0));
+                reader.Close();
             }
         }
 
@@ -383,7 +396,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                     string gioiTinh = reader.GetString(3);
                     string maKhoa = reader.GetString(4);
                     SinhVien sinhVien = new SinhVien(maSV, hoLot, tenSV, gioiTinh, maKhoa);
-                    cmBKhoa.Items.Add(maKhoa);
                     listBox.Items.Add(sinhVien);
                 }
                 reader.Close();
@@ -404,7 +416,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                         DateTime ngayKT = reader.GetDateTime(4);
                         string maGVHD = reader.GetString(5);
                         DeTai deTai = new DeTai(maDT, tenDT, kinhPhi, ngayBD, ngayKT, maGVHD, maSV);
-                        cmBMaGV.Items.Add(maGVHD);
                         sinhVien.Detais.Add(deTai);
                     }
                     reader.Close();
@@ -423,6 +434,20 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                         reader.Close();
                     }
                 }
+            }
+            sql = "SELECT MAKHOA FROM KHOA";
+            using (SqlDataReader reader = ExecuteQuery(sql))
+            {
+                while (reader.Read())
+                    cmBKhoa.Items.Add(reader.GetString(0));
+                reader.Close();
+            }
+            sql = "SELECT MAGV FROM GIANGVIEN";
+            using (SqlDataReader reader = ExecuteQuery(sql))
+            {
+                while (reader.Read())
+                    cmBMaGV.Items.Add(reader.GetString(0));
+                reader.Close();
             }
         }
 

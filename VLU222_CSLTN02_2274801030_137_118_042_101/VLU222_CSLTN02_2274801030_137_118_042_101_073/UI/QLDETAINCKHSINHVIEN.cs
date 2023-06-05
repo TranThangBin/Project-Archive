@@ -39,6 +39,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message);
+                Database.Disconnect();
                 Forms.TruyCapCSDL.Show();
                 Close();
             }
@@ -47,7 +48,10 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073
         private void QLDETAINCKHSINHVIEN_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (connectionFailed || MessageBox.Show("Bạn muốn thoát khỏi cơ sở dữ liệu?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+            {
                 Forms.TruyCapCSDL.Show();
+                Database.Disconnect();
+            }
             else e.Cancel = true;
         }
 

@@ -269,8 +269,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                     giangVien.MaGV,
                     giangVien.HoLot,
                     giangVien.TenGV,
-                    giangVien.GioiTinh,
                     giangVien.TrinhDo,
+                    giangVien.GioiTinh,
                     giangVien.MaKhoa
                 };
                 ListViewItem lsvItem = new ListViewItem(lsviObj);
@@ -313,8 +313,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                     newGiangVien.MaGV,
                     newGiangVien.HoLot,
                     newGiangVien.TenGV,
-                    newGiangVien.GioiTinh,
                     newGiangVien.TrinhDo,
+                    newGiangVien.GioiTinh,
                     newGiangVien.MaKhoa
                 };
                 ListViewItem newLsvItem = new ListViewItem(newLsviObj);
@@ -437,8 +437,8 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
                         newSinhVien.MaKhoa
                 };
                 ListViewItem newLsvItem = new ListViewItem(newLsviObj);
-                lsV_danhSachGV.Items.RemoveAt(sinhVienSelectedIndex);
-                lsV_danhSachGV.Items.Insert(sinhVienSelectedIndex, newLsvItem);
+                lsV_danhSachSV.Items.RemoveAt(sinhVienSelectedIndex);
+                lsV_danhSachSV.Items.Insert(sinhVienSelectedIndex, newLsvItem);
                 Forms.CleanInput(inpSinhViens);
             }
             catch (Exception ex)

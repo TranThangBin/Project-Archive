@@ -24,7 +24,7 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.UI
         private void FTruyCapCSDL_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("Bạn muốn thoát Form?", "Xác nhận!", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
-                Database.Disconnect();
+                return;
             else e.Cancel = true;
         }
 
