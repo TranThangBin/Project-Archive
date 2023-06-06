@@ -271,7 +271,6 @@ namespace VLU222_CSLTN02_2274801030_137_118_042_101_073.Classes
                         DateTime ngayKT = reader.GetDateTime(4);
                         string maSV_CNDT = reader.GetString(5);
                         DeTai deTai = new DeTai(maDT, tenDT, kinhPhi, ngayBD, ngayKT, maGVHD, maSV_CNDT);
-                        cmB_maSV.Items.Add(maSV_CNDT);
                         giangVien.Detais.Add(deTai);
                     }
                     reader.Close();
