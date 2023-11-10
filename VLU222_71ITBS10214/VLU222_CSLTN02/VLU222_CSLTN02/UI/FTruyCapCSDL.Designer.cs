@@ -32,14 +32,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.bnt_truyCap = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txt_tenServer = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txt_tenCSDL = new System.Windows.Forms.TextBox();
-            this.rdBtn_baoMat = new System.Windows.Forms.RadioButton();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txt_idNguoiDung = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.txt_matKhau = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txt_idNguoiDung = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.rdBtn_baoMat = new System.Windows.Forms.RadioButton();
+            this.txt_tenCSDL = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txt_tenServer = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,34 +105,44 @@
             this.panel1.Size = new System.Drawing.Size(550, 316);
             this.panel1.TabIndex = 1;
             // 
-            // txt_tenServer
+            // txt_matKhau
             // 
-            this.txt_tenServer.Location = new System.Drawing.Point(256, 25);
-            this.txt_tenServer.Name = "txt_tenServer";
-            this.txt_tenServer.Size = new System.Drawing.Size(258, 26);
-            this.txt_tenServer.TabIndex = 0;
-            this.txt_tenServer.Text = "LocalHost";
+            this.txt_matKhau.Location = new System.Drawing.Point(256, 215);
+            this.txt_matKhau.Name = "txt_matKhau";
+            this.txt_matKhau.PasswordChar = '*';
+            this.txt_matKhau.Size = new System.Drawing.Size(258, 26);
+            this.txt_matKhau.TabIndex = 3;
             // 
-            // label3
+            // label5
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(38, 87);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(172, 25);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Tên Cơ sở dữ liệu:";
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(38, 214);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(172, 25);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Mật khẩu(nếu có):";
             // 
-            // txt_tenCSDL
+            // txt_idNguoiDung
             // 
-            this.txt_tenCSDL.Enabled = false;
-            this.txt_tenCSDL.Location = new System.Drawing.Point(256, 88);
-            this.txt_tenCSDL.Name = "txt_tenCSDL";
-            this.txt_tenCSDL.Size = new System.Drawing.Size(258, 26);
-            this.txt_tenCSDL.TabIndex = 1;
-            this.txt_tenCSDL.Text = "QLNCKH_SV";
+            this.txt_idNguoiDung.Location = new System.Drawing.Point(256, 153);
+            this.txt_idNguoiDung.Name = "txt_idNguoiDung";
+            this.txt_idNguoiDung.Size = new System.Drawing.Size(258, 26);
+            this.txt_idNguoiDung.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(38, 152);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(212, 25);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "ID người dùng(nếu có):";
             // 
             // rdBtn_baoMat
             // 
@@ -150,44 +160,34 @@
             this.rdBtn_baoMat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rdBtn_baoMat_KeyPress);
             this.rdBtn_baoMat.MouseDown += new System.Windows.Forms.MouseEventHandler(this.rdBtn_baoMat_MouseDown);
             // 
-            // label4
+            // txt_tenCSDL
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(38, 152);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(212, 25);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "ID người dùng(nếu có):";
+            this.txt_tenCSDL.Enabled = false;
+            this.txt_tenCSDL.Location = new System.Drawing.Point(256, 88);
+            this.txt_tenCSDL.Name = "txt_tenCSDL";
+            this.txt_tenCSDL.Size = new System.Drawing.Size(258, 26);
+            this.txt_tenCSDL.TabIndex = 1;
+            this.txt_tenCSDL.Text = "QLNCKH_SV";
             // 
-            // txt_idNguoiDung
+            // label3
             // 
-            this.txt_idNguoiDung.Location = new System.Drawing.Point(256, 153);
-            this.txt_idNguoiDung.Name = "txt_idNguoiDung";
-            this.txt_idNguoiDung.Size = new System.Drawing.Size(258, 26);
-            this.txt_idNguoiDung.TabIndex = 2;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(38, 87);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(172, 25);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Tên Cơ sở dữ liệu:";
             // 
-            // label5
+            // txt_tenServer
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(38, 214);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(172, 25);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Mật khẩu(nếu có):";
-            // 
-            // txt_matKhau
-            // 
-            this.txt_matKhau.Location = new System.Drawing.Point(256, 215);
-            this.txt_matKhau.Name = "txt_matKhau";
-            this.txt_matKhau.PasswordChar = '*';
-            this.txt_matKhau.Size = new System.Drawing.Size(258, 26);
-            this.txt_matKhau.TabIndex = 3;
+            this.txt_tenServer.Location = new System.Drawing.Point(256, 25);
+            this.txt_tenServer.Name = "txt_tenServer";
+            this.txt_tenServer.Size = new System.Drawing.Size(258, 26);
+            this.txt_tenServer.TabIndex = 0;
+            this.txt_tenServer.Text = "LocalHost";
             // 
             // FTruyCapCSDL
             // 
